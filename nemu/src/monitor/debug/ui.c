@@ -45,7 +45,7 @@ static int cmd_si(char *args)
 	else { int n=0;
 		char *s=arg;
 		while (*s)
-		{n=n*10+*s-'0';
+		{   n=n*10+(*s-'0');
 			s++;
 		}
 		cpu_exec(n);
