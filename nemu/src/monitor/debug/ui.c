@@ -45,7 +45,7 @@ static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
 		  for (i=0;i<8;i++)
-		  printf("%x  %x  %x %x\n",cpu.gpr[i]._32,cpu.gpr[i]._16,
+		  printf("%08x  %04x  %02x %02x\n",cpu.gpr[i]._32,cpu.gpr[i]._16,
 				  cpu.gpr[i]._8[0],cpu.gpr[i]._8[1]);
 		  printf("EIP=%d\n",cpu.eip);
 	 }	    
