@@ -39,7 +39,16 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 
 static int cmd_si(char *args)
-{return 0;}
+{   
+	char *arg = strtok(NULL, " ");
+	if(arg == NULL)  cpu_exec(1);
+	else { int n;
+		n=arg[0]-'0';
+		cpu_exec(n);
+	
+	}
+	return 0;
+}
 
 static int cmd_info(char *args)
 {   if (args[0]=='r')
