@@ -44,11 +44,12 @@ static int cmd_si(char *args)
 static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
-		  for (i=0;i<8;i++)
-		  printf("%s=%08x  %s=%04x  %02x %02x\n",regsl[i],cpu.gpr[i]._32,
+		  for (i=0;i<4;i++)
+		  printf("%s=%08x  %s=%04x  %s=%02x %s=%02x\n",
+				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16,
-				           cpu.gpr[i]._8[0],
-				           cpu.gpr[i]._8[1]);
+				  regsb[i],cpu.gpr[i]._8[0],
+				  regsb[i+4],cpu.gpr[i]._8[1]);
 		  printf("EIP=%d\n",cpu.eip);
 	 }	    
 	 
