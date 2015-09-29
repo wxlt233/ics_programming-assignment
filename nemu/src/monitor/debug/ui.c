@@ -52,7 +52,7 @@ static int cmd_info(char *args)
 				  regsb[i+4],cpu.gpr[i]._8[1]);
 
 		  for (i=4;i<8;i++)
-		  printf("%s=%08x  %s=%04x",
+		  printf("%s=%08x  %s=%04x\n",
 				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16);
 		  printf("EIP=%d\n",cpu.eip);
