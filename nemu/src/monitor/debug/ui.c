@@ -3,6 +3,7 @@
 #include "monitor/watchpoint.h"
 #include "nemu.h"
 
+
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -55,6 +56,32 @@ static int cmd_si(char *args)
 	return 0;
 }
 
+static int cmd_x(char *args)
+{ char *arg1=strtok(NULL," ");
+  char *arg2=strtok(NULL," ");
+   int n=0;
+  char *s=arg2;
+    while (*s)
+    {   n=n*10+(*s-'0');
+			s++;
+	}
+   uint32_t add=0;
+   int i,sum,j;
+   s=arg1;
+   int l;l=strlen(arg1);
+   for (i=0;i<l;i++)
+   {   sum=1;
+	   for (j=1;j<=l-i-1;j++)
+		   sum=sum*16;
+	  add=add+(s[i]-'0')*sum;
+   }
+   printf("%u\n",add);
+   printf("%d\n",n);
+
+
+   return 0;
+}
+
 static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
@@ -84,7 +111,8 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
     {"si","Execute instruction for n times",cmd_si},
-	{"info","print the state of program",cmd_info}
+	{"info","print the state of program",cmd_info},
+	{"x","scan the memory",cmd_x}
 	/* TODO: Add more commands */
 
 };
