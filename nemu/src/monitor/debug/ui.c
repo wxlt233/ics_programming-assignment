@@ -42,7 +42,14 @@ static int cmd_si(char *args)
 {return 0;}
 
 static int cmd_info(char *args)
-{return 0;}
+{   if (args[0]=='r')
+	  {   int i;
+		  for (i=0;i<8;i++)
+		  printf("%u  %u  %u %u\n",cpu.gpr[i]._32,cpu.gpr[i]._16,
+				  cpu.gpr[i]._8[0],cpu.gpr[i]._8[1]);
+	 }	    
+	 
+	 return 0;}
 
 static struct {
 	char *name;
