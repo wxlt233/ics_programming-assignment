@@ -49,8 +49,8 @@ static int cmd_si(char *args)
 			s++;
 		}
 		cpu_exec(n);
+	    }
 	
-	}
 	return 0;
 }
 
