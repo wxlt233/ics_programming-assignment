@@ -68,15 +68,15 @@ static int cmd_x(char *args)
    uint32_t add=0;
    int i,sum,j;
    s=arg2;
-   int l;l=strlen(arg1);
+   int l;l=strlen(arg2);
    for (i=0;i<l;i++)
    {   sum=1;
 	   for (j=1;j<=l-i-1;j++)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
    }
-   printf("%u\n",add);
    printf("%d\n",n);
+   printf("%u\n",add);
 
 
    return 0;
