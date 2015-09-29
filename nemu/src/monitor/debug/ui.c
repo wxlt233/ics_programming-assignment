@@ -42,7 +42,7 @@ static int cmd_si(char *args)
 {   
 	char *arg = strtok(NULL, " ");
 	if(arg == NULL)  cpu_exec(1);
-	else { int n=0;
+	else { int n=1;
 		char *s;
 		s=arg;
 		while (*s)
