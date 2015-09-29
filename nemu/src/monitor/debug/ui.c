@@ -60,14 +60,14 @@ static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
   char *arg2=strtok(NULL," ");
    int n=0;
-  char *s=arg2;
+   char *s=arg1;
     while (*s)
     {   n=n*10+(*s-'0');
 			s++;
 	}
    uint32_t add=0;
    int i,sum,j;
-   s=arg1;
+   s=arg2;
    int l;l=strlen(arg1);
    for (i=0;i<l;i++)
    {   sum=1;
