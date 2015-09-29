@@ -75,8 +75,13 @@ static int cmd_x(char *args)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
    }
-   printf("%d\n",n);
-   printf("%u\n",add);
+ //  printf("%d\n",n);
+ //  printf("%u\n",add);
+    char *now;
+	now=(char*)add;
+   for (i=1;i<=4*n;i++)
+   { printf("%u  ",*now);
+    now++;}	   
 
 
    return 0;
