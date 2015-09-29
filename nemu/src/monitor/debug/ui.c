@@ -43,12 +43,13 @@ static int cmd_si(char *args)
 	char *arg = strtok(NULL, " ");
 	if(arg == NULL)  cpu_exec(1);
 	else { int n=0;
-		char *s=arg;
+		char *s;
+		s=arg;
 		while (*s)
 		{   n=n*10+(*s-'0');
 			s++;
 		}
-		cpu_exec(n);
+		 cpu_exec(n);
 	    }
 	
 	return 0;
