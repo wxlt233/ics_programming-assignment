@@ -77,9 +77,6 @@ static int cmd_x(char *args)
    }
    printf("%d\n",n);
    printf("%u\n",add);
-    	   
-
-
    return 0;
 }
 
