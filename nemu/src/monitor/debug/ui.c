@@ -60,7 +60,7 @@ static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
   char *arg2=strtok(NULL," ");
   //unsigned *pr;
-   unsigned n=0;
+   size_t n=0;
    char *s=arg1;
     while (*s)
     {   n=n*10+(*s-'0');
