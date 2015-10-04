@@ -77,11 +77,9 @@ static int cmd_x(char *args)
 	  add=add+(s[i]-'0')*sum;
    }
    pr=(unsigned*) add;
-   pr++;
    int i1;
    for (i1=0;i1<n;i1++)
 	   printf("%08x",*pr++);
- //    printf("%d\n",n);
  //  printf("%u\n",add);
    return 0;
 }
