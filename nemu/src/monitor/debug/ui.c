@@ -60,7 +60,7 @@ static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
   char *arg2=strtok(NULL," ");
   //unsigned *pr;
-   int n=0;
+   unsigned n=0;
    char *s=arg1;
     while (*s)
     {   n=n*10+(*s-'0');
@@ -81,7 +81,7 @@ static int cmd_x(char *args)
    for (i1=0;i1<n;i1++)
 	   printf("%08x",*pr++);
  //  printf("%u\n",add);*/
-    swaddr_read(add,3);
+    swaddr_read(add,n);
    return 0;
 }
 
