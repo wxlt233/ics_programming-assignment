@@ -59,7 +59,7 @@ static int cmd_si(char *args)
 static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
   char *arg2=strtok(NULL," ");
-  unsigned *pr;
+  //unsigned *pr;
    int n=0;
    char *s=arg1;
     while (*s)
@@ -76,11 +76,12 @@ static int cmd_x(char *args)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
    }
-   pr=(unsigned*) add;
+  /* pr=(unsigned*) add;
    int i1;
    for (i1=0;i1<n;i1++)
 	   printf("%08x",*pr++);
- //  printf("%u\n",add);
+ //  printf("%u\n",add);*/
+    swaddr_read(add,n);
    return 0;
 }
 
