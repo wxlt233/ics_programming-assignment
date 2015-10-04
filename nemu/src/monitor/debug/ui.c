@@ -76,13 +76,14 @@ static int cmd_x(char *args)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
    }
+   printf("%s:       ",arg2);
   /* pr=(unsigned*) add;
    int i1;
    for (i1=0;i1<n;i1++)
 	   printf("%08x",*pr++);
  //  printf("%u\n",add);*/
    int i1;
-  for (i1=0;i1<n;i1++)
+  for (i1=0;i1<n+1;i1++)
    printf("%08x ",swaddr_read(add+i1,0));
   printf("\n");
    return 0;
