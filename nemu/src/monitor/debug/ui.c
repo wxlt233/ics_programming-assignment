@@ -81,7 +81,7 @@ static int cmd_x(char *args)
    for (i1=0;i1<n;i1++)
 	   printf("%08x",*pr++);
  //  printf("%u\n",add);*/
-    swaddr_read(add,n);
+    swaddr_read(add,3);
    return 0;
 }
 
