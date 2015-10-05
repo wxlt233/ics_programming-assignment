@@ -79,7 +79,7 @@ static int cmd_x(char *args)
    printf("%s:       ",arg2);
    int i1;
   for (i1=0;i1<n;i1++)
-   printf("%08x ",hwaddr_read(add+4*i1,0));
+   printf("0x%08x ",hwaddr_read(add+4*i1,0));
   printf("\n");
    return 0;
 }
