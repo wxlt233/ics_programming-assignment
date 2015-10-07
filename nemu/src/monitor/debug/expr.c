@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NU
+	NOTYPE = 256, EQ,NUM
 
 	/* TODO: Add more token types */
 
@@ -30,7 +30,7 @@ static struct rule {
 	{"/",'/'},                      //div 
 	{"\\(",'('},	                    //left-bracket
     {"\\)",')'},	                    //right-bracket
-	{"\\d+",NU}                      //number
+	{"\\d+",NUM}                      //number
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -87,18 +87,21 @@ static bool make_token(char *e) {
             
 
 				switch(rules[i].token_type) {
+					case NOTYPE:
+						break;
 					case '+':
 				    case '-':
 					case '*':
 				    case '/':
 				    case '(':
 					case ')':
-					case EQ :
+					case EQ :	
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
-					case NU:
+					case NUM:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
+						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
 						for (i1=pmatch.rm_so;i1<=pmatch.rm_eo;i1++)
                         tokens[nr_token].str[i-pmatch.rm_so]=
 						e[position-substr_len+i1];
