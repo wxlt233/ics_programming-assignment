@@ -84,10 +84,28 @@ static bool make_token(char *e) {
 				 * types of tokens, some extra actions should be performed.
 				 */
 
+            
+
 				switch(rules[i].token_type) {
+					case '+':
+				    case '-':
+					case '*':
+				    case '/':
+				    case '(':
+					case ')':
+					case EQ :
+					   	tokens[nr_token].type=rules[i].token_type;
+					   	break;
+					case NU:
+                        tokens[nr_token].type=rules[i].token_type;
+						int i1;
+						for (i1=pmatch.rm_so;i1<=pmatch.rm_eo;i1++)
+                        tokens[nr_token].str[i-pmatch.rm_so]=
+						e[position-substr_len+i1];
+                        break;
 					default: panic("please implement me");
 				}
-
+                nr_token++;
 				break;
 			}
 		}
