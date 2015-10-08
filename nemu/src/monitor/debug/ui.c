@@ -65,7 +65,6 @@ static int cmd_x(char *args)
     {   n=n*10+(*s-'0');
 			s++;
 	}
-//   uint32_t add=0;
 /*   int i,sum,j;
   s=arg2;
    int l;l=strlen(arg2);
@@ -74,16 +73,17 @@ static int cmd_x(char *args)
 	   for (j=1;j<=l-i-1;j++)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
-   }
-*/ s=arg2;
- //  bool *pan=0;
-//   add=expr(arg2,pan);
+   }*/
+   uint32_t add=0;
+   s=arg2;
+   bool *pan=0;
+   add=expr(arg2,pan);
    printf("%s:       ",arg2);
-/*   int i1;
+   int i1;
   for (i1=0;i1<n;i1++)
    printf("0x%08x ",hwaddr_read(add+4*i1,0));
-  printf("\n");
- */ 
+   
+  printf("\n"); 
    return 0;
 }
 
