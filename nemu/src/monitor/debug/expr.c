@@ -173,8 +173,8 @@ int finddop(int p,int q)
 			{
 				statusprior=2;
 				status=head;
-				head++;
 			}
+			head++;
 		}
 	}
 	return status;
