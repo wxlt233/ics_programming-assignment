@@ -101,7 +101,7 @@ static bool make_token(char *e) {
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
 						for (i1=pmatch.rm_so;i1<=pmatch.rm_eo;i1++)
-                        tokens[nr_token].str[i-pmatch.rm_so]=
+                        tokens[nr_token].str[i1-pmatch.rm_so]=
 						e[position-substr_len+i1];
                         break;
 					default: panic("please implement me");
