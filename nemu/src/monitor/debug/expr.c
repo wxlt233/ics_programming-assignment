@@ -140,7 +140,7 @@ int check_parentheses(int p,int q)
 
 
 int finddop(int p,int q)
-{   
+{   printf("jaja");
 	int head=p,rear=q;
 	int statusprior=3;
 	int status=0;
@@ -183,7 +183,7 @@ int finddop(int p,int q)
 
 
 uint32_t  eval(int p,int q)
-{   
+{   printf("hahaaaa");
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
