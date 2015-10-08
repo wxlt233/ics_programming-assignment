@@ -76,9 +76,9 @@ static int cmd_x(char *args)
    }*/
    uint32_t add=0;
    s=arg2;
-   bool *pan=0;
+   bool pan=true;
    printf("%s:       ",arg2);
-   add=expr(arg2,pan);
+   add=expr(arg2,&pan);
    if (!pan) {printf("wrong input!\n");return 0;}
    printf("%d           ",add);
    int i1;
