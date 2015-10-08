@@ -77,8 +77,8 @@ static int cmd_x(char *args)
    uint32_t add=0;
    s=arg2;
    bool *pan=0;
-   add=expr(arg2,pan);
    printf("%s:       ",arg2);
+   add=expr(arg2,pan);
    int i1;
   for (i1=0;i1<n;i1++)
    printf("0x%08x ",hwaddr_read(add+4*i1,0));
