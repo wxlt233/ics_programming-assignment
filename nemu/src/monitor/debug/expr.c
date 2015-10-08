@@ -160,7 +160,7 @@ int finddop(int p,int q)
 				if (n2>n1)   assert(0); 
                 head++;
 		    }
-			if (head>q) assert(0);
+			if (head>q) return status;
 		}
 		else if (tokens[head].type=='-'||tokens[head].type=='+')
 		{      
