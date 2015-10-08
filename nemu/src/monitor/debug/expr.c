@@ -21,14 +21,13 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
-
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"-",'-'},                      // minus
 	{"\\*",'*'},                    //multiple
 	{"/",'/'},                      //div 
-	{"\\(",'('},	                    //left-bracket
-    {"\\)",')'},	                    //right-bracket
+	{"\\(",'('},	                //left-bracket
+    {"\\)",')'},	                //right-bracket
 	{"\\d+",NUM},                 	//number
 	{"==", EQ}						// equal
 };
