@@ -226,8 +226,8 @@ uint32_t expr(char *e, bool *success) {
 	int i1;
 	printf("%d\n",nr_token);
 	for ( i1=0;i1<nr_token;i1++)
-	{	printf("%d\n",tokens[i1].type);
-	printf("%d",i1);}
+	{	printf("%d:%d\n",i1,tokens[i1].type);
+}
 	 uint32_t x;
      x=eval(0,nr_token-1);
 	 return x;
