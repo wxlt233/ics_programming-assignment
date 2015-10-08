@@ -190,7 +190,7 @@ uint32_t  eval(int p,int q)
 	else if (p==q) {
 		printf("haha");
 	   int i1,num=0;
-       for (i1=0;tokens[p].str[i1];i1++)
+       for (i1=0;tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9';i1++)
 		   num=num*10+(tokens[p].str[i1]-'0');
 	    return num;	
 	}
@@ -226,9 +226,9 @@ uint32_t expr(char *e, bool *success) {
 	int i1;
 	for ( i1=0;i1<nr_token;i1++)
 		printf("%d\n",tokens[i1].type);
-			return 100000;
-//	*success=true;
-//	return  eval(0,nr_token-1);
+	*success=true;
+		//	return 100000;
+	return  eval(0,nr_token-1);
 
 
 	/* TODO: Insert codes to evaluate the expression. */
