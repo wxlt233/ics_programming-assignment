@@ -78,12 +78,11 @@ static int cmd_x(char *args)
    s=arg2;
    bool *pan=0;
    printf("%s:       ",arg2);
+   printf("\n"); 
    add=expr(arg2,pan);
    int i1;
   for (i1=0;i1<n;i1++)
-   printf("0x%08x ",hwaddr_read(add+4*i1,0));
-   
-  printf("\n"); 
+   printf("0x%08x ",hwaddr_read(add+4*i1,0));   
    return 0;
 }
 
