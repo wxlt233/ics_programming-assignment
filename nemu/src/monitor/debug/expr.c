@@ -140,7 +140,7 @@ int check_parentheses(int p,int q)
 
 
 int finddop(int p,int q)
-{   printf("jaja");
+{   
 	int head=p,rear=q;
 	int statusprior=3;
 	int status=0;
@@ -182,7 +182,7 @@ int finddop(int p,int q)
 
 
 uint32_t  eval(int p,int q)
-{   printf("jjj");
+{   
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
@@ -224,10 +224,6 @@ uint32_t expr(char *e, bool *success) {
 	int i1;
 	for ( i1=0;i1<nr_token;i1++)
 		printf("%d\n",tokens[i1].type);
-	for (i1=0;i1<3;i1++)
-		printf("%c\n",tokens[0].str[i1]);
-//	*success=true;
-		//	return 100000;
 	return  eval(0,nr_token-1);
 
 
