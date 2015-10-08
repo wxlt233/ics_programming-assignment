@@ -82,9 +82,7 @@ static bool make_token(char *e) {
 				 * to record the token in the array ``tokens''. For certain 
 				 * types of tokens, some extra actions should be performed.
 				 */
-
-            
-
+		
 				switch(rules[i].token_type) {
 					case NOTYPE:
 						nr_token--;
@@ -226,6 +224,8 @@ uint32_t expr(char *e, bool *success) {
 	int i1;
 	for ( i1=0;i1<nr_token;i1++)
 		printf("%d\n",tokens[i1].type);
+	for (i1=0;i1<3;i1++)
+		printf("%c",tokens[0].str[i1]);
 //	*success=true;
 		//	return 100000;
 	return  eval(0,nr_token-1);
