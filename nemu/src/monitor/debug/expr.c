@@ -28,7 +28,7 @@ static struct rule {
 	{"/",'/'},                      //div 
 	{"\\(",'('},	                //left-bracket
     {"\\)",')'},	                //right-bracket
-	{"\\d+",NUM},                 	//number
+	{"[0-9]+",NUM},                 	//number
 	{"==", EQ}						// equal
 };
 
