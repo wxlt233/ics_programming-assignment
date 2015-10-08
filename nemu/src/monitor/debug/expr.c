@@ -141,10 +141,13 @@ int check_parentheses(int p,int q)
     if (tokens[p].type=='('&&tokens[q].type==')')  return 1;
 	    else  return 0; 	
 }
+
+
 int finddop(int p,int q)
-{int head=p,rear=q;
- int statusprior=3;
- int status=0;
+{
+	int head=p,rear=q;
+	int statusprior=3;
+	int status=0;
 	while (head<=rear)
 	{
 		if (tokens[head].type==NUM) {
@@ -181,6 +184,7 @@ int finddop(int p,int q)
 	return status;
 }
 
+
 uint32_t  eval(int p,int q)
 {
 	if (p>q) 
@@ -215,6 +219,12 @@ uint32_t expr(char *e, bool *success) {
 		*success = false;
 		return 0;
 	}
+	if (check_parentheses(0,nr_token-1)==-1) 
+	{
+		*success=false;
+		return 0;
+	}
+	return  eval(0,nr_token-1);
 
 
 	/* TODO: Insert codes to evaluate the expression. */
