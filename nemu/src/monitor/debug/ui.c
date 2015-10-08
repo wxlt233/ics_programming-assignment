@@ -59,7 +59,6 @@ static int cmd_si(char *args)
 static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
   char *arg2=strtok(NULL," ");
-  //unsigned *pr;
    size_t n=0;
    char *s=arg1;
     while (*s)
@@ -67,8 +66,8 @@ static int cmd_x(char *args)
 			s++;
 	}
    uint32_t add=0;
-   int i,sum,j;
-   s=arg2;
+/*   int i,sum,j;
+  s=arg2;
    int l;l=strlen(arg2);
    for (i=0;i<l;i++)
    {   sum=1;
@@ -76,6 +75,9 @@ static int cmd_x(char *args)
 		   sum=sum*16;
 	  add=add+(s[i]-'0')*sum;
    }
+*/ s=arg2;
+   bool *pan=0;
+   add=expr(arg2,pan);
    printf("%s:       ",arg2);
    int i1;
   for (i1=0;i1<n;i1++)
