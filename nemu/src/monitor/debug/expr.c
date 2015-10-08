@@ -188,6 +188,7 @@ uint32_t  eval(int p,int q)
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
+		printf("haha");
 	   int i1,num=0;
        for (i1=0;tokens[p].str[i1];i1++)
 		   num=num*10+(tokens[p].str[i1]-'0');
