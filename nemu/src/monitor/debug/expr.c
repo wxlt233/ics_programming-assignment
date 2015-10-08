@@ -223,8 +223,12 @@ uint32_t expr(char *e, bool *success) {
 		*success=false;
 		return 0;
 	}
-	*success=true;
-	return  eval(0,nr_token-1);
+	int i1;
+	for ( i1=0;i1<nr_token;i1++)
+		printf("%d",tokens[i1].type);
+			return 0x100000;
+//	*success=true;
+//	return  eval(0,nr_token-1);
 
 
 	/* TODO: Insert codes to evaluate the expression. */
