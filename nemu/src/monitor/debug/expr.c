@@ -24,13 +24,13 @@ static struct rule {
 
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
-	{"==", EQ},						// equal
 	{"-",'-'},                      // minus
 	{"\\*",'*'},                    //multiple
 	{"/",'/'},                      //div 
 	{"\\(",'('},	                    //left-bracket
     {"\\)",')'},	                    //right-bracket
-	{"\\d+",NUM}                      //number
+	{"\\d+",NUM},                 	//number
+	{"==", EQ}						// equal
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
