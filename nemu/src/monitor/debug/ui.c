@@ -79,6 +79,7 @@ static int cmd_x(char *args)
    bool *pan=0;
    printf("%s:       ",arg2);
    add=expr(arg2,pan);
+   if (!pan) {printf("wrong input!\n");return 0;}
    printf("%d           ",add);
    int i1;
    for (i1=0;i1<n;i1++)
