@@ -88,6 +88,7 @@ static bool make_token(char *e) {
 
 				switch(rules[i].token_type) {
 					case NOTYPE:
+						nr_token--;
 						break;
 					case '+':
 				    case '-':
@@ -122,11 +123,99 @@ static bool make_token(char *e) {
 	return true; 
 }
 
+
+
+int check_parentheses(int p,int q)
+{
+	int head=p,rear=q;
+	int n1=0,n2=0;
+	while (head<=rear)
+	{
+		if (tokens[head].type=='(') n1++;
+		if (tokens[head].type==')') n2++;
+		if  (n2>n1)  return -1;
+		head++;
+	}
+	head--;
+	if (n1!=n2) return -1;
+    if (tokens[p].type=='('&&tokens[q].type==')')  return 1;
+	    else  return 0; 	
+}
+int finddop(int p,int q)
+{int head=p,rear=q;
+ int statusprior=3;
+ int status=0;
+	while (head<=rear)
+	{
+		if (tokens[head].type==NUM) {
+			head++;
+		}
+		else if (tokens[head].type=='(') 
+		{    
+			int n1,n2=0;
+			n1=1;
+			while (n1!=n2)
+			{
+				if (tokens[head].type=='(') n1++;
+				if (tokens[head].type==')') n2++;
+				if (n2>n1)   assert(0); 
+                head++;
+		    }
+		}
+		else if (tokens[head].type=='-'||tokens[head].type=='+')
+		{      
+			statusprior=1;
+			status=head;
+			head++;
+		}
+		else if (tokens[head].type=='*'||tokens[head].type=='/')
+		{   
+			if (statusprior>=2)
+			{
+				statusprior=2;
+				status=head;
+				head++;
+			}
+		}
+	}
+	return status;
+}
+
+uint32_t  eval(int p,int q)
+{
+	if (p>q) 
+		assert(0);
+	else if (p==q) {
+	   int i1,num=0;
+       for (i1=0;tokens[p].str[i1];i1++)
+		   num=num*10+(tokens[p].str[i1]-'0');
+	    return num;	
+	}
+	else if (check_parentheses(p,q)==1)
+		return eval(p+1,q-1);
+	else {
+		int op=finddop(p,q);//remain to be done
+		int val1,val2;
+		val1=eval(p,op-1);
+		val2=eval(op+1,q);
+        switch (tokens[op].type){
+			case '+':return val1+val2;
+			case '-':return val1-val2;
+			case '*':return val1*val2;
+			case '/':return val1/val2;
+			case EQ :return val1==val2;
+			default:assert(0);
+		}
+	}
+}
+
+
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
 		return 0;
 	}
+
 
 	/* TODO: Insert codes to evaluate the expression. */
 	panic("please implement me");
