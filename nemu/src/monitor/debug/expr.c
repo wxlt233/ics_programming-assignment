@@ -218,7 +218,7 @@ uint32_t expr(char *e, bool *success) {
 	}
 	if (check_parentheses(0,nr_token-1)==-1) 
 	{
-		*success=false;
+	//	*success=false;
 		return 0;
 	}
 	int i1;
