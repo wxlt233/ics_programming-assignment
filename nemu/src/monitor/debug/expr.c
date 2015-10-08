@@ -122,7 +122,7 @@ static bool make_token(char *e) {
 
 
 int check_parentheses(int p,int q)
-{
+{   printf("aaaaa");
 	int head=p,rear=q;
 	int n1=0,n2=0;
 	while (head<=rear)
@@ -183,7 +183,8 @@ int finddop(int p,int q)
 
 
 uint32_t  eval(int p,int q)
-{   printf("hahaaaa");
+{   
+	printf("hahaaaa");
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
