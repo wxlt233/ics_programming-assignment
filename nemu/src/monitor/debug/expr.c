@@ -132,7 +132,7 @@ int check_parentheses(int p,int q)
 		if (tokens[head].type==')') n2++;
 		if  (n2>n1)  return -1;
 		head++;
-		if (n2==n1) pan1=head;
+		if (n2==n1&&pan1!=0) pan1=head;
 	}
 	head--;
 	if (n1!=n2) return -1;
