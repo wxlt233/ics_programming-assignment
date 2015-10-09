@@ -230,7 +230,8 @@ uint32_t expr(char *e, bool *success) {
 }
 	 uint32_t x;
 	 x=100;
-//     x=eval(0,nr_token-1);
+	 printf("daodi");
+     x=eval(0,nr_token-1);
 	 return x;
 
 
