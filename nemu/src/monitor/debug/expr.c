@@ -228,9 +228,10 @@ uint32_t expr(char *e, bool *success) {
 	for ( i1=0;i1<nr_token;i1++)
 	{	printf("%d:%d\n",i1,tokens[i1].type);
 }
-//	 uint32_t x;
+	 uint32_t x;
+	 x=100;
 //     x=eval(0,nr_token-1);
-	 return 100;
+	 return x;
 
 
 	/* TODO: Insert codes to evaluate the expression. */
