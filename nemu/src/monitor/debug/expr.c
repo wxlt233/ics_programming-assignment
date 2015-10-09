@@ -152,7 +152,8 @@ int finddop(int p,int q)
 		else if (tokens[head].type=='(') 
 		{    
 			int n1,n2=0;
-			n1=0;
+			n1=1;
+			head++;
 			while (n1!=n2&&head<=q)
 			{
 				if (tokens[head].type=='(') n1++;
