@@ -122,8 +122,9 @@ static bool make_token(char *e) {
 
 
 int check_parentheses(int p,int q)
-{   printf("aaaaa");
+{  // printf("aaaaa");
 	int head=p,rear=q;
+	int pan1=0;
 	int n1=0,n2=0;
 	while (head<=rear)
 	{
@@ -131,10 +132,11 @@ int check_parentheses(int p,int q)
 		if (tokens[head].type==')') n2++;
 		if  (n2>n1)  return -1;
 		head++;
+		if (n2==n1) pan1=head;
 	}
 	head--;
 	if (n1!=n2) return -1;
-    if (tokens[p].type=='('&&tokens[q].type==')')  return 1;
+    if (tokens[p].type=='('&&tokens[q].type==')'&&pan1==q)  return 1;
 	    else  return 0; 	
 }
 
