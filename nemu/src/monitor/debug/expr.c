@@ -122,7 +122,7 @@ static bool make_token(char *e) {
 
 
 int check_parentheses(int p,int q)
-{    printf("check");
+{    printf("check %d %d\n",p,q);
 	int head=p,rear=q;
 	int pan1=0;
 	int n1=0,n2=0;
@@ -142,7 +142,7 @@ int check_parentheses(int p,int q)
 
 
 int finddop(int p,int q)
-{   printf("finddop");
+{   printf("finddop %d %d\n",p,q);
 	int head=p,rear=q;
 	int statusprior=3;
 	int status=0;
@@ -187,7 +187,7 @@ int finddop(int p,int q)
 
 uint32_t  eval(int p,int q)
 {   
-	printf("eval");
+	printf("eval %d %d\n",p,q);
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
@@ -233,7 +233,6 @@ uint32_t expr(char *e, bool *success) {
 }
 	 uint32_t x;
 	 x=100;
-	 printf("daodi");
      x=eval(0,nr_token-1);
 	 return x;
 
