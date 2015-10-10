@@ -122,7 +122,7 @@ static bool make_token(char *e) {
 
 
 int check_parentheses(int p,int q)
-{  // printf("aaaaa");
+{    printf("check");
 	int head=p,rear=q;
 	int pan1=0;
 	int n1=0,n2=0;
@@ -142,7 +142,7 @@ int check_parentheses(int p,int q)
 
 
 int finddop(int p,int q)
-{   printf("jaja");
+{   printf("finddop");
 	int head=p,rear=q;
 	int statusprior=3;
 	int status=0;
@@ -187,11 +187,11 @@ int finddop(int p,int q)
 
 uint32_t  eval(int p,int q)
 {   
-	printf("hahaaaa");
+	printf("eval");
 	if (p>q) 
 		assert(0);
 	else if (p==q) {
-		printf("haha");
+		printf("p=q");
 	   int i1,num=0;
        for (i1=0;tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9';i1++)
 		   num=num*10+(tokens[p].str[i1]-'0');
