@@ -58,7 +58,7 @@ static int cmd_si(char *args)
 
 static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
-  char *arg2=arg1+strlen(arg1);
+  char *arg2=args;
    size_t n=0;
    char *s=arg1;
     while (*s)
