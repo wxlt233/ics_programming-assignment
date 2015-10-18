@@ -60,24 +60,13 @@ static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
 //  char *arg3=strtok(NULL," ");
   char *arg2=arg1+strlen(arg1)+1;
-//  arg3=NULL;
    size_t n=0;
    char *s=arg1;
     while (*s)
     {   n=n*10+(*s-'0');
 			s++;
 	}
-/*   int i,sum,j;
-   s=arg2;
-   int l;l=strlen(arg2);
-   for (i=0;i<l;i++)
-   {   sum=1;
-	   for (j=1;j<=l-i-1;j++)
-		   sum=sum*16;
-	  add=add+(s[i]-'0')*sum;
-   }*/
    uint32_t add=0;
- //  arg1=arg3;
    s=arg2;
    bool pan=true;
    printf("%s:       ",arg2);
