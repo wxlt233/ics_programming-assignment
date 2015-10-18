@@ -99,7 +99,8 @@ static bool make_token(char *e) {
 					case ')':
 					case EQ :
 					case AND:
-					case OR:	
+					case OR:
+					case NE:	
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
