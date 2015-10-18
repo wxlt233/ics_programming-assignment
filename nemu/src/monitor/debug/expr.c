@@ -28,11 +28,11 @@ static struct rule {
 	{"/",'/'},                      //div 
 	{"\\(",'('},	                //left-bracket
     {"\\)",')'},	                //right-bracket
-	{"[0-9]+",NUM},                 	//number
 	{"==", EQ},						// equal
 	{"&&",AND},                     //and
 	{"\\|\\|",OR},                       //or
-	{"0x[0-9A-Fa-f]+",NUM1}              //hex
+	{"0x[0-9A-Fa-f]+",NUM1},              //hex
+	{"[0-9]+",NUM}                 	//number
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
