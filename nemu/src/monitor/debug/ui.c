@@ -105,7 +105,7 @@ static int cmd_info(char *args)
 		  printf("%s=%08x  %s=%04x\n",
 				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16);
-		  printf("EIP=%d\n",cpu.eip);
+		  printf("EIP=%x\n",cpu.eip);
 	 }	    
 	 
 	 return 0;
