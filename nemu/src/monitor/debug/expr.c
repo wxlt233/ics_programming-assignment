@@ -156,7 +156,7 @@ int finddop(int p,int q)
 	int status=0;
 	while (head<=rear)
 	{
-		if (tokens[head].type==NUM) {
+		if (tokens[head].type==NUM||tokens[head].type==NUM1) {
 			head++;
 		}
 		else if (tokens[head].type=='(') 
