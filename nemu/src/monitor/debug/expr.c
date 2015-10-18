@@ -35,7 +35,7 @@ static struct rule {
 	{"[0-9]+",NUM},                 	//number
 	{"!=",NE},                         //not equal
 	{"!",N},                          //not
-	{"$d{2,3}",REG}                  //register
+	{"$\\w{2,3}",REG}                  //register
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
