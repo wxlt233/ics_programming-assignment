@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG
 
 	/* TODO: Add more token types */
 
@@ -33,7 +33,9 @@ static struct rule {
 	{"\\|\\|",OR},                       //or
 	{"0x[0-9A-Fa-f]+",NUM1},              //hex
 	{"[0-9]+",NUM},                 	//number
-	{"!=",NE}                         //not equal
+	{"!=",NE},                         //not equal
+	{"!",N},                          //not
+	{"$d{2,3}",REG}                  //register
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -105,6 +107,7 @@ static bool make_token(char *e) {
 					   	break;
 					case NUM:
 					case NUM1:
+					case REG:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
@@ -233,14 +236,15 @@ uint32_t  eval(int p,int q)
 		assert(0);
 	else if (p==q) {
 //		printf("p=q");
-	   int i1,num=0;
+	   int i1;
+	   uint32_t num=0;
 	   if (tokens[p].type==NUM)
 	   {
 		   for (i1=0;tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9';i1++)
 		   num=num*10+(tokens[p].str[i1]-'0');
 	       return num;	
 	   }
-	   else 
+	   else if (tokens[p].type==NUM1) 
 	   {
 	       for (i1=2;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
 		   if (tokens[p].str[i1]<='9')
@@ -250,6 +254,33 @@ uint32_t  eval(int p,int q)
 		   else 
 		       num=num*16+(tokens[p].str[i1]-'A'+10);
 	       return num; 	   
+	   }
+       else //if (tokens[p].type==REG)
+	   {
+		   int i;
+		   uint32_t num=0;
+           for (i=0;i<8;i++)
+		   {
+			   if (tokens[p].str[1]==regsl[i][0] &&tokens[p].str[2]==
+			   regsl[i][1]&&tokens[p].str[3]==regsl[i][2])
+			   {
+				   num=reg_l(i);
+				   return num;
+			   }
+			   else if (tokens[p].str[1]==regsw[i][0] &&tokens[p].str
+				  [2]==regsw[i][1])
+			   {
+				   num=reg_w(i);
+				   return num;
+			   }
+               else if (tokens[p].str[1]==regsb[i][0]&&tokens[p].str[2]==
+					   regsb[i][1])
+			   {
+				   num=reg_b(i);
+			       return num;
+			   }
+	       }
+		   return 0;
 	   }	   
 	}
 	else if (check_parentheses(p,q)==1)
