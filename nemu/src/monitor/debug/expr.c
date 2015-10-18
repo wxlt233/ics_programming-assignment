@@ -214,9 +214,9 @@ uint32_t  eval(int p,int q)
 		   if (tokens[p].str[i1]<='9')
 		       num=num*16+(tokens[p].str[i1]-'0');
 		   else if (tokens[p].str[i1]>='a')
-		       num=num*16+(tokens[p].str[i1]-'A'+10);
-		   else 
 		       num=num*16+(tokens[p].str[i1]-'a'+10);
+		   else 
+		       num=num*16+(tokens[p].str[i1]-'A'+10);
 	       return num; 	   
 	   }	   
 	}
