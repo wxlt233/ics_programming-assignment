@@ -95,17 +95,17 @@ static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
 		  for (i=0;i<4;i++)
-		  printf("%s=%08x  %s=%04x  %s=%02x %s=%02x\n",
+		  printf("%s=0x%08x  %s=0x%04x  %s=0x%02x %s=0x%02x\n",
 				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16,
 				  regsb[i],cpu.gpr[i]._8[0],
 				  regsb[i+4],cpu.gpr[i]._8[1]);
 
 		  for (i=4;i<8;i++)
-		  printf("%s=%08x  %s=%04x\n",
+		  printf("%s=0x%08x  %s=0x%04x\n",
 				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16);
-		  printf("EIP=%x\n",cpu.eip);
+		  printf("EIP=0x%x\n",cpu.eip);
 	 }	    
 	 
 	 return 0;
