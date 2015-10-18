@@ -102,6 +102,7 @@ static bool make_token(char *e) {
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
+					case NUM1:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
@@ -209,7 +210,7 @@ uint32_t  eval(int p,int q)
 	   }
 	   else 
 	   {
-	       for (i1=0;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
+	       for (i1=2;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
 		   if (tokens[p].str[i1]<='9')
 		       num=num*16+(tokens[p].str[i1]-'0');
 		   else if (tokens[p].str[i1]>='a')
