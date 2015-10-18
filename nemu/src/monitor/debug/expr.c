@@ -154,7 +154,7 @@ int finddop(int p,int q)
 {   
 //	printf("finddop %d %d\n",p,q);
 	int head=p,rear=q;
-	int statusprior=3;
+	int statusprior=22;
 	int status=0;
 	while (head<=rear)
 	{
@@ -176,21 +176,51 @@ int finddop(int p,int q)
 			if (head>q) return status;
 		}
 		else if (tokens[head].type=='-'||tokens[head].type=='+')
-		{      
-			statusprior=1;
-			status=head;
-			head++;
-		}
-		else if (tokens[head].type=='*'||tokens[head].type=='/')
-		{   
-			if (statusprior>=2)
-			{
-				statusprior=2;
+		{	
+			if (statusprior>=18)
+			{	      
+				statusprior=18;
 				status=head;
 			}
 			head++;
 		}
-//		else if (tokens[head].type==AND)
+		else if (tokens[head].type=='*'||tokens[head].type=='/')
+		{   
+			if (statusprior>=20)
+			{
+				statusprior=20;
+				status=head;
+			}
+			head++;
+		}
+		else if (tokens[head].type==EQ||tokens[head].type==NE)
+		{
+			if (statusprior>=16)
+			{
+				statusprior=16;
+				status=head;
+			}
+			head++;
+			
+		}
+		else if (tokens[head].type==AND)
+		{
+			if (statusprior>=14)
+			{
+				statusprior=14;
+				status=head;
+			}
+			head++;
+		}
+		else if (tokens[head].type==OR)
+		{
+			if (statusprior>=12)
+			{
+				statusprior=12;
+				status=head;
+			}
+			head++;
+		}
 	}
 	return status;
 }
