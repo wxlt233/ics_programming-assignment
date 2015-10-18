@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1
 
 	/* TODO: Add more token types */
 
@@ -31,7 +31,8 @@ static struct rule {
 	{"[0-9]+",NUM},                 	//number
 	{"==", EQ},						// equal
 	{"&&",AND},                     //and
-	{"\\|\\|",OR}                       //or
+	{"\\|\\|",OR},                       //or
+	{"0x[0-9A-Fa-f]+",NUM1}              //hex
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -186,6 +187,7 @@ int finddop(int p,int q)
 			}
 			head++;
 		}
+//		else if (tokens[head].type==AND)
 	}
 	return status;
 }
@@ -199,9 +201,23 @@ uint32_t  eval(int p,int q)
 	else if (p==q) {
 //		printf("p=q");
 	   int i1,num=0;
-       for (i1=0;tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9';i1++)
+	   if (tokens[p].type==NUM)
+	   {
+		   for (i1=0;tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9';i1++)
 		   num=num*10+(tokens[p].str[i1]-'0');
-	    return num;	
+	       return num;	
+	   }
+	   else 
+	   {
+	       for (i1=0;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
+		   if (tokens[p].str[i1]<='9')
+		       num=num*16+(tokens[p].str[i1]-'0');
+		   else if (tokens[p].str[i1]>='a')
+		       num=num*16+(tokens[p].str[i1]-'A'+10);
+		   else 
+		       num=num*16+(tokens[p].str[i1]-'a'+10);
+	       return num; 	   
+	   }	   
 	}
 	else if (check_parentheses(p,q)==1)
 		return eval(p+1,q-1);
