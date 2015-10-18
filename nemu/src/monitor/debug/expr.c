@@ -228,11 +228,11 @@ uint32_t expr(char *e, bool *success) {
 	//	*success=false;
 		return 0;
 	}
-//	int i1;
-//	printf("%d\n",nr_token);
-//	for ( i1=0;i1<nr_token;i1++)
-//	{	printf("%d:%d\n",i1,tokens[i1].type);
-//}
+	int i1;
+	printf("%d\n",nr_token);
+	for ( i1=0;i1<nr_token;i1++)
+	{	printf("%d:%d\n",i1,tokens[i1].type);
+    }
 	 uint32_t x;
 	 x=100;
      x=eval(0,nr_token-1);
