@@ -31,7 +31,7 @@ static struct rule {
 	{"[0-9]+",NUM},                 	//number
 	{"==", EQ},						// equal
 	{"&&",AND},                     //and
-	{"||",OR}                       //or
+	{"\\|\\|",OR}                       //or
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
