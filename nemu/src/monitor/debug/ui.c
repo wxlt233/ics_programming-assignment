@@ -68,7 +68,7 @@ static int cmd_x(char *args)
 			s++;
 	}
 /*   int i,sum,j;
-  s=arg2;
+   s=arg2;
    int l;l=strlen(arg2);
    for (i=0;i<l;i++)
    {   sum=1;
