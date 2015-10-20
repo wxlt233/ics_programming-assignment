@@ -246,10 +246,6 @@ uint32_t  eval(int p,int q)
 		   num=num*10+(tokens[p].str[i1]-'0');
 	       return num;	
 	   }
-	   else if (p+1==q&&tokens[p].type==N)
-	   {
-		   return !eval(p+1,q);
-	   }
 	//   else if (p+1==q&&tokens[p].type==DEREF)
 	//   {
 //		   return swaddr(eval(p+1,q);
@@ -293,6 +289,8 @@ uint32_t  eval(int p,int q)
 		   return 0;
 	   }	   
 	}
+	else if (p+1==q&&tokens[p].type==N)
+		return !eval(p+1,q);
 	else if (check_parentheses(p,q)==1)
 		return eval(p+1,q-1);
 	else {
