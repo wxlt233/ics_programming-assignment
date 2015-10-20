@@ -291,6 +291,8 @@ uint32_t  eval(int p,int q)
 		return swaddr_read(eval(p+1,q),4);
 	else if (tokens[p].type==N&&check_parentheses(p+1,q)==1)
 		return !eval(p+1,q);
+	else if (tokens[p].type==DEREF&&check_parentheses(p+1,q)==1)
+		return swaddr_read(eval(p+1,q),4);
 	else if (check_parentheses(p,q)==1)
 		return eval(p+1,q-1);
 	else {
