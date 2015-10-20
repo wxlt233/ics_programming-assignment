@@ -287,7 +287,7 @@ uint32_t  eval(int p,int q)
 	}
 	else if (p+1==q&&tokens[p].type==N)
 		return !eval(p+1,q);
-	else if (p+1==q&&tokens[p].type==N)
+	else if (p+1==q&&tokens[p].type==DEREF)
 		return swaddr_read(eval(p+1,q),4);
 	else if (tokens[p].type==N&&check_parentheses(p+1,q)==1)
 		return !eval(p+1,q);
