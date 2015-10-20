@@ -17,7 +17,7 @@ static struct rule {
 	char *regex;
 	int token_type;
 } rules[] = {
-
+ 
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
