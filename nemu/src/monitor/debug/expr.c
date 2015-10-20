@@ -246,10 +246,6 @@ uint32_t  eval(int p,int q)
 		   num=num*10+(tokens[p].str[i1]-'0');
 	       return num;	
 	   }
-	//   else if (p+1==q&&tokens[p].type==DEREF)
-	//   {
-//		   return swaddr(eval(p+1,q);
-//	   }
 	   else if (tokens[p].type==NUM1) 
 	   {
 	       for (i1=2;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
@@ -291,6 +287,8 @@ uint32_t  eval(int p,int q)
 	}
 	else if (p+1==q&&tokens[p].type==N)
 		return !eval(p+1,q);
+	else if (p+1==q&&tokens[p].type==N)
+		return swaddr_read(eval(p+1,q),4);
 	else if (tokens[p].type==N&&check_parentheses(p+1,q)==1)
 		return !eval(p+1,q);
 	else if (check_parentheses(p,q)==1)
