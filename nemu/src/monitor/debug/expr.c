@@ -321,7 +321,6 @@ uint32_t expr(char *e, bool *success) {
 	{	printf("%d:%d\n",i1,tokens[i1].type);
     }
 	 uint32_t x;
-	 x=100;
      x=eval(0,nr_token-1);
 	 return x;
 
