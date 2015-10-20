@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF
 
 	/* TODO: Add more token types */
 
@@ -35,7 +35,8 @@ static struct rule {
 	{"[0-9]+",NUM},                 	//number
 	{"!=",NE},                         //not equal
 	{"!",N},                          //not
-	{"\\$\\w{2,3}",REG}                  //register
+	{"\\$\\w{2,3}",REG},                  //register
+	{"*",DEREF}                        //pointer
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -244,6 +245,14 @@ uint32_t  eval(int p,int q)
 		   num=num*10+(tokens[p].str[i1]-'0');
 	       return num;	
 	   }
+	   else if (p+1==q&&tokens[p].type==N)
+	   {
+		   return !eval(p+1,q);
+	   }
+	//   else if (p+1==q&&tokens[p].type==DEREF)
+	//   {
+//		   return swaddr(eval(p+1,q);
+//	   }
 	   else if (tokens[p].type==NUM1) 
 	   {
 	       for (i1=2;(tokens[p].str[i1]>='0'&&tokens[p].str[i1]<='9')||(tokens[p].str[i1]>='A'&&tokens[p].str[i1]<='F')||(tokens[p].str[i1]>='a'&&tokens[p].str[i1]<='f');i1++)
@@ -316,6 +325,11 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 	int i1;
+	for (i1=0;i1<nr_token;i1++)
+	{
+		if (tokens[i1].type=='*'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE))
+        tokens[i1].type=DEREF;  
+	}
 	printf("%d\n",nr_token);
 	for ( i1=0;i1<nr_token;i1++)
 	{	printf("%d:%d\n",i1,tokens[i1].type);
