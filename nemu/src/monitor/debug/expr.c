@@ -104,6 +104,7 @@ static bool make_token(char *e) {
 					case AND:
 					case OR:
 					case NE:	
+					case N:
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
