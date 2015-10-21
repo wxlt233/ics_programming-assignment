@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF,NEG
 
 	/* TODO: Add more token types */
 
@@ -36,7 +36,9 @@ static struct rule {
 	{"!=",NE},                         //not equal
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
-	{"*",DEREF}                        //pointer
+	{"*",DEREF},                       //pointer
+	{"-",NEG}
+
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -163,7 +165,7 @@ int finddop(int p,int q)
 	int status=0;
 	while (head<=rear)
 	{
-		if (tokens[head].type==NUM||tokens[head].type==NUM1||tokens[head].type==N||tokens[head].type==DEREF||tokens[head].type==REG) {
+		if (tokens[head].type==NUM||tokens[head].type==NUM1||tokens[head].type==N||tokens[head].type==DEREF||tokens[head].type==REG||tokens[head].type==NEG) {
 			head++;
 		}
 		else if (tokens[head].type=='(') 
@@ -289,10 +291,14 @@ uint32_t  eval(int p,int q)
 		return !eval(p+1,q);
 	else if (p+1==q&&tokens[p].type==DEREF)
 		return swaddr_read(eval(p+1,q),4);
+	else if (p+1==q&&tokens[p].type==NEG)
+		return -eval(p+1,q);
 	else if (tokens[p].type==N&&check_parentheses(p+1,q)==1)
 		return !eval(p+1,q);
 	else if (tokens[p].type==DEREF&&check_parentheses(p+1,q)==1)
 		return swaddr_read(eval(p+1,q),4);
+	else if (tokens[p].type==NEG&&check_parentheses(p+1,q)==1)
+		return -eval(p+1,q);
 	else if (check_parentheses(p,q)==1)
 		return eval(p+1,q-1);
 	else {
@@ -331,7 +337,12 @@ uint32_t expr(char *e, bool *success) {
 		if (tokens[i1].type=='*'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE))
         tokens[i1].type=DEREF;  
 	}
-	printf("%d\n",nr_token);
+	for (i1=0;i1<nr_token;i1++)
+	{
+		if (tokens[i1].type=='-'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE))
+		tokens[i1].type=NEG;
+	}
+			printf("%d\n",nr_token);
 	for ( i1=0;i1<nr_token;i1++)
 	{	printf("%d:%d\n",i1,tokens[i1].type);
     }
