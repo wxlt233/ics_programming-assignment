@@ -283,6 +283,11 @@ uint32_t  eval(int p,int q)
 				   num=reg_b(i);
 			       return num;
 			   }
+			   else if (tokens[p].str[1]=='e'&&tokens[p].str[2]=='i'&&tokens[p].str[3]=='p')
+			   {
+			       num=cpu.eip;
+				   return num;
+			   }
 	       }
 		   return 0;
 	   }	   
