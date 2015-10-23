@@ -58,7 +58,6 @@ static int cmd_si(char *args)
 
 static int cmd_x(char *args)
 { char *arg1=strtok(NULL," ");
-//  char *arg3=strtok(NULL," ");
   char *arg2=arg1+strlen(arg1)+1;
    size_t n=0;
    char *s=arg1;
@@ -103,6 +102,54 @@ static int cmd_info(char *args)
 	 return 0;
 }
 
+static int cmd_w(char *args)
+{
+	WP *tt=new_wp();
+	tt->expr=*args;
+	if (head==NULL) head==tt;
+	else 
+	{
+		WP *te1=head;
+		while (te1->next!=NULL)
+			te1=te1->next;
+		te1->next=tt;
+	}                                 //append new watchpoint to linked list started by  head
+
+}
+
+static int cmd_d(char *args)
+{
+	 int n=0;
+	 char *s;
+   	 while (*s)
+	 {
+		 n=n*10+(*s-'0');
+		 s++;
+	 }
+	WP *t=head,*t1=head;   //t1用来存储t前面一个节点
+	int pan=0;
+	while (t!=NULL)
+	{
+		if (t->NO==n)
+		{   
+            if (t==head) 
+				head=t->next;
+			else 
+			{                            //在head开始的链表中删除对应的watchpoint
+				t1->next=t->next;    
+			}	
+            free_wp(t);
+            pan=1;
+			break;
+		}
+		t1=t;
+		t=t->next;
+	}
+	if (!pan) printf("there is no watchpoint %d",n);
+	else printf("watchpoint %d deleted",n);
+	return 0;
+}	
+
 static struct {
 	char *name;
 	char *description;
@@ -113,7 +160,9 @@ static struct {
 	{ "q", "Exit NEMU", cmd_q },
     {"si","Execute instruction for n times",cmd_si},
 	{"info","print the state of program",cmd_info},
-	{"x","scan the memory",cmd_x}
+	{"x","scan the memory",cmd_x},
+	{"w","set watchpoint",cmd_w},
+	{"d","delete watchpoint",cmd_d}
 	/* TODO: Add more commands */
 
 };
