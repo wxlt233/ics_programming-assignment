@@ -97,7 +97,15 @@ static int cmd_info(char *args)
 				  regsl[i],cpu.gpr[i]._32,
 				  regsw[i],cpu.gpr[i]._16);
 		  printf("EIP=0x%x\n",cpu.eip);
-	 }	    
+	 }	  
+	else if (args[0]=='w')
+	{
+		WP *t=head;
+		while (t!=NULL)
+		{
+			printf("watchpoint %d : %s\n",t->NO,t->wexpr);
+		}
+	}	
 	 
 	 return 0;
 }
@@ -105,7 +113,7 @@ static int cmd_info(char *args)
 static int cmd_w(char *args)
 {
 	WP *tt=new_wp();
-	tt->expr=*args;
+	tt->wexpr=*args;
 	if (head==NULL) head==tt;
 	else 
 	{
@@ -114,7 +122,7 @@ static int cmd_w(char *args)
 			te1=te1->next;
 		te1->next=tt;
 	}                                 //append new watchpoint to linked list started by  head
-
+	return 0;
 }
 
 static int cmd_d(char *args)
@@ -145,8 +153,8 @@ static int cmd_d(char *args)
 		t1=t;
 		t=t->next;
 	}
-	if (!pan) printf("there is no watchpoint %d",n);
-	else printf("watchpoint %d deleted",n);
+	if (!pan) printf("there is no watchpoint %d\n",n);
+	else printf("watchpoint %d deleted\n",n);
 	return 0;
 }	
 
