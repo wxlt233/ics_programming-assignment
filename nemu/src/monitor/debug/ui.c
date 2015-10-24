@@ -115,7 +115,8 @@ static int cmd_info(char *args)
 static int cmd_w(char *args)
 {
 	WP *tt=new_wp();
-	tt->wexpr=args;
+	printf("%s",args);
+	tt->wexpr="abc";
 	if (head==NULL) head=tt;
 	else 
 	{
