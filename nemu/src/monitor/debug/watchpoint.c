@@ -102,7 +102,7 @@ void setwatchpoint(char *args)
 	return;
 }
 
-bool calwatchpoint()
+bool calcwatchpoint()
 {
 	WP *t=head;
 	bool succ=1;

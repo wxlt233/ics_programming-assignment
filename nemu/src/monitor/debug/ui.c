@@ -43,7 +43,15 @@ static int cmd_help(char *args);
 static int cmd_si(char *args)
 {   
 	char *arg = strtok(NULL, " ");
-	if(arg == NULL)  cpu_exec(1);
+	if(arg == NULL)  
+	{
+		cpu_exec(1);
+		if (calcwatchpoint())
+		{
+			printchangedwp();
+			nemu_state=STOP;
+		}
+	}
 	else { int n=0;
 		char *s;
 		s=arg;
