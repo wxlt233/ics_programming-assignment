@@ -129,8 +129,8 @@ void printchangedwp()
 		if (t->newvalue!=t->oldvalue)
 		{
 			printf("watchpoint %d changed ! old value: %u new value: %u\n",t->NO,t->oldvalue,t->newvalue);
-			t=t->next;
 		}
+		t=t->next;
 	}
 	return;
 }
