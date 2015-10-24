@@ -4,8 +4,7 @@
 #define NR_WP 32
 
 static WP wp_list[NR_WP];
-//static
-WP *head, *free_;
+static WP *head, *free_;
 
 void init_wp_list() {
 	int i;
@@ -45,3 +44,54 @@ void free_wp(WP *wp)
 	wp->next=NULL;
 }
 
+void printwatchpoint()
+{
+	WP *t=head;
+	while (t!=NULL)
+	{
+		printf("watchpoint %d : %s\n",t->NO,t->wexpr);
+		t=t->next;
+	}
+	return;
+}
+
+void deletewatchpoint(int n)
+{
+	WP *t=head,*t1=head;
+	int pan=0;
+	while (t!=NULL)
+	{
+		if (t->NO==n)
+		{
+			if (t==head)
+				head=head->next;
+			else 
+			{
+				t1->next=t->next;
+			}
+			free_wp(t);
+			pan=1;
+			break;
+		}
+		t1=t;
+		t=t->next;
+	}
+	if (!pan) printf("there is no watchpoint %d\n",n);
+	else printf("watchpoint %d deleted\n",n);
+	return ;
+}
+
+void setwatchpoint(char *args)
+{
+	WP *tt=new_wp();
+	tt->wexpr=args;
+	if (head==NULL) head=tt;
+	else 
+	{
+		WP *te1=head;
+		while (te1->next!=NULL)
+			te1=te1->next;
+		te1->next=tt;
+	}	
+	return;
+}

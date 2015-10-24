@@ -101,12 +101,7 @@ static int cmd_info(char *args)
 	 }	  
 	else if (args[0]=='w')
 	{
-		WP *t=head;
-		while (t!=NULL)
-		{
-			printf("watchpoint %d : %s\n",t->NO,t->wexpr);
-			t=t->next;
-		}
+		printwatchpoint();
 	}	
 	 
 	 return 0;
@@ -114,22 +109,8 @@ static int cmd_info(char *args)
 
 static int cmd_w(char *args)
 {
-	WP *tt=new_wp();
 	printf("%s",args);
-	char *b=args;
-	char *a=tt->wexpr;
-	while (*b!='x')
-	{
-		*a++=*b++;
-	}
-	if (head==NULL) head=tt;
-	else 
-	{
-		WP *te1=head;
-		while (te1->next!=NULL)
-			te1=te1->next;
-		te1->next=tt;
-	}                                 //append new watchpoint to linked list started by  head
+	setwatchpoint(args);
 	return 0;
 }
 
@@ -142,27 +123,7 @@ static int cmd_d(char *args)
 		 n=n*10+(*s-'0');
 		 s++;
 	 }
-	WP *t=head,*t1=t;   //t1用来存储t前面一个节点
-	int pan=0;
-	while (t!=NULL)
-	{
-		if (t->NO==n)
-		{   
-            if (t==head) 
-				head=head->next;
-			else 
-			{                            //在head开始的链表中删除对应的watchpoint
-				t1->next=t->next;    
-			}	
-            free_wp(t);
-            pan=1;
-			break;
-		}
-		t1=t;
-		t=t->next;
-	}
-	if (!pan) printf("there is no watchpoint %d\n",n);
-	else printf("watchpoint %d deleted\n",n);
+	 deletewatchpoint(n);
 	return 0;
 }	
 
