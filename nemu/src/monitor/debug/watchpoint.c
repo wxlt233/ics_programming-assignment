@@ -49,7 +49,7 @@ void printwatchpoint()
 	WP *t=head;
 	while (t!=NULL)
 	{
-		printf("watchpoint %d : %s\n  value %u",t->NO,t->wexpr,t->oldvalue);
+		printf("watchpoint %d : %s  value %u\n",t->NO,t->wexpr,t->oldvalue);
 		t=t->next;
 	}
 	return;
