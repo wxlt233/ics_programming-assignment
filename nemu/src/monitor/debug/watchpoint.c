@@ -49,7 +49,7 @@ void printwatchpoint()
 	WP *t=head;
 	while (t!=NULL)
 	{
-		printf("watchpoint %d : %s  value %u\n",t->NO,t->wexpr,t->oldvalue);
+		printf("watchpoint %d : %s  oldvalue: %u newvalue: %u\n",t->NO,t->wexpr,t->oldvalue,t->newvalue);
 		t=t->next;
 	}
 	return;
@@ -128,7 +128,7 @@ void printchangedwp()
 	{
 		if (t->newvalue!=t->oldvalue)
 		{
-			printf("watchpoint %d changed ! old value :%u new value :%u\n",t->NO,t->oldvalue,t->newvalue);
+			printf("watchpoint %d changed ! old value: %u new value: %u\n",t->NO,t->oldvalue,t->newvalue);
 			t=t->next;
 		}
 	}

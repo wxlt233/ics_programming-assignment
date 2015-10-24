@@ -68,6 +68,7 @@ static int cmd_si(char *args)
 			{	
 				printchangedwp();
 				nemu_state=STOP;
+				break;
 			}
 	    }
 	}
