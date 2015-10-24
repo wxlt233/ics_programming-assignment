@@ -105,6 +105,7 @@ static int cmd_info(char *args)
 		while (t!=NULL)
 		{
 			printf("watchpoint %d : %s\n",t->NO,t->wexpr);
+			t=t->next;
 		}
 	}	
 	 
