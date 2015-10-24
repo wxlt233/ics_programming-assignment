@@ -21,6 +21,9 @@ WP *heado();
 void setwatchpoint();
 void deletewatchpoint();
 void printwatchpoint();
+void printchangedwp();
+bool calcwatchpoint();
+
 
 
 #endif
