@@ -109,7 +109,6 @@ static int cmd_info(char *args)
 
 static int cmd_w(char *args)
 {
-	printf("%s",args);
 	setwatchpoint(args);
 	return 0;
 }
