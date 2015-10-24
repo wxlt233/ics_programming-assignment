@@ -8,6 +8,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+extern WP *head;
 void cpu_exec(uint32_t);
 
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
@@ -113,8 +114,8 @@ static int cmd_info(char *args)
 static int cmd_w(char *args)
 {
 	WP *tt=new_wp();
-	tt->wexpr=*args;
-	if (head==NULL) head==tt;
+	tt->wexpr=args;
+	if (head==NULL) head=tt;
 	else 
 	{
 		WP *te1=head;
@@ -128,20 +129,20 @@ static int cmd_w(char *args)
 static int cmd_d(char *args)
 {
 	 int n=0;
-	 char *s;
+	 char *s=args;
    	 while (*s)
 	 {
 		 n=n*10+(*s-'0');
 		 s++;
 	 }
-	WP *t=head,*t1=head;   //t1用来存储t前面一个节点
+	WP *t=head,*t1=t;   //t1用来存储t前面一个节点
 	int pan=0;
 	while (t!=NULL)
 	{
 		if (t->NO==n)
 		{   
             if (t==head) 
-				head=t->next;
+				head=head->next;
 			else 
 			{                            //在head开始的链表中删除对应的watchpoint
 				t1->next=t->next;    
