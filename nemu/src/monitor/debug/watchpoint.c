@@ -49,7 +49,7 @@ void printwatchpoint()
 	WP *t=head;
 	while (t!=NULL)
 	{
-		printf("watchpoint %d : %s\n",t->NO,t->wexpr);
+		printf("watchpoint %d : %s\n  value %u",t->NO,t->wexpr,t->oldvalue);
 		t=t->next;
 	}
 	return;
@@ -88,6 +88,8 @@ void setwatchpoint(char *args)
 	while (*args)
 		tt->wexprc[i++]=*args++;
 	tt->wexpr=tt->wexprc;
+	bool su=1;
+	tt->oldvalue=expr(tt->wexpr,&su);
 	if (head==NULL) head=tt;
 	else 
 	{
