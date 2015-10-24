@@ -117,7 +117,11 @@ static int cmd_w(char *args)
 	WP *tt=new_wp();
 	printf("%s",args);
 	char *b=args;
-	tt->wexpr=b;
+	char *a=tt->wexpr;
+	while (*b)
+	{
+		*a++=*b++;
+	}
 	if (head==NULL) head=tt;
 	else 
 	{
