@@ -101,6 +101,15 @@ static int cmd_x(char *args)
    return 0;
 }
 
+static int  cmd_p(char *args)
+{
+	bool success=1;
+	uint32_t result=expr(args,&success);
+	if (success) printf("%u\n",result);
+	else printf("illegal expression!\n");
+	return 0;
+}
+
 static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
@@ -156,7 +165,8 @@ static struct {
 	{"info","print the state of program",cmd_info},
 	{"x","scan the memory",cmd_x},
 	{"w","set watchpoint",cmd_w},
-	{"d","delete watchpoint",cmd_d}
+	{"d","delete watchpoint",cmd_d},
+	{"p","calculate the expression",cmd_p}
 	/* TODO: Add more commands */
 
 };
