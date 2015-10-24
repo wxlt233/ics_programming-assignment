@@ -84,7 +84,10 @@ void deletewatchpoint(int n)
 void setwatchpoint(char *args)
 {
 	WP *tt=new_wp();
-	tt->wexpr=args;
+	int i=0;
+	while (*args)
+		tt->wexprc[i++]=*args++;
+	tt->wexpr=tt->wexprc;
 	if (head==NULL) head=tt;
 	else 
 	{

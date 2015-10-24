@@ -6,6 +6,7 @@
 typedef struct watchpoint {
 	int NO;
 	struct watchpoint *next;
+	char wexprc[100];
 	char *wexpr;       //store the expression
 	uint32_t oldvalue,newvalue; 
 
