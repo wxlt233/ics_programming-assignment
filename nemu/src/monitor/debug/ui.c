@@ -118,7 +118,7 @@ static int cmd_w(char *args)
 	printf("%s",args);
 	char *b=args;
 	char *a=tt->wexpr;
-	while (*b)
+	while (*b!='x')
 	{
 		*a++=*b++;
 	}
