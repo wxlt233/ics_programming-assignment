@@ -90,6 +90,7 @@ void setwatchpoint(char *args)
 	tt->wexpr=tt->wexprc;
 	bool su=1;
 	tt->oldvalue=expr(tt->wexpr,&su);
+	tt->newvalue=tt->oldvalue;
 	if (head==NULL) head=tt;
 	else 
 	{
@@ -98,5 +99,38 @@ void setwatchpoint(char *args)
 			te1=te1->next;
 		te1->next=tt;
 	}	
+	return;
+}
+
+bool calwatchpoint()
+{
+	WP *t=head;
+	bool succ=1;
+	bool change=0;
+	while (t!=NULL)
+	{
+		t->oldvalue=t->newvalue;
+		t->newvalue=expr(t->wexpr,&succ);
+		if (t->oldvalue!=t->newvalue) 
+		{
+			change=1;
+		}
+		t=t->next;
+	}
+	return change;
+}
+
+
+void printchangedwp()
+{
+	WP *t=head;
+	while (t!=NULL)
+	{
+		if (t->newvalue!=t->oldvalue)
+		{
+			printf("watchpoint %d changed ! old value :%u new value :%u\n",t->NO,t->oldvalue,t->newvalue);
+			t=t->next;
+		}
+	}
 	return;
 }
