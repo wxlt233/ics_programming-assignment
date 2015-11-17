@@ -4,8 +4,12 @@
 
 static void do_execute() {
 	DATA_TYPE result=op_dest->val-op_src->val;
-
-    if (result==0)
+    DATA_TYPE a=op_dest->val;
+	DATA_TYPE b=op_src->val;	
+	if (b>0&&a-b>a) cpu.eflags.OF=1;
+	else if (b<0&&a-b<a) cpu.eflags.OF=1;
+	else cpu.eflags.OF=0;
+	if (result==0)
 	   	cpu.eflags.ZF=1;
 	else 
 		cpu.eflags.ZF=0;
