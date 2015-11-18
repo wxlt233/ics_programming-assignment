@@ -7,6 +7,7 @@ static void do_execute() {
 	swaddr_write(cpu.esp,4,cpu.eip);
 //	printf("%x  %x ",cpu.eip,op_src->val);
 	cpu.eip+=+op_src->val;
+	print_asm_template1();
 }
 
 make_instr_helper(i)
