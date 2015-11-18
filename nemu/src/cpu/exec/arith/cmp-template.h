@@ -29,7 +29,6 @@ static void do_execute() {
 	else 
 		cpu.eflags.PF=0;
 
-//	panic("please implement me");
 	print_asm_template2();
 }
 
