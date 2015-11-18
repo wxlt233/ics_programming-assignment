@@ -5,6 +5,7 @@
 static void do_execute() {
 //	printf("%o",op_src->val&0x000000ff);
  if (DATA_BYTE==1){	int t=op_src->val&0x000000ff;
+	 printf("%d",t);
 	if (cpu.eflags.ZF==1||cpu.eflags.CF==1) cpu.eip+=t;}
 	//	(int  )(op_src->val&0xff);
 	print_asm_template1();
