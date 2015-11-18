@@ -1,4 +1,4 @@
-include "cpu/exec/template-start.h"
+#include "cpu/exec/template-start.h"
 #define instr add
 
 static void do_execute() {
