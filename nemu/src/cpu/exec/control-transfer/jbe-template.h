@@ -3,7 +3,7 @@
 #define instr jbe
 
 static void do_execute() {
-	printf("%d",op_src->val&0xff);
+	printf("%d",op_src->val&0x000000ff);
 	if (cpu.eflags.ZF==1||cpu.eflags.CF==1) cpu.eip+=(int  )(op_src->val&0xff);
 	print_asm_template1();
 }
