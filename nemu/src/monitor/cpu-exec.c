@@ -43,7 +43,7 @@ void cpu_exec(volatile uint32_t n) {
 	nemu_state = RUNNING;
 
 #ifdef DEBUG
-	volatile uint32_t n_temp = n;
+//	volatile uint32_t n_temp = n;
 #endif
 
 	setjmp(jbuf);
@@ -67,9 +67,9 @@ void cpu_exec(volatile uint32_t n) {
 		print_bin_instr(eip_temp, instr_len);
 		strcat(asm_buf, assembly);
 		Log_write("%s\n", asm_buf);
-		if(n_temp < MAX_INSTR_TO_PRINT) {
-			printf("%s\n", asm_buf);
-		}
+//		if(n_temp < MAX_INSTR_TO_PRINT) {
+//			printf("%s\n", asm_buf);
+//		}
 #endif
 
 		/* TODO: check watchpoints here. */
