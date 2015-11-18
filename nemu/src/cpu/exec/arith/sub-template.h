@@ -2,10 +2,10 @@
 #define instr sub
 
 static void do_execute() {
+	printf("doing sub");
 	DATA_TYPE result=op_dest->val-op_src->val;
     DATA_TYPE a=op_dest->val;
 	DATA_TYPE b=op_src->val;	
-	printf("doing sub");
 	if (b>0&&a-b>a) cpu.eflags.OF=1;
 	else if (b<0&&a-b<a) cpu.eflags.OF=1;
 	else cpu.eflags.OF=0;
