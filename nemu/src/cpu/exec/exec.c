@@ -15,6 +15,7 @@ static make_helper(_2byte_esc);
 		ModR_M m; \
 		m.val = instr_fetch(eip + 1, 1); \
 		printf("%x  ",m.val);\
+		printf("%d",m.opcode);\
 		return concat(opcode_table_, name) [m.opcode](eip); \
 	}
 	
