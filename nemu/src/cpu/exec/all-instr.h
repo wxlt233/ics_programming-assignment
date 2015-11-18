@@ -27,6 +27,7 @@
 
 #include "control-transfer/call.h"
 #include "control-transfer/je.h"
+#include "control-transfer/jmp.h"
 
 #include "string/rep.h"
 
