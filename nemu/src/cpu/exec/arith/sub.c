@@ -15,7 +15,8 @@
 
 make_helper_v(sub_i2a)
 make_helper_v(sub_i2rm)
-make_helper_v(sub_si2rm)
+int sub_si2rm_v(swaddr_t eip) { return (ops_decoded.is_data_size_16 ? sub_si2rm_w : sub_si2rm_l) (eip); }
+//make_helper_v(sub_si2rm)
 make_helper_v(sub_r2rm)
 make_helper_v(sub_rm2r)
 
