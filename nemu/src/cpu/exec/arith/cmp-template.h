@@ -3,7 +3,7 @@
 #define instr cmp
 
 static void do_execute() {
-	DATA_TYPE result=op_dest->val-op_src->val;
+	int result=op_dest->val-op_src->val;
     DATA_TYPE a=op_dest->val;
 	DATA_TYPE b=op_src->val;	
 	if (b>0&&a-b>a) cpu.eflags.OF=1;
