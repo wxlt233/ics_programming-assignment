@@ -7,11 +7,12 @@ int  leave(swaddr_t eip) {
 	cpu.esp=cpu.ebp;
 	cpu.ebp=swaddr_read(cpu.esp,4);
 	cpu.esp+=4;
-	assembly[0]='r';
+	assembly[0]='l';
 	assembly[1]='e';
-	assembly[2]='t';
-	assembly[3]='\0';
-	
+	assembly[2]='a';
+	assembly[3]='v';
+	assembly[4]='e';
+	assembly[5]='\0';
 	return 1;
 }
 
