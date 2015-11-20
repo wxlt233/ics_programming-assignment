@@ -29,6 +29,7 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	{
 		printf("DATA_BYTE");
 	}
+	printf("doing decode");
 	printf("%x",cpu.eip);
 	op_src->type = OP_TYPE_IMM;
 	int  a=instr_fetch(eip,DATA_BYTE);
