@@ -25,7 +25,6 @@ make_helper(concat(decode_i_, SUFFIX)) {
 /* sign immediate */
 make_helper(concat(decode_si_, SUFFIX)) {
 
-	printf("%x",cpu.eip);
 	op_src->type = OP_TYPE_IMM;
 	int  a=instr_fetch(eip,DATA_BYTE);
 	op_src->simm=(int32_t)(a);
@@ -142,7 +141,6 @@ make_helper(concat(decode_r_, SUFFIX)) {
 
 #if DATA_BYTE == 2 || DATA_BYTE == 4
 make_helper(concat(decode_si2rm_, SUFFIX)) {
-	printf("decoding");
 	int len = decode_rm_internal(eip, op_dest, op_src2);	/* op_src2 not use here */
 	len += decode_si_b(eip + len);
 	return len;
