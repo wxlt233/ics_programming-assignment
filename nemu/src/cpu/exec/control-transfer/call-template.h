@@ -4,7 +4,7 @@
 
 static void do_execute() {
 	cpu.esp-=4;
-	swaddr_write(cpu.esp,4,cpu.eip);
+	if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5);
 	cpu.eip+=(int)(op_src->val);
 	print_asm_template1();
 }
