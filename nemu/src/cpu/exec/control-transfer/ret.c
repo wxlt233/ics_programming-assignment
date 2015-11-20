@@ -1,4 +1,5 @@
 #include "cpu/exec/helper.h"
+#define instr ret
 
 
 int  ret(swaddr_t eip) {
