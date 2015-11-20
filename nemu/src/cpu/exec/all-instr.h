@@ -32,6 +32,7 @@
 #include "control-transfer/jmp.h"
 #include "control-transfer/jbe.h"
 #include "control-transfer/leave.h"
+#include "control-transfer/ret.h"
 
 #include "string/rep.h"
 
