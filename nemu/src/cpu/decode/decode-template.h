@@ -25,6 +25,10 @@ make_helper(concat(decode_i_, SUFFIX)) {
 /* sign immediate */
 make_helper(concat(decode_si_, SUFFIX)) {
 
+	if (cpu.eip>=0x100062&&cpu.eip<=0x100069)
+	{
+		printf("DATA_BYTE");
+	}
 	op_src->type = OP_TYPE_IMM;
 	int  a=instr_fetch(eip,DATA_BYTE);
 	op_src->simm=(int32_t)(a);
