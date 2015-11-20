@@ -1,6 +1,5 @@
 #include "cpu/exec/helper.h"
 
-#define instr leave
 extern char assembly[80];
 
 int  leave(swaddr_t eip) {
