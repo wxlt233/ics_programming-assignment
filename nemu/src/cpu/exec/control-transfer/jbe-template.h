@@ -3,7 +3,6 @@
 #define instr jbe
 
 static void do_execute() {
-//	printf("%o",op_src->val&0x000000ff);
  if (DATA_BYTE==1)
  {
  	 char t=op_src->val&0x000000ff;
