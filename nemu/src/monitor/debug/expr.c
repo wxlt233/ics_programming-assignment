@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF,NEG,VAR
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF,NEG,VA
 
 	/* TODO: Add more token types */
 
@@ -38,7 +38,7 @@ static struct rule {
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
 	{"-",NEG},               //NEG
-	{"[0-9a-zA-z_]+",VAR}              //variable
+	{"[0-9a-zA-z_]+",VA}              //variable
 
 };
 
@@ -114,12 +114,13 @@ static bool make_token(char *e) {
 					case OR:
 					case NE:	
 					case N:
+					case VA:
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
 					case NUM1:
 					case REG:
-			    case VAR:
+			
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
