@@ -21,6 +21,8 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
+	{"0x[0-9A-Fa-f]+",NUM1},              //hex
+	{"[0-9]+",NUM},                 	//number
 	{"[0-9a-zA-z_]+",VA},              //variable
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
@@ -32,8 +34,6 @@ static struct rule {
 	{"==", EQ},						// equal
 	{"&&",AND},                     //and
 	{"\\|\\|",OR},                       //or
-	{"0x[0-9A-Fa-f]+",NUM1},              //hex
-	{"[0-9]+",NUM},                 	//number
 	{"!=",NE},                         //not equal
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
