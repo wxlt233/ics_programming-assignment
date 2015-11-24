@@ -78,7 +78,12 @@ static bool make_token(char *e) {
     printf("%s\n",e);	
 	nr_token = 0;
     printf("%d\n",position);
+if (2>1) printf("2>1");
+printf("%c",e[position]);
+	if (2>1) printf("2>1");
+	if (2>1) printf("2>1");
 	if (e[position]!='\0')  printf("aaaa");
+	if (2>1) printf("2>1");
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
 		printf("po %d  ",position);
