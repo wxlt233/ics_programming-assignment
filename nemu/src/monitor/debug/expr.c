@@ -21,6 +21,7 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
+	{"[0-9a-zA-z_]+",VA},              //variable
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"-",'-'},                      // minus
@@ -37,8 +38,7 @@ static struct rule {
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
-	{"-",NEG},               //NEG
-	{"[0-9a-zA-z_]+",VA}              //variable
+	{"-",NEG}    //NEG
 
 };
 
