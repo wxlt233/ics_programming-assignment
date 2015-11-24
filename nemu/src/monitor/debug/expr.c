@@ -83,7 +83,7 @@ static bool make_token(char *e) {
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
-				Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
+			//	Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
 				position += substr_len;
 				/* TODO: Now a new token is recognized with rules[i]. Add codes
 				 * to record the token in the array ``tokens''. For certain 
@@ -365,7 +365,7 @@ uint32_t expr(char *e, bool *success) {
      x=eval(0,nr_token-1);
 	 int ik;
 	 for (ik=0;ik<nr_token;ik++)
-	 {
+	
 		 int jk;
 		 for (jk=0;jk<32;jk++)
 		 tokens[ik].str[jk]='\0';
