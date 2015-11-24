@@ -363,6 +363,13 @@ uint32_t expr(char *e, bool *success) {
     }
 	 uint32_t x;
      x=eval(0,nr_token-1);
+	 int ik;
+	 for (ik=0;ik<nr_token;ik++)
+	 {
+		 int jk;
+		 for (jk=0;jk<32;jk++)
+		 tokens[ik].str[jk]='\0';
+	 }
 	 return x;
 
 
