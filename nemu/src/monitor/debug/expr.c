@@ -82,7 +82,6 @@ static bool make_token(char *e) {
 		/* Try all rules one by one. */
 		printf("po %d  ",position);
 		for(i = 0; i < NR_REGEX; i ++) {
-			printf(" position:  %d   ",i);
 			if(regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
