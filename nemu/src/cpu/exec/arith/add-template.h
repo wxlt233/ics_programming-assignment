@@ -13,7 +13,7 @@ static void do_execute() {
 	else 
 		cpu.eflags.ZF=0;
 	cpu.eflags.SF=MSB(result);
-	if (op_dest->val<op_src->val) 
+	if (a+b<a||a+b<b) 
 		cpu.eflags.CF=1;
 	else 
 		cpu.eflags.CF=0;
