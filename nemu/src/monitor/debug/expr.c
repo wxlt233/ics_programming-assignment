@@ -38,7 +38,7 @@ static struct rule {
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
 	{"-",NEG},               //NEG
-	{"A",VAR}              //variable
+	{"[0-9a-zA-Z]+",VAR}              //variable
 
 };
 
@@ -80,6 +80,7 @@ static bool make_token(char *e) {
 
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
+		printf("%d",position);
 		for(i = 0; i < NR_REGEX; i ++) {
 			printf("%d   ",i);
 			if(regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
