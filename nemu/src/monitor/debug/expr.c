@@ -75,13 +75,8 @@ static bool make_token(char *e) {
 	int position = 0;
 	int i;
 	regmatch_t pmatch;
-    printf("%s\n",e);	
 	nr_token = 0;
-     printf("2>1");
     printf("%c",e[position]);
-	if (2>1) printf("2>1");
-	if (e[position]!='\0')  printf("aaaa");
-	if (2>1) printf("2>1");
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
 		printf("po %d  ",position);
