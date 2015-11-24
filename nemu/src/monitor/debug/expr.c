@@ -23,7 +23,6 @@ static struct rule {
 	 */
 	{"0x[0-9A-Fa-f]+",NUM1},              //hex
 	{"[0-9]+",NUM},                 	//number
-	{"[0-9a-zA-z_]+",VA},              //variable
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"-",'-'},                      // minus
@@ -38,7 +37,9 @@ static struct rule {
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
-	{"-",NEG}    //NEG
+	{"-",NEG},
+	//NEG
+	{"[0-9a-zA-z_]+",VA}             //variable
 
 };
 
