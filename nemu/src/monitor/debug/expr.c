@@ -357,7 +357,7 @@ uint32_t expr(char *e, bool *success) {
 		if (tokens[i1].type=='-'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE||tokens[i1-1].type=='('))
 		tokens[i1].type=NEG;
 	}
-			printf("%d\n",nr_token);
+//			printf("%d\n",nr_token);
 //	for ( i1=0;i1<nr_token;i1++)
 //	{	printf("%d:%d\n",i1,tokens[i1].type);
  //   }
