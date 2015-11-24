@@ -113,13 +113,12 @@ static bool make_token(char *e) {
 					case OR:
 					case NE:	
 					case N:
-					case VAL:
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
 					case NUM1:
 					case REG:
-			
+					case VAL:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
