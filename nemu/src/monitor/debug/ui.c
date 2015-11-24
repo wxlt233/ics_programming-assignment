@@ -105,6 +105,7 @@ static int  cmd_p(char *args)
 {
 	bool success=1;
 	uint32_t result=expr(args,&success);
+	printf("%s\n",args);
 	if (success) printf("%u\n",result);
 	else printf("illegal expression!\n");
 	return 0;
