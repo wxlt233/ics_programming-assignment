@@ -37,8 +37,8 @@ static struct rule {
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
-	{"-",NEG}                   //NEG
-//	{"[a-zA-Z0-9]+",VAR}              //variable
+	{"-",NEG},               //NEG
+	{"[a-zA-Z0-9]+",VAR}              //variable
 
 };
 
@@ -114,7 +114,7 @@ static bool make_token(char *e) {
 					case NUM:
 					case NUM1:
 					case REG:
-	//			    case VAR:
+			    case VAR:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
