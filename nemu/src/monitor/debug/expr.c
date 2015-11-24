@@ -23,6 +23,7 @@ static struct rule {
 	 */
 	{"0x[0-9A-Fa-f]+",NUM1},              //hex
 	{"[0-9]+",NUM},                 	//number
+	{"[0-9a-zA-z_]+",VA},          //variable
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"-",'-'},                      // minus
@@ -37,9 +38,7 @@ static struct rule {
 	{"!",N},                          //not
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
-	{"-",NEG},
-	//NEG
-	{"[0-9a-zA-z_]+",VA}             //variable
+	{"-",NEG}        //NEG
 
 };
 
@@ -78,7 +77,6 @@ static bool make_token(char *e) {
 	regmatch_t pmatch;
     printf("%s\n",e);	
 	nr_token = 0;
-    printf("%d\n",position);
      printf("2>1");
     printf("%c",e[position]);
 	if (2>1) printf("2>1");
