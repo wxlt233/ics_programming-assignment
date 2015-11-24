@@ -299,6 +299,7 @@ uint32_t  eval(int p,int q)
 			{
 				printf("%c",tokens[p].str[i1]);	 
 			}
+			printf("\n");
             return 233;
 			
 		}	   
