@@ -80,7 +80,7 @@ static bool make_token(char *e) {
 
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
-		printf("%d",position);
+		printf("po %d  ",position);
 		for(i = 0; i < NR_REGEX; i ++) {
 			printf("%d   ",i);
 			if(regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
@@ -89,7 +89,7 @@ static bool make_token(char *e) {
 
 				Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
 				position += substr_len;
-
+                 printf("%d   ",position);
 				/* TODO: Now a new token is recognized with rules[i]. Add codes
 				 * to record the token in the array ``tokens''. For certain 
 				 * types of tokens, some extra actions should be performed.
