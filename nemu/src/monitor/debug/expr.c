@@ -113,7 +113,7 @@ static bool make_token(char *e) {
 					case NUM:
 					case NUM1:
 					case REG:
-				
+				    case VAR:
                         tokens[nr_token].type=rules[i].token_type;
 						int i1;
 						if (pmatch.rm_eo-pmatch.rm_so>30) assert(0);
