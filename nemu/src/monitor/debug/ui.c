@@ -88,7 +88,7 @@ static int cmd_x(char *args)
    s=arg2;
    bool pan=true;
    printf("%s:       ",arg2);
-   add=expr("aa",&pan);
+   add=expr(arg2,&pan);
    if (!pan) 
    {
 	   printf("wrong input!\n");return 0;
