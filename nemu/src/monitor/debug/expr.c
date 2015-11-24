@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF,NEG,VA
+	NOTYPE = 256, EQ,NUM,AND,OR,NUM1,NE,N,REG,DEREF,NEG,VAL
 
 	/* TODO: Add more token types */
 
@@ -23,7 +23,7 @@ static struct rule {
 	 */
 	{"0x[0-9A-Fa-f]+",NUM1},              //hex
 	{"[0-9]+",NUM},                 	//number
-	{"[0-9a-zA-z_]+",VA},          //variable
+	{"[0-9a-zA-z_]+",VAL},          //variable
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"-",'-'},                      // minus
@@ -113,7 +113,7 @@ static bool make_token(char *e) {
 					case OR:
 					case NE:	
 					case N:
-					case VA:
+					case VAL:
 					   	tokens[nr_token].type=rules[i].token_type;
 					   	break;
 					case NUM:
@@ -173,7 +173,7 @@ int finddop(int p,int q)
 	int status=0;
 	while (head<=rear)
 	{
-		if (tokens[head].type==NUM||tokens[head].type==NUM1||tokens[head].type==N||tokens[head].type==DEREF||tokens[head].type==REG||tokens[head].type==NEG) {
+		if (tokens[head].type==VAL||tokens[head].type==NUM||tokens[head].type==NUM1||tokens[head].type==N||tokens[head].type==DEREF||tokens[head].type==REG||tokens[head].type==NEG) {
 			head++;
 		}
 		else if (tokens[head].type=='(') 
