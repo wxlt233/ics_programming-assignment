@@ -300,7 +300,12 @@ uint32_t  eval(int p,int q)
 	   }
 		else 
 		{
+			for (i1=0;tokens[p].str[i1];i1++ )
+			{
+				printf("%c",tokens[p].str[i1]);	 
+			}
             return 233;
+			
 		}	   
 	}
 	else if (p+1==q&&tokens[p].type==N)
