@@ -38,7 +38,7 @@ static struct rule {
 	{"\\$\\w{2,3}",REG},                  //register
 	{"*",DEREF},                       //pointer
 	{"-",NEG},                     //NEG
-	{"[a-zA-Z_]",VAR}              //variable
+	{"[a-zA-Z_]+",VAR}              //variable
 
 };
 
