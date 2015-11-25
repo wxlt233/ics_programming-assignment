@@ -44,6 +44,8 @@ static struct rule {
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 
+uint32_t findadd(char *destvar);
+
 static regex_t re[NR_REGEX];
 
 /* Rules are used for many times.
@@ -292,12 +294,17 @@ uint32_t  eval(int p,int q)
 	   }
 		else 
 		{
+			char c2[100];
+			char *c22=c2;
 			for (i1=0;tokens[p].str[i1];i1++ )
 			{
-				printf("%c",tokens[p].str[i1]);	 
+				printf("%c",tokens[p].str[i1]);	
+			    c2[i1]=tokens[p].str[i1];	
 			}
+			c2[i1]='\0';
 			printf("\n");
-            return 233;
+			printf("%s\n",c22);
+            return findadd(c22);
 			
 		}	   
 	}

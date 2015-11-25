@@ -8,7 +8,7 @@ static char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
-uint32_t finadd(char *destvar)
+uint32_t findadd(char *destvar)
 {
 	int ii;
 	char c[100];
