@@ -167,7 +167,7 @@ static int cmd_bt()
 	addrt=cpu.eip;
     printf("#0   ");
 //	printf("%x   ",ebpt);
-	printf("currentaddress: 0x%x  in",addrt);
+	printf("currentaddress: 0x%x  in   ",addrt);
 	findfunc(addrt);
 	int total=0;
 	while (ebpt!=0)
