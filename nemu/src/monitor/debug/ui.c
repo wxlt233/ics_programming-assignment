@@ -171,8 +171,8 @@ static int cmd_bt()
 		
 	while (ebpt!=0)
 	{
-		ebpt=swaddr_read(ebpt,4);	
 		addrt=swaddr_read(ebpt+4,4);
+		ebpt=swaddr_read(ebpt,4);	
 		printf("%x   ",ebpt);
 		printf("retaddress: %x    ",addrt);
 		findfunc(addrt-1);
