@@ -18,7 +18,7 @@ uint32_t findadd(char *destvar)
 		int jj=0;
 		while (*(jj+strtab+symtab[ii].st_name))
 		{
-			printf("%c",*(jj+strtab+symtab[ii].st_name));
+//			printf("%c",*(jj+strtab+symtab[ii].st_name));
 			c[jj]=*(jj+strtab+symtab[ii].st_name);
 		    jj++;
 		}
