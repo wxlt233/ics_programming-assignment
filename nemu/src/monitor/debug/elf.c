@@ -96,7 +96,7 @@ void load_elf_tables(int argc, char *argv[]) {
 			assert(ret == 1);
 		}
 	}
-	int ii;
+/*	int ii;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
 		int jj=0;
@@ -108,7 +108,7 @@ void load_elf_tables(int argc, char *argv[]) {
 //		printf("info: %c",symtab[ii].st_info);
 		printf("\n");
 	}
-
+*/
 	free(sh);
 	free(shstrtab);
 
