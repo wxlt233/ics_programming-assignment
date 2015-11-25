@@ -45,6 +45,7 @@ void findfunc(uint32_t  addrt)
 				c[jj]=*(jj+strtab+symtab[ii].st_name);
 				jj++;
 			}
+			c[jj]='\0';
 			printf("%s\n",c1);
 			break;
 		}
