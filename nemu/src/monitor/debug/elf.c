@@ -75,6 +75,7 @@ void load_elf_tables(int argc, char *argv[]) {
 	fseek(fp, sh[elf->e_shstrndx].sh_offset, SEEK_SET);
 	ret = fread(shstrtab, sh[elf->e_shstrndx].sh_size, 1, fp);
 	assert(ret == 1);
+	printf("%x\n",sh[elf->e_shstrndx].sh_offset);
 
 	int i;
 	for(i = 0; i < elf->e_shnum; i ++) {
@@ -96,7 +97,7 @@ void load_elf_tables(int argc, char *argv[]) {
 			assert(ret == 1);
 		}
 	}
-	printf("%x\n",(unsigned)strtab);
+//	printf("%x\n",(unsigned)strtab);
 	int ii;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
