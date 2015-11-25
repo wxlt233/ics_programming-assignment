@@ -87,7 +87,12 @@ void load_elf_tables(int argc, char *argv[]) {
 	int ii;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
-		printf("%c\n",*(strtab+symtab[ii].st_name));	
+		int jj=0;
+		while (*(jj+strtab+symtab[ii].st_name))
+		{
+			printf("%c\n",*(jj+strtab+symtab[ii].st_name));
+		    jj++;	
+		}
 	}
 
 	free(sh);
