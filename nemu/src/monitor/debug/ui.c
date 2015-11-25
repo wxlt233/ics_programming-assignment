@@ -180,6 +180,7 @@ static int cmd_bt()
 			findfunc(addrt);
 		}
 	}
+	printf("\n");
 	return 0;
 }
 
