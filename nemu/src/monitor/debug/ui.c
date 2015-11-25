@@ -178,12 +178,11 @@ static int cmd_bt()
 	//	printf("%x   ",ebpt);
 	   if (ebpt!=0)	
 		{	
-			printf("#%d ",total);
+			printf("#%d   ",total);
 			printf("retaddress: %x  in  ",addrt);
 			findfunc(addrt);
 		}
 	}
-	printf("\n");
 	return 0;
 }
 
