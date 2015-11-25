@@ -10,11 +10,19 @@ static int nr_symtab_entry;
 
 /*uint32_t finadd(char *e)
 {
-	int ii=0;
-	for (ii=0;ii<=nr_symtab_entryi;ii++)
+	int ii;
+	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
+		if (symtab[i1].info==)
+		int jj=0;
+		while (*(jj+strtab+symtab[ii].st_name))
+		{
+			printf("%c",*(jj+strtab+symtab[ii].st_name));
+		    jj++;	
+		}
+		printf("\n");
+	}
 
-	}	
 }*/
 
 
@@ -93,6 +101,7 @@ void load_elf_tables(int argc, char *argv[]) {
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
+		printf("%c",symtab[ii].st_info);
 		printf("\n");
 	}
 
