@@ -20,6 +20,7 @@ static int nr_symtab_entry;
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
+		return (symtab[ii].st_value);
 		printf("\n");
 	}
 
