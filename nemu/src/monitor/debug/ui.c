@@ -169,6 +169,12 @@ static int cmd_bt()
 //	printf("%x   ",ebpt);
 	printf("currentaddress: 0x%x  in   ",addrt);
 	findfunc(addrt);
+	int kkk;
+	for (kkk=1;kkk<=4;kkk++)
+		{
+			printf("args%d: %d  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
+		}
+	printf("\n");
 	int total=0;
 	while (ebpt!=0)
 	{
@@ -187,6 +193,7 @@ static int cmd_bt()
 			{
 				printf("args%d: %d  ",kk,swaddr_read(ebptt+4+4*kk,4));
 			}
+			printf("\n");
 		}
 	}
 	return 0;
