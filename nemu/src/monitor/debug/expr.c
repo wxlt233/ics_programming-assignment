@@ -298,12 +298,12 @@ uint32_t  eval(int p,int q)
 			char *c22=c2;
 			for (i1=0;tokens[p].str[i1];i1++ )
 			{
-				printf("%c",tokens[p].str[i1]);	
+	//			printf("%c",tokens[p].str[i1]);	
 			    c2[i1]=tokens[p].str[i1];	
 			}
 			c2[i1]='\0';
 			printf("\n");
-			printf("%s\n",c22);
+	//		printf("%s\n",c22);
             return findadd(c22);
 			
 		}	   
