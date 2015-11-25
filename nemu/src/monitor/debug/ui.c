@@ -165,18 +165,21 @@ static int cmd_bt()
 	uint32_t ebpt,addrt;
 	ebpt=cpu.ebp;
 	addrt=cpu.eip;
+    printf("#0   ");
 	printf("%x   ",ebpt);
 	printf("currentaddress: %x    ",addrt);
 	findfunc(addrt);
-		
+	int total=0;
 	while (ebpt!=0)
 	{
+		total++;
 		addrt=swaddr_read(ebpt+4,4);
 		ebpt=swaddr_read(ebpt,4);	
+		printf("#%d ",total);
 		printf("%x   ",ebpt);
 	   if (ebpt!=0)	
 		{	
-			printf("retaddress: %x    ",addrt);
+			printf("retaddress: %x  in  ",addrt);
 			findfunc(addrt);
 		}
 	}
