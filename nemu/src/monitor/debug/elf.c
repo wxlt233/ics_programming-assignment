@@ -83,6 +83,7 @@ void load_elf_tables(int argc, char *argv[]) {
 				strcmp(shstrtab + sh[i].sh_name, ".symtab") == 0) {
 			/* Load symbol table from exec_file */
 			symtab = malloc(sh[i].sh_size);
+			printf("%x\n",sh[i].sh_offset);
 			fseek(fp, sh[i].sh_offset, SEEK_SET);
 			ret = fread(symtab, sh[i].sh_size, 1, fp);
 			assert(ret == 1);
