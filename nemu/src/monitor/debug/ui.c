@@ -167,8 +167,8 @@ static int cmd_bt()
 	addrt=cpu.eip;
 	while (ebpt!=0)
 	{
-		printf("%x\n",ebpt);
-		printf("address: %x\n",addrt);
+		printf("%x    ",ebpt);
+		printf("address: %x    ",addrt);
 		findfunc(addrt);
 		ebpt=swaddr_read(ebpt,4);	
 		addrt=swaddr_read(ebpt+4,4);
