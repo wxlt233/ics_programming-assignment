@@ -167,7 +167,7 @@ static int cmd_bt()
 	addrt=cpu.eip;
     printf("#0   ");
 //	printf("%x   ",ebpt);
-	printf("currentaddress: %x    ",addrt);
+	printf("currentaddress: 0x%x  in",addrt);
 	findfunc(addrt);
 	int total=0;
 	while (ebpt!=0)
@@ -179,7 +179,7 @@ static int cmd_bt()
 	   if (ebpt!=0)	
 		{	
 			printf("#%d   ",total);
-			printf("retaddress: %x  in  ",addrt);
+			printf("retaddress: 0x%x  in  ",addrt);
 			findfunc(addrt);
 		}
 	}
