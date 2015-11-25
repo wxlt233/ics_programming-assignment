@@ -75,15 +75,15 @@ void load_elf_tables(int argc, char *argv[]) {
 	fseek(fp, sh[elf->e_shstrndx].sh_offset, SEEK_SET);
 	ret = fread(shstrtab, sh[elf->e_shstrndx].sh_size, 1, fp);
 	assert(ret == 1);
-	printf("%x\n",sh[elf->e_shstrndx].sh_offset);
+//	printf("%x\n",sh[elf->e_shstrndx].sh_offset);
 
 	int i;
 	for(i = 0; i < elf->e_shnum; i ++) {
 		if(sh[i].sh_type == SHT_SYMTAB && 
 				strcmp(shstrtab + sh[i].sh_name, ".symtab") == 0) {
-			/* Load symbol table from exec_file */
+			/* Load symbol table from exec_file */                         //find which of the section if symtab and strtab
 			symtab = malloc(sh[i].sh_size);
-			printf("%x\n",sh[i].sh_offset);
+//			printf("%x\n",sh[i].sh_offset);
 			fseek(fp, sh[i].sh_offset, SEEK_SET);
 			ret = fread(symtab, sh[i].sh_size, 1, fp);
 			assert(ret == 1);
