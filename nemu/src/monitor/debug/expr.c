@@ -302,7 +302,7 @@ uint32_t  eval(int p,int q)
 			    c2[i1]=tokens[p].str[i1];	
 			}
 			c2[i1]='\0';
-			printf("\n");
+	//		printf("\n");
 	//		printf("%s\n",c22);
             return findadd(c22);
 			
