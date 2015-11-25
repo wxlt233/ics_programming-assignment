@@ -102,7 +102,7 @@ void load_elf_tables(int argc, char *argv[]) {
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
-		printf("%c",symtab[ii].st_info);
+		printf("info: %c",symtab[ii].st_info);
 		printf("\n");
 	}
 
