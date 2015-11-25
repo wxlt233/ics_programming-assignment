@@ -164,13 +164,14 @@ static int cmd_bt()
 {
 	uint32_t ebpt,addrt;
 	ebpt=cpu.ebp;
+	addrt=cpu.eip;
 	while (ebpt!=0)
 	{
-		addrt=swaddr_read(ebpt+4,4);
 		printf("%x\n",ebpt);
-		printf("retaddress: %x\n",addrt);
+		printf("address: %x\n",addrt);
 		findfunc(addrt);
 		ebpt=swaddr_read(ebpt,4);	
+		addrt=swaddr_read(ebpt+4,4);
 	}
 	printf("0\n");
 	return 0;
