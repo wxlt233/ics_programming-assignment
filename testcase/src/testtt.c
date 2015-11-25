@@ -8,6 +8,7 @@ int main()
 {
 	int a=func(5);
 	nemu_assert(a== 5);
+
 	HIT_GOOD_TRAP;
 	return 0;	
 }
