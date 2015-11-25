@@ -11,6 +11,8 @@
 extern WP *head;
 void cpu_exec(uint32_t);
 
+void findfunc(uint32_t addrt);
+
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -167,6 +169,7 @@ static int cmd_bt()
 		addrt=swaddr_read(ebpt+4,4);
 		printf("%x\n",ebpt);
 		printf("retaddress: %x\n",addrt);
+		findfunc(addrt);
 		ebpt=swaddr_read(ebpt,4);	
 	}
 	printf("0\n");

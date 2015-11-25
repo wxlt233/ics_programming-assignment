@@ -11,7 +11,7 @@ static int nr_symtab_entry;
 uint32_t findadd(char *destvar)
 {
 	int ii;
-	char c[100];
+	char c[30];
 	char *c1=c;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
@@ -29,6 +29,27 @@ uint32_t findadd(char *destvar)
     return 233;
 }
 
+void findfunc(uint32_t  addrt)
+{
+    int ii=0;
+	for (ii=0;ii<nr_symtab_entry;ii++)
+	{
+		if (symtab[ii].st_value<=addrt&&symtab[ii].st_value+symtab[ii].st_size>=addrt)
+		{
+			char c[30];
+			char *c1=c;
+			int jj=0;
+			while (*(jj+strtab+symtab[ii].st_name))
+			{	
+//				printf("%c",*(jj+strtab+symtab[ii].st_name));
+				c[jj]=*(jj+strtab+symtab[ii].st_name);
+				jj++;
+			}
+			printf("%s\n",c1);
+			break;
+		}
+	}
+}
 
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
