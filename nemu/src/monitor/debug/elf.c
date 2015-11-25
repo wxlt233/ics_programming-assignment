@@ -98,21 +98,21 @@ void load_elf_tables(int argc, char *argv[]) {
 			assert(ret == 1);
 		}
 	}
-//	printf("%x\n",(unsigned)strtab);
+/*printf("%x\n",(unsigned)strtab);
 	int ii;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
 		int jj=0;
-		printf("%x\n",symtab[ii].st_name);
+		//printf("%x\n",symtab[ii].st_name);
 		while (*(jj+strtab+symtab[ii].st_name))
 		{
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
-//		printf("info: %c",symtab[ii].st_info);
+		printf("info: %c",symtab[ii].st_info);
 		printf("\n");
 	}
-
+*/
 	free(sh);
 	free(shstrtab);
 
