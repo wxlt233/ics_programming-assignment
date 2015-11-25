@@ -8,6 +8,16 @@ static char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
+/*uint32_t finadd(char *e)
+{
+	int ii=0;
+	for (ii=0;ii<=nr_symtab_entryi;ii++)
+	{
+
+	}	
+}*/
+
+
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");
@@ -44,8 +54,8 @@ void load_elf_tables(int argc, char *argv[]) {
 	/* Load section header table */
 	uint32_t sh_size = elf->e_shentsize * elf->e_shnum;
 	Elf32_Shdr *sh = malloc(sh_size);
-	fseek(fp, elf->e_shoff, SEEK_SET);
-	ret = fread(sh, sh_size, 1, fp);
+	fseek(fp, elf->e_shoff, SEEK_SET);               //the offset of section header :elf->e_shoff
+	ret = fread(sh, sh_size, 1, fp);           //sh section header
 	assert(ret == 1);
 
 	/* Load section header string table */
@@ -73,6 +83,11 @@ void load_elf_tables(int argc, char *argv[]) {
 			ret = fread(strtab, sh[i].sh_size, 1, fp);
 			assert(ret == 1);
 		}
+	}
+	int ii;
+	for (ii=0;ii<nr_symtab_entry;ii++)
+	{
+		printf("%d",symtab[0].st_value);	
 	}
 
 	free(sh);
