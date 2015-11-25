@@ -174,10 +174,12 @@ static int cmd_bt()
 		addrt=swaddr_read(ebpt+4,4);
 		ebpt=swaddr_read(ebpt,4);	
 		printf("%x   ",ebpt);
-		printf("retaddress: %x    ",addrt);
-		findfunc(addrt);
+	   if (ebpt!=0)	
+		{	
+			printf("retaddress: %x    ",addrt);
+			findfunc(addrt);
+		}
 	}
-	printf("0\n");
 	return 0;
 }
 
