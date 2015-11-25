@@ -166,7 +166,7 @@ static int cmd_bt()
 	ebpt=cpu.ebp;
 	addrt=cpu.eip;
     printf("#0   ");
-	printf("%x   ",ebpt);
+//	printf("%x   ",ebpt);
 	printf("currentaddress: %x    ",addrt);
 	findfunc(addrt);
 	int total=0;
@@ -175,7 +175,7 @@ static int cmd_bt()
 		total++;
 		addrt=swaddr_read(ebpt+4,4);
 		ebpt=swaddr_read(ebpt,4);	
-		printf("%x   ",ebpt);
+	//	printf("%x   ",ebpt);
 	   if (ebpt!=0)	
 		{	
 			printf("#%d ",total);
