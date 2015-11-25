@@ -174,6 +174,7 @@ static int cmd_bt()
 	{
 		total++;
 		addrt=swaddr_read(ebpt+4,4);
+		int ebptt=ebpt;
 		ebpt=swaddr_read(ebpt,4);	
 	//	printf("%x   ",ebpt);
 	   if (ebpt!=0)	
@@ -181,6 +182,11 @@ static int cmd_bt()
 			printf("#%d   ",total);
 			printf("retaddress: 0x%x  in  ",addrt);
 			findfunc(addrt);
+			int kk;
+			for (kk=1;kk<=4;kk++)
+			{
+				printf("args%d: %d  ",kk,swaddr_read(ebptt+4+4*kk,4));
+			}
 		}
 	}
 	return 0;
