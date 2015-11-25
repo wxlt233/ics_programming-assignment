@@ -175,7 +175,7 @@ static int cmd_bt()
 		ebpt=swaddr_read(ebpt,4);	
 		printf("%x   ",ebpt);
 		printf("retaddress: %x    ",addrt);
-		findfunc(addrt-1);
+		findfunc(addrt);
 	}
 	printf("0\n");
 	return 0;
