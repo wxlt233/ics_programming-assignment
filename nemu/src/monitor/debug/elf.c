@@ -8,23 +8,26 @@ static char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
-/*uint32_t finadd(char *e)
+uint32_t finadd(char *destvar)
 {
 	int ii;
+	char c[100];
+	char *c1=c;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
-		if (symtab[i1].info==)
 		int jj=0;
 		while (*(jj+strtab+symtab[ii].st_name))
 		{
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
-		    jj++;	
+			c[jj]=*(jj+strtab+symtab[ii].st_name);
+		    jj++;
 		}
-		return (symtab[ii].st_value);
-		printf("\n");
+		c[jj]='\0';
+		if (strcmp(destvar,c1)==0) return (symtab[ii].st_value);
 	}
-
-}*/
+	printf("no value");
+    return 233;
+}
 
 
 void load_elf_tables(int argc, char *argv[]) {
@@ -102,7 +105,7 @@ void load_elf_tables(int argc, char *argv[]) {
 			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
-		printf("info: %d",symtab[ii].st_info);
+//		printf("info: %c",symtab[ii].st_info);
 		printf("\n");
 	}
 
