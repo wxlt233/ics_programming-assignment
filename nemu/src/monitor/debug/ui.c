@@ -158,6 +158,18 @@ static int cmd_d(char *args)
 	return 0;
 }	
 
+static int cmd_bt()
+{
+	uint32_t ebpt;
+	ebpt=cpu.ebp;
+	while (ebpt!=0)
+	{
+		printf("%x",ebpt);
+		ebpt=swaddr_read(ebpt,4);	
+	}
+	return 0;
+}
+
 static struct {
 	char *name;
 	char *description;
@@ -171,7 +183,8 @@ static struct {
 	{"x","scan the memory",cmd_x},
 	{"w","set watchpoint",cmd_w},
 	{"d","delete watchpoint",cmd_d},
-	{"p","calculate the expression",cmd_p}
+	{"p","calculate the expression",cmd_p},
+	{"bt","printf  stack frame",cmd_bt}
 	/* TODO: Add more commands */
 
 };
