@@ -164,7 +164,7 @@ static int cmd_bt()
 	ebpt=cpu.ebp;
 	while (ebpt!=0)
 	{
-		printf("%x",ebpt);
+		printf("%x\n",ebpt);
 		ebpt=swaddr_read(ebpt,4);	
 	}
 	return 0;
