@@ -90,9 +90,10 @@ void load_elf_tables(int argc, char *argv[]) {
 		int jj=0;
 		while (*(jj+strtab+symtab[ii].st_name))
 		{
-			printf("%c\n",*(jj+strtab+symtab[ii].st_name));
+			printf("%c",*(jj+strtab+symtab[ii].st_name));
 		    jj++;	
 		}
+		printf("\n");
 	}
 
 	free(sh);
