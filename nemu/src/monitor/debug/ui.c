@@ -175,10 +175,10 @@ static int cmd_bt()
 		total++;
 		addrt=swaddr_read(ebpt+4,4);
 		ebpt=swaddr_read(ebpt,4);	
-		printf("#%d ",total);
 		printf("%x   ",ebpt);
 	   if (ebpt!=0)	
 		{	
+			printf("#%d ",total);
 			printf("retaddress: %x  in  ",addrt);
 			findfunc(addrt);
 		}
