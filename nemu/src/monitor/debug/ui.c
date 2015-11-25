@@ -160,13 +160,16 @@ static int cmd_d(char *args)
 
 static int cmd_bt()
 {
-	uint32_t ebpt;
+	uint32_t ebpt,addrt;
 	ebpt=cpu.ebp;
 	while (ebpt!=0)
 	{
+		addrt=swaddr_read(ebpt+4,4);
 		printf("%x\n",ebpt);
+		printf("retaddress: %x\n",addrt);
 		ebpt=swaddr_read(ebpt,4);	
 	}
+	printf("0\n");
 	return 0;
 }
 
