@@ -1,7 +1,7 @@
 #include "trap.h"
 
 int add(int a, int b) {
-	int c = a + b;
+	int c = a + b+func();
 	return c;
 }
 
@@ -11,9 +11,9 @@ int add(int a, int b) {
 	else return (func(n-1));
 }*/
 
-int func(int n)
+int func( )
 {
-	int c=n-1;
+	int c=0;
 	return c;
 }
 char str[]="abcdefg";
@@ -26,7 +26,7 @@ int main() {
 	int i, j, ans_idx = 0;
 	for(i = 0; i < NR_DATA; i ++) {
 		for(j = 0; j < NR_DATA; j ++) {
-			nemu_assert(add(test_data[i],func(1)+ test_data[j]) == ans[ans_idx ++]);
+			nemu_assert(add(test_data[i], test_data[j]) == ans[ans_idx ++]);
 		}
 	}
 
