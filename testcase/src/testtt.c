@@ -6,7 +6,7 @@ int func(int n)
 }
 int main()
 {
-	int a;
+	int a=0;
 	a=func(5);
 	nemu_assert(a== 5);
 
