@@ -6,6 +6,7 @@ static void do_execute() {
 	printf("%x\n",cpu.esp);
 	uint32_t t=swaddr_read(cpu.esp,4);
 	printf("%x\n",cpu.esp);
+	printf("%x\n",t);
 	OPERAND_W(op_dest,t);
 	printf("%x\n",cpu.esp);
 
