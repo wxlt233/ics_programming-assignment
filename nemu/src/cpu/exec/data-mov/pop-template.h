@@ -3,7 +3,8 @@
 #define instr pop
 
 static void do_execute() {
-	OPERAND_W(op_dest,swaddr_read(cpu.esp,4));
+	uint32_t t=swaddr_read(cpu.esp,4);
+	OPERAND_W(op_dest,t);
 	cpu.esp+=4;
 	print_asm_template1();
 }
