@@ -175,13 +175,12 @@ static int cmd_bt()
 			printf("args%d: %d  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
 		}
 	printf("\n");
-	ebpt=swaddr_read(ebpt,4);
 	int total=0;
 	while (ebpt!=0)
 	{
 		total++;
 		addrt=swaddr_read(ebpt+4,4);
-		int ebptt=ebpt;
+		//int ebptt=ebpt;
 		ebpt=swaddr_read(ebpt,4);	
 	//	printf("%x   ",ebpt);
 	   if (ebpt!=0)	
@@ -192,7 +191,7 @@ static int cmd_bt()
 			int kk;
 			for (kk=1;kk<=4;kk++)
 			{
-				printf("args%d: %d  ",kk,swaddr_read(ebptt+4+4*kk,4));
+				printf("args%d: %d  ",kk,swaddr_read(ebpt+4+4*kk,4));
 			}
 			printf("\n");
 		}
