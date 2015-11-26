@@ -38,7 +38,7 @@ void do_int3() {
 /* Simulate how the CPU works. */
 void cpu_exec(volatile uint32_t n) {
 
-		int t=(int) n;
+	//	int t=(int) n;
 	if(nemu_state == END) {
 		printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
 		return;
@@ -65,11 +65,11 @@ void cpu_exec(volatile uint32_t n) {
 		int instr_len = exec(cpu.eip);
 
 		cpu.eip += instr_len;
-		if (t==-1&&calcwatchpoint())
+ /*		if (t==-1&&calcwatchpoint())
 		{
 			printchangedwp();
 			nemu_state=STOP;
-		}
+		}*/
 #ifdef DEBUG
 		print_bin_instr(eip_temp, instr_len);
 	//	printf("%s\n",asm_buf);
