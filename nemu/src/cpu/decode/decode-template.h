@@ -26,8 +26,8 @@ make_helper(concat(decode_i_, SUFFIX)) {
 make_helper(concat(decode_si_, SUFFIX)) {
 
 	op_src->type = OP_TYPE_IMM;
-	int  a=instr_fetch(eip,DATA_BYTE);
-	printf("%d",DATA_BYTE);
+	char  a=instr_fetch(eip,DATA_BYTE);
+	printf("%d\n",DATA_BYTE);
 	op_src->simm=(int32_t)(a);
 //	op_src->simm=op_src->simm-MSB(op_src->simm)*(1<<((DATA_BYTE<<3)-1));
 	/* TODO: Use instr_fetch() to read ``DATA_BYTE'' bytes of memory pointed 
@@ -39,7 +39,7 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	//panic("please implement me");
 
 	op_src->val = op_src->simm;
-	printf("%08x",op_src->val);
+	printf("%08x\n",op_src->val);
 #ifdef DEBUG
 	snprintf(op_src->str, OP_STR_SIZE, "$0x%x", op_src->val);
 #endif
