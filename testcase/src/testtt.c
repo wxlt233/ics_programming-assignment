@@ -6,7 +6,8 @@ int func(int n)
 }
 int main()
 {
-	int a=func(5);
+	int a;
+	a=func(5);
 	nemu_assert(a== 5);
 
 	HIT_GOOD_TRAP;
