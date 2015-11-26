@@ -68,8 +68,8 @@ void cpu_exec(volatile uint32_t n) {
 		int instr_len = exec(cpu.eip);
 
 		cpu.eip += instr_len;
-
-		if (calcwatchpoint())
+		int t=(int) n;
+		if (t==-1&&calcwatchpoint())
 		{
 			printchangedwp();
 			nemu_state=STOP;
