@@ -9,7 +9,7 @@ static void do_execute() {
 	//if (b>0&&a-b>a) cpu.eflags.OF=1;
 	//else if (b<0&&a-b<a) cpu.eflags.OF=1;
 	if (MSB(a)==0&&MSB(b)==1&&MSB(result)==1 ) cpu.eflags.OF=1;
-	else if (MSB(a)==1&&MSB(b)==0&&MSB(result==0)) cpu.eflags.OF=1;
+	else if (MSB(a)==1&&MSB(b)==0&&MSB(result)==0) cpu.eflags.OF=1;
 	else cpu.eflags.OF=0;
 	if (result==0)
 	   	cpu.eflags.ZF=1;
