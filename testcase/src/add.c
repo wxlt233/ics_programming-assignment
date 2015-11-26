@@ -1,12 +1,13 @@
 #include "trap.h"
-int func( )
+/*int func( )
 {
 	int c=0;
 	return c;
-}
+}*/
 
 int add(int a, int b) {
-	int c = a + b+func();
+	int c = a + b;
+	//	+func();
 	return c;
 }
 
