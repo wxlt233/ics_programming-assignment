@@ -8,7 +8,7 @@ int add(int a, int b) {
 int func(int n)
 {
 	if (n<=2) return 1;
-	else return (func(n-1)+func(n-2));
+	else return (func(n-1));
 }
 char str[]="abcdefg";
 int test_data[] = {0, 1, 2, 0x7fffffff, 0x80000000, 0x80000001, 0xfffffffe, 0xffffffff};
