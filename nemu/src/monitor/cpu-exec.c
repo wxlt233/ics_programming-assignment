@@ -69,6 +69,11 @@ void cpu_exec(volatile uint32_t n) {
 
 		cpu.eip += instr_len;
 
+		if (calcwatchpoint())
+		{
+			printchangedwp();
+			nemu_state=STOP;
+		}
 #ifdef DEBUG
 		print_bin_instr(eip_temp, instr_len);
 	//	printf("%s\n",asm_buf);
