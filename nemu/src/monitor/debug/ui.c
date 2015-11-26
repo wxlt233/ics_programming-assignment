@@ -66,12 +66,12 @@ static int cmd_si(char *args)
 		for (i=1;i<=n;i++)
 		{
 		   	cpu_exec(1);
-	/*		if (calcwatchpoint())
+			if (calcwatchpoint())
 			{	
 				printchangedwp();
 				nemu_state=STOP;
 				break;
-			}*/
+			}
 	    }
 	}
 	return 0;
