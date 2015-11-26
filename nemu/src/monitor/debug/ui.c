@@ -62,17 +62,17 @@ static int cmd_si(char *args)
 		{   n=n*10+(*s-'0');
 			s++;
 		}
-//		int i;
-//		for (i=1;i<=n;i++)
-//		{
-		   	cpu_exec(n);
-/*			if (calcwatchpoint())	
+		int i;
+		for (i=1;i<=n;i++)
+		{
+		   	cpu_exec(1);
+			if (calcwatchpoint())	
 			{	
 				printchangedwp();
 				nemu_state=STOP;
 				break;
-			}*/
-//	    }
+			}
+	   }
 	}
 	return 0;
 }
