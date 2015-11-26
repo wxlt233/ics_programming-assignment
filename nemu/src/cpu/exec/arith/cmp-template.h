@@ -6,8 +6,9 @@ static void do_execute() {
 	int result=op_dest->val-op_src->val;
     DATA_TYPE a=op_dest->val;
 	DATA_TYPE b=op_src->val;	
-	if (b>0&&a-b>a) cpu.eflags.OF=1;
-	else if (b<0&&a-b<a) cpu.eflags.OF=1;
+	//if (b>0&&a-b>a) cpu.eflags.OF=1;
+	//else if (b<0&&a-b<a) cpu.eflags.OF=1;
+	if (a-b>a) cpu.eflags.OF=1;
 	else cpu.eflags.OF=0;
 	if (result==0)
 	   	cpu.eflags.ZF=1;
