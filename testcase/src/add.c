@@ -30,7 +30,6 @@ int main() {
 		}
 	}
 
-//	nemu_assert(func(5)==1);
 	nemu_assert(i == NR_DATA);
 	nemu_assert(j == NR_DATA);
 
