@@ -175,6 +175,7 @@ static int cmd_bt()
 			printf("args%d: %d  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
 		}
 	printf("\n");
+	ebpt=swaddr_read(ebpt,4);
 	int total=0;
 	while (ebpt!=0)
 	{
