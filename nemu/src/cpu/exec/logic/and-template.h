@@ -5,9 +5,20 @@
 static void do_execute () {
 	DATA_TYPE result = op_dest->val & op_src->val;
 	OPERAND_W(op_dest, result);
-
+	if (result==0)
+	   	cpu.eflags.ZF=1;
+	else 
+		cpu.eflags.ZF=0;
+	cpu.eflags.SF=MSB(result);
+	short t=(result&1)+((result>>1)&1)+((result>>2)&1)
+		+((result>>3)&1)+((result>>4)&1)+((result>>5)&1)
+		+((result>>6)&1)+((result>>7)&1);
+	if (t%2==0) 
+		cpu.eflags.PF=1;
+	else 
+		cpu.eflags.PF=0;
 	/* TODO: Update EFLAGS. */
-	panic("please implement me");
+	//panic("please implement me");
 
 	print_asm_template2();
 }

@@ -26,6 +26,7 @@
 #include "logic/shr.h"
 #include "logic/shrd.h"
 #include "logic/test.h"
+#include "logic/and.h"
 
 #include "control-transfer/call.h"
 #include "control-transfer/je.h"
