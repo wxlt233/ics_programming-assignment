@@ -36,6 +36,7 @@
 #include "control-transfer/jg.h"
 #include "control-transfer/leave.h"
 #include "control-transfer/ret.h"
+#include "control-transfer/jle.h"
 
 #include "string/rep.h"
 
