@@ -38,6 +38,7 @@
 #include "control-transfer/ret.h"
 #include "control-transfer/jle.h"
 #include "control-transfer/ja.h"
+#include "control-transfer/jge.h"
 
 #include "string/rep.h"
 
