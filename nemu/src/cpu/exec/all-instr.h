@@ -40,6 +40,7 @@
 #include "control-transfer/ja.h"
 #include "control-transfer/jge.h"
 #include "control-transfer/jl.h"
+#include "control-transfer/jne.h"
 
 #include "string/rep.h"
 
