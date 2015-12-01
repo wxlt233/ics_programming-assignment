@@ -357,8 +357,8 @@ uint32_t expr(char *e, bool *success) {
 	int i1;
 	for (i1=0;i1<nr_token;i1++)
 	{
-		if (tokens[i1].type=='*'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE||tokens[i1-1].type=='('))
-        tokens[i1].type=DEREF;  
+		if (tokens[i1].type=='*'&&(i1==0||tokens[i1-1].type=='+'||tokens[i1-1].type=='/'||tokens[i1-1].type=='-'||tokens[i1-1].type=='*'||tokens[i1-1].type==AND||tokens[i1-1].type==OR||tokens[i1-1].type==EQ||tokens[i1-1].type==NE||tokens[i1-1].type=='('||tokens[i1-1].type==DEREF))
+       tokens[i1].type=DEREF;  
 	}
 	for (i1=0;i1<nr_token;i1++)
 	{
