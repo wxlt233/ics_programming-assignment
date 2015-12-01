@@ -26,6 +26,7 @@ uint32_t findadd(char *destvar)
 		if (strcmp(destvar,c1)==0) return (symtab[ii].st_value);
 	}
 	printf("no value");
+//	asseert("no value");
     return 233;
 }
 
