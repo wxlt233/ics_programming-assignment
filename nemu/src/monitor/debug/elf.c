@@ -35,7 +35,7 @@ void findfunc(uint32_t  addrt)
     int ii=0;
 	for (ii=0;ii<nr_symtab_entry;ii++)
 	{
-		if (symtab[ii].st_value<=addrt&&symtab[ii].st_value+symtab[ii].st_size>=addrt)
+		if (((symtab[ii].st_info&0x0f)==4)&&symtab[ii].st_value<=addrt&&symtab[ii].st_value+symtab[ii].st_size>=addrt)
 		{
 			char c[30];
 			char *c1=c;
