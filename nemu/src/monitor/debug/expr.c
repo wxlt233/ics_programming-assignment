@@ -372,11 +372,6 @@ uint32_t expr(char *e, bool *success) {
 	 uint32_t x;
 	 succ=true;
      x=eval(0,nr_token-1);
-	 if (!succ)
-	 {
-		 *success=false;
-		return 0;	
-	 }
 	 int ik;
 	 for (ik=0;ik<nr_token;ik++)
 	 {	
@@ -384,11 +379,17 @@ uint32_t expr(char *e, bool *success) {
 		 for (jk=0;jk<32;jk++)
 		 tokens[ik].str[jk]='\0';
 	 }
+	 if (!succ)
+	 {
+		 *success=false;
+		return 0;	
+	 }
+	 
 	 return x;
 
 
 	/* TODO: Insert codes to evaluate the expression. */
-	panic("please implement me");
-	return 0;
+	//panic("please implement me");
+	//return 0;
 }
 
