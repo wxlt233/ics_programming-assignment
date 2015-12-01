@@ -43,7 +43,7 @@ static struct rule {
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
-
+bool succ;
 uint32_t findadd(char *destvar);
 
 static regex_t re[NR_REGEX];
@@ -304,8 +304,9 @@ uint32_t  eval(int p,int q)
 			c2[i1]='\0';
 	//		printf("\n");
 	//		printf("%s\n",c22);
-            return findadd(c22);
-			
+            uint32_t te=findadd(c22);
+			if (te==233) succ=false;
+		    return te;	
 		}	   
 	}
 	else if (p+1==q&&tokens[p].type==N)
@@ -369,7 +370,13 @@ uint32_t expr(char *e, bool *success) {
 //	{	printf("%d:%d\n",i1,tokens[i1].type);
  //   }
 	 uint32_t x;
+	 succ=true;
      x=eval(0,nr_token-1);
+	 if (!succ)
+	 {
+		 *success=false;
+		return 0;	
+	 }
 	 int ik;
 	 for (ik=0;ik<nr_token;ik++)
 	 {	
