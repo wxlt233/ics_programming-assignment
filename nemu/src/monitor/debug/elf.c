@@ -23,7 +23,7 @@ uint32_t findadd(char *destvar)
 		    jj++;
 		}
 		c[jj]='\0';
-		if (ELF32_ST_TYPE(symtab[ii].st_info)==STT_OBJECT&&strcmp(destvar,c1)==0) return (symtab[ii].st_value);
+		if (strcmp(destvar,c1)==0) return (symtab[ii].st_value);
 	}
 	printf("no such var\n");
 //	asseert("no value");
