@@ -7,6 +7,7 @@
 int add(int a, int b) {
 	int c = a + b;
 	//	+func();
+	set_bp();
 	return c;
 }
 
