@@ -4,7 +4,6 @@
 	int c=0;
 	return c;
 }*/
-char str[]="abcdefg";
 int add(int a, int b) {
 	int c = a + b;
 	//	+func();
