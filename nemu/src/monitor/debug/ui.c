@@ -172,7 +172,7 @@ static int cmd_bt()
 	int kkk;
 	for (kkk=1;kkk<=4;kkk++)
 		{
-			printf("args%d: %d  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
+			printf("args%u: %u  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
 		}
 	printf("\n");
 	int total=0;
