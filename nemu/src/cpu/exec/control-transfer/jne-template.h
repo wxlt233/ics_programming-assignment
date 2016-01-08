@@ -8,6 +8,17 @@ static void do_execute() {
  	 char t=op_src->val&0x000000ff;
 	if (cpu.eflags.ZF==0) cpu.eip+=t;
  }
+ else if (DATA_BYTE)
+ {
+	short t=op_src->val&0x0000ffff;
+	if (cpu.eflags.ZF==0)  cpu.eip+=t;
+	cpu.eip=cpu.eip&0x0000ffff;
+ }
+ else 
+ { 
+	int t=op_src->val;
+	if (cpu.eflags.ZF==0)  cpu.eip+=t;
+ }
 	print_asm_template1();
 }
 
