@@ -4,7 +4,6 @@
 
 static void do_execute() {
 	OPERAND_W(op_dest, op_src->val);
-//	printf("doing mov");
 	print_asm_template2();
 }
 
