@@ -10,8 +10,8 @@ static void do_execute() {
 	}
 	if (DATA_BYTE==4)
 	{
-	unsigned t=op_src->val;
-	OPERAND_W(op_dest,t);
+ 	   unsigned t=op_src->val;
+     	OPERAND_W(op_dest,t);
 	}
 	print_asm_template2();
 }
