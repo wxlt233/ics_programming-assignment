@@ -1,4 +1,4 @@
-##### global settings #####
+#### global settings #####
 
 .PHONY: nemu entry all_testcase kernel run gdb test submit clean
 
