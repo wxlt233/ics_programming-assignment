@@ -65,7 +65,7 @@
 #include "control-transfer/jpo.h"
 #include "control-transfer/js.h"
 #include "control-transfer/jz.h"
-/*#include "control-transfer/seta.h"
+#include "control-transfer/seta.h"
 #include "control-transfer/setae.h"
 #include "control-transfer/setb.h"
 #include "control-transfer/setbe.h"
@@ -95,8 +95,6 @@
 #include "control-transfer/setpo.h"
 #include "control-transfer/sets.h"
 #include "control-transfer/setz.h"
-*/
-#include "control-transfer/setp.h"
 
 
 #include "string/rep.h"
