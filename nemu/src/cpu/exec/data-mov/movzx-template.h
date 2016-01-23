@@ -3,12 +3,12 @@
 #define instr movzx
 
 static void do_execute() {
-	if (DATA_BYTE==2)
+/*	if (DATA_BYTE==2)
 	{
 		unsigned short t=op_src->val;
 		OPERAND_W(op_dest,t);
 	}
-	if (DATA_BYTE==4)
+	if (DATA_BYTE==4)*/
 	{
  	   unsigned t=op_src->val;
      	OPERAND_W(op_dest,t);
