@@ -3,6 +3,7 @@
 #define instr jle
 
 static void do_execute() {
+	printf("jle");
  if (DATA_BYTE==1)
  {
  	 char t=op_src->val&0x000000ff;
