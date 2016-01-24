@@ -3,8 +3,8 @@
 #define instr movsx
 
 static void do_execute() {
-	int result=(DATA_TYPE_S)op_src->val;
-	reg_l(op_dest->reg)=result;
+	int t=(DATA_TYPE_S)op_src->val;
+	reg_l(op_dest->reg)=t;
 	print_asm_template2();
 }
 
