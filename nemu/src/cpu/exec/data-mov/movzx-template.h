@@ -3,16 +3,8 @@
 #define instr movzx
 
 static void do_execute() {
-/*	if (DATA_BYTE==2)
-	{
-		unsigned short t=op_src->val;
-		OPERAND_W(op_dest,t);
-	}
-	if (DATA_BYTE==4)*/
-	{
- 	   unsigned t=op_src->val;
-     	OPERAND_W(op_dest,t);
-	}
+ 	   unsigned t=(DATA_TYPE_S)op_src->val;
+     	reg_l(op_dest->reg)=t;
 	print_asm_template2();
 }
 
