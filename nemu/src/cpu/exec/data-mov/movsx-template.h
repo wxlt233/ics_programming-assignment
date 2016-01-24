@@ -4,7 +4,7 @@
 
 static void do_execute() {
 	int result=(DATA_TYPE_S)op_src->val;
-	reg_l(op_dest->val)=result;
+	reg_l(op_dest->reg)=result;
 	print_asm_template2();
 }
 
