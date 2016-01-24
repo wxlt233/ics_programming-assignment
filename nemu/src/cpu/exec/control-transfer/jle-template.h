@@ -10,7 +10,7 @@ static void do_execute() {
  	 char t=op_src->val&0x000000ff;
 	if (cpu.eflags.ZF==1||(cpu.eflags.SF!=cpu.eflags.OF)) cpu.eip+=t;
  }
- else if (DATA_BYTE)
+ else if (DATA_BYTE==2)
  {
 	 printf("2\n");
 	short t=op_src->val&0x0000ffff;
