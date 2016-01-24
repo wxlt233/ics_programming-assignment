@@ -6,11 +6,13 @@ static void do_execute() {
 	printf("jle");
  if (DATA_BYTE==1)
  {
+		printf("1\n");
  	 char t=op_src->val&0x000000ff;
 	if (cpu.eflags.ZF==1||(cpu.eflags.SF!=cpu.eflags.OF)) cpu.eip+=t;
  }
  else if (DATA_BYTE)
  {
+	 printf("2\n");
 	short t=op_src->val&0x0000ffff;
 	if (cpu.eflags.ZF==1||cpu.eflags.OF!=cpu.eflags.SF)  cpu.eip+=t;
 	cpu.eip=cpu.eip&0x0000ffff;
