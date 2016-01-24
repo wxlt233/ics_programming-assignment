@@ -16,7 +16,9 @@ static void do_execute() {
  }
  else
  { 
+	 printf("jle:");
 	int t=op_src->val;
+	printf("%d\n ",t);
 	if (cpu.eflags.ZF==1||cpu.eflags.OF!=cpu.eflags.SF)  cpu.eip+=t;
  }
 	print_asm_template1();
