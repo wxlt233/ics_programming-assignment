@@ -18,7 +18,7 @@ FLOAT f2F(float a) {
 	int zhengshu=((f2>>(23-exp))<<16)&0x7fff0000;
 	int xiaoshu=(f2<<(9+exp)>>16)&0x0000ffff;
 	int F=zhengshu+xiaoshu;	
-	if (sign==1) return -F;
+	if (sign==0) return -F;
 	else return F;
 }
 
