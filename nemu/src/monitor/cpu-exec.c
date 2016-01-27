@@ -67,6 +67,7 @@ void cpu_exec(volatile uint32_t n) {
 		int instr_len = exec(cpu.eip);
 		if (justtry==0)
 		cpu.eip += instr_len;
+		else printf("%d",instr_len);
  		if (calcwatchpoint())
 		{
 			printchangedwp();
