@@ -11,9 +11,8 @@
 #define MAX_INSTR_TO_PRINT 20
 
 int nemu_state = STOP;
-
-int exec(swaddr_t);
 int justtry;
+int exec(swaddr_t);
 
 char assembly[80];
 char asm_buf[128];
@@ -67,7 +66,6 @@ void cpu_exec(volatile uint32_t n) {
 		int instr_len = exec(cpu.eip);
 		if (justtry==0)
 		cpu.eip += instr_len;
-		else printf("hahah%d",instr_len);
  		if (calcwatchpoint())
 		{
 			printchangedwp();
