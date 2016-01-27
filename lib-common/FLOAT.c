@@ -1,13 +1,12 @@
 #include "FLOAT.h"
 
 FLOAT F_mul_F(FLOAT a, FLOAT b) {
-	long long t=((long long)a* (long long )b)/(1);
+	long long t=((long long)a* (long long )b)/(1<<16);
 	return t;
 }
 
 FLOAT F_div_F(FLOAT a, FLOAT b) {
-//	long long at=a<<16;
-	long long t=a/b;
+	long long t=(a<<16)/b;
 	return t;
 }
 
