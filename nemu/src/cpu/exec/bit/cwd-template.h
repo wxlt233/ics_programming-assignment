@@ -19,7 +19,7 @@ make_helper(concat(cwd_a2e_, SUFFIX)) {
 			print_asm("cdq");
 		}
 		//print_asm("mov" str(SUFFIX) " %%%s,0x%x", REG_NAME(R_EAX), addr);
-		return DATA_BYTE+1;
+		return 1;
 }
 #endif
 
