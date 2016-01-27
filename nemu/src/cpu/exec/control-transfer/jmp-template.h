@@ -18,7 +18,7 @@ static void do_execute() {
 	}
 	else 
 	{
-		cpu.eip=op_src->val;
+		cpu.eip=(op_src->val);
 	}
 	print_asm_template1();
 }
