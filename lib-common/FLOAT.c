@@ -22,7 +22,6 @@ FLOAT f2F(float a) {
 	int F=zhengshu+xiaoshu;	
 	if (sign==1) return -F;
 	else return F;
-
 }
 
 FLOAT Fabs(FLOAT a) {
