@@ -21,6 +21,7 @@
 #include "arith/sbb.h"
 
 #include "bit/cld.h"
+#include "bit/cltd.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
