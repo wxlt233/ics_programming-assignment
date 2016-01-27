@@ -17,10 +17,7 @@ FLOAT f2F(float a) {
 	int exp=((aint>>23)&0xff)-127;
 	int sign=(aint>>31)&1;
 	int f2=(aint&0x7fffff)|0x800000;
-	int offset=23-exp;
-	int t=((f2>>offset)<<16)&0x7fff0000;
-	f2=((f2<<(32-offset))>>16)&0x0000ffff;
-	int F=f2+t;
+	int F=((f2<<exp)<<16);
 	if (sign==1) return -F;
 	else return F;
 
