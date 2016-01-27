@@ -19,6 +19,7 @@ static void do_execute() {
 	else 
 	{
 		justtry=1;
+		printf("hahs%d\n",justtry);
 		cpu.eip=(op_src->val);
 	}
 	print_asm_template1();
