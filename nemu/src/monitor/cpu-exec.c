@@ -13,6 +13,7 @@
 int nemu_state = STOP;
 
 int exec(swaddr_t);
+int justtry;
 
 char assembly[80];
 char asm_buf[128];
@@ -62,8 +63,9 @@ void cpu_exec(volatile uint32_t n) {
 
 		/* Execute one instruction, including instruction fetch,
 		 * instruction decode, and the actual execution. */
+		justtry=0;
 		int instr_len = exec(cpu.eip);
-
+		if (justtry==0)
 		cpu.eip += instr_len;
  		if (calcwatchpoint())
 		{

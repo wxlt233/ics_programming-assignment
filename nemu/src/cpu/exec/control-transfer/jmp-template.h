@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr jmp
-
+extern int justtry;
 static void do_execute() {
 	if (op_src->type==2)
 	{
@@ -18,6 +18,7 @@ static void do_execute() {
 	}
 	else 
 	{
+		justtry=1;
 		cpu.eip=(op_src->val)-2;
 	}
 	print_asm_template1();
