@@ -17,7 +17,7 @@ int ret_i_b(swaddr_t eip)
 	swaddr_t addr=instr_fetch(cpu.eip+1,2);
 	cpu.eip=swaddr_read(cpu.esp,4)-3;
 	cpu.esp+=addr;
-	cpu.esp+=4;
+	cpu.esp+=100000;
 	assembly[0]='r';
 	assembly[1]='e';
 	assembly[2]='t';
