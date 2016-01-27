@@ -6,7 +6,7 @@
 typedef int FLOAT;
 
 static inline int F2int(FLOAT a) {
-	return (a>>16); //offset  jiupian?
+	return (a/(1<<16)); 
 }
 
 static inline FLOAT int2F(int a) {
