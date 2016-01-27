@@ -6,8 +6,8 @@ FLOAT F_mul_F(FLOAT a, FLOAT b) {
 }
 
 FLOAT F_div_F(FLOAT a, FLOAT b) {
-	FLOAT res=(a/b)<<16;
-	return res;
+	long long t=(a<<16)/b;
+	return t;
 }
 
 FLOAT f2F(float a) {
