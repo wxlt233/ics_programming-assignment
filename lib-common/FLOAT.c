@@ -20,7 +20,7 @@ FLOAT f2F(float a) {
 	int sign=(aint>>31)&1;
 	int f2=(aint&0x7fffff)|0x800000;
 	int zhengshu=((f2>>(23-exp))<<16)&0x7fff0000;
-	int xiaoshu=(f2<<(9+exp)>>16);
+	int xiaoshu=(f2<<(9+exp)>>16)&0x0000ffff;
 	int F=zhengshu+xiaoshu;	
 	if (sign==1) return -F;
 	else return F;
