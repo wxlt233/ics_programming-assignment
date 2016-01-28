@@ -19,7 +19,6 @@ static void do_execute () {
 		cpu.eflags.PF=1;
 	else 
 		cpu.eflags.PF=0;
-	/* TODO: Update EFLAGS. */
 
 	print_asm_template2();
 }

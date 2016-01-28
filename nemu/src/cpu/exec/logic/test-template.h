@@ -5,7 +5,6 @@
 static void do_execute () {
 	DATA_TYPE result = op_dest->val & op_src->val;
 	
-	/* TODO: Update EFLAGS. */
     cpu.eflags.CF=0;cpu.eflags.OF=0;
     if (result==0)
 	   	cpu.eflags.ZF=1;
