@@ -49,7 +49,6 @@ uint32_t loader() {
 		/* Scan the program header table, load each segment into memory */
 		ph=(void *) elf->e_phoff+i*elf->e_phentsize;
 		if(ph->p_type == PT_LOAD) {
-
 			/* TODO: read the content of the segment from the ELF file 
 			 * to the memory region [VirtAddr, VirtAddr + FileSiz)
 			 */
@@ -64,7 +63,7 @@ uint32_t loader() {
 			/* Record the program break for future use. */
 			extern uint32_t brk;
 			uint32_t new_brk = ph->p_vaddr + ph->p_memsz - 1;
-			if(brk < new_brk) { brk = new_brk; }
+     		if(brk < new_brk) { brk = new_brk; }
 #endif
 		}
 	}
