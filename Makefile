@@ -53,8 +53,8 @@ clean: clean-cpp
 ##### some convinient rules #####
 
 USERPROG := obj/testcase/select-sort
-#ENTRY := $(kernel_BIN)
-ENTRY := $(USERPROG)
+ENTRY := $(kernel_BIN)
+#ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
 	objcopy -S -O binary $(ENTRY) entry
