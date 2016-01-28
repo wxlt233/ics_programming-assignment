@@ -35,17 +35,15 @@ uint32_t loader() {
 	uint32_t *p_magic = (void *)buf;
 	nemu_assert(*p_magic == elf_magic);
 
-	uint8_t ph_buf[4096];
 	
 
-#ifdef HAS_DEVICE
+/*#ifdef HAS_DEVICE
 	ide_read(ph_buf,elf->e_phoff,elf->e_phentsize*elf->e_phnum);
 #else
 	ramdisk_read(ph_buf,elf->e_phoff,elf->e_phentsize*elf->e_phnum);
-#endif
+#endif */
 
 	/* Load each program segment */
-	ph=(void*)ph_buf;
 	int i;
 	for(i=0;i<elf->e_phnum;i++ ) {
 		/* Scan the program header table, load each segment into memory */
