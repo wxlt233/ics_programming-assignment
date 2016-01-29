@@ -4,7 +4,7 @@
 
 make_helper(concat(ret_,SUFFIX))
 {
-	cpu.eip=swaddr_read(cpu.esp,4)-1;
+	cpu.eip=swaddr_read(cpu.esp,DATA_BYTE)-1;
 	if (DATA_BYTE==2)
 	{
 		cpu.eip=cpu.eip&0x0000ffff;
