@@ -54,8 +54,8 @@ clean: clean-cpp
 
 USERPROG := obj/testcase/matrix-mul
 
-#ENTRY := $(kernel_BIN)
-ENTRY := $(USERPROG)
+ENTRY := $(kernel_BIN)
+#ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
 	objcopy -S -O binary $(ENTRY) entry
