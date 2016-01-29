@@ -104,6 +104,8 @@
 #include "string/stos.h"
 #include "string/rep.h"
 #include "string/movs.h"
+#include "string/cmps.h"
+
 #include "misc/misc.h"
 
 #include "special/special.h"
