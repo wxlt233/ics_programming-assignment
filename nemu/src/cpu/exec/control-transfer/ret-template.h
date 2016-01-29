@@ -18,11 +18,11 @@ make_helper(concat(ret_,SUFFIX))
 make_helper(concat(ret_i_,SUFFIX))
 {
 	swaddr_t addr=instr_fetch(cpu.eip+1,DATA_BYTE);
-	cpu.eip=swaddr_read(cpu.esp,4)-3;
+	cpu.eip=swaddr_read(cpu.esp,4);
 	cpu.esp+=cpu.esp+addr;
 	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 	print_asm_template1();
-	return 3;
+	return 0;
 }
 
 #include "cpu/exec/template-end.h"
