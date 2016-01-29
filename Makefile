@@ -52,11 +52,11 @@ clean: clean-cpp
 
 ##### some convinient rules #####
 
-USERPROG := obj/testcase/wanshu
+USERPROG := obj/testcase/hello-str
 
 
-ENTRY := $(kernel_BIN)
-#ENTRY := $(USERPROG)
+#ENTRY := $(kernel_BIN)
+ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
 	objcopy -S -O binary $(ENTRY) entry
