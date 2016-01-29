@@ -6,7 +6,6 @@
 static void do_execute()
 {
 	DATA_TYPE opcode=instr_fetch(cpu.eip+1,1);
-	printf("%x cmov %x\n",cpu.eip,opcode);
 	if (opcode==0x40&&cpu.eflags.OF==1)
 	{
 		OPERAND_W(op_dest,op_src->val);
