@@ -23,6 +23,8 @@
 #include "bit/cld.h"
 #include "bit/cwd.h"
 
+#include "cmov/cmov.h"
+
 #include "logic/and.h"
 #include "logic/or.h"
 #include "logic/not.h"
