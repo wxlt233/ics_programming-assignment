@@ -26,7 +26,6 @@ uint32_t findadd(char *destvar)
 		if (strcmp(destvar,c1)==0) return (symtab[ii].st_value);
 	}
 	printf("no such var\n");
-//	asseert("no value");
     return 233;
 }
 
@@ -60,7 +59,7 @@ void load_elf_tables(int argc, char *argv[]) {
 
 	FILE *fp = fopen(exec_file, "rb");
 	Assert(fp, "Can not open '%s'", exec_file);
-
+	printf("%s\n",exec_file);
 	uint8_t buf[4096];
 	/* Read the first 4096 bytes from the exec_file.
 	 * They should contain the ELF header and program headers. */
