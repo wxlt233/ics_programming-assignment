@@ -25,7 +25,7 @@ uint32_t dram_read(hwaddr_t addr,size_t len);
 uint32_t dram_write(hwaddr_t addr,size_t len,uint32_t data);
 uint32_t hwaddr_read(hwaddr_t addr,size_t len);
 
-void initcache()
+void init_cache()
 {
 	int i,j;
 	for (i=0;i<128;i++)
