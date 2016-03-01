@@ -150,7 +150,7 @@ uint32_t read_cache2_hit(hwaddr_t addr,size_t len)
 	{
 		int j;
 		for (j=0;j<len;j++)
-			data+=(cache2[cache2no][i].offset[offset+j]<<(8*j));
+			data+=(cache2[cache2no][i].offset[offset+j])<<(8*j);
 		return data;
 	}
 	else 
