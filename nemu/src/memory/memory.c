@@ -31,7 +31,8 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 	{
 		read_dramtocache2(addr);
 		read_cache2tocache1(addr);
-		return read_cache1_hit(addr,len);	
+	//	return read_cache1_hit(addr,len);		
+	    return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
 	}
 }
 
