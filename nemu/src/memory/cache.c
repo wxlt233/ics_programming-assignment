@@ -127,7 +127,9 @@ uint32_t read_cache1_hit(hwaddr_t addr,size_t len)
 		int j;
 		for (j=offset;j<64;j++)
 			data+=(cache1[cache1no][i].offset[j])<<(8*(j-offset));
+		printf("%x\n",addr);
 		uint32_t nextblockaddr=((addr+64)>>6)<<6;
+		printf("%x\n",nextblockaddr);
 		uint32_t t=hwaddr_read(nextblockaddr,len-(64-offset));
 		data+=t<<(8*(64-offset));
 		return data;
