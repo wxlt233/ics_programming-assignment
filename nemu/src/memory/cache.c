@@ -113,6 +113,7 @@ uint32_t read_cache1_hit(hwaddr_t addr,size_t len)
 	{
 		if (cache1[cache1no][i].valid&&cache1[cache1no][i].tag==tag1) break;
 	}
+	printf("cache1hit %d\n",i);
 	uint32_t offset=addr&0x3f;
 	uint32_t data=0;
 	if (offset+len-1<64)
