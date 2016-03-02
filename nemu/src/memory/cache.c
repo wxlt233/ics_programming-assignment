@@ -231,7 +231,6 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	}
 	else 
 	{
-		//printf("error!");
 		write_allocate(addr,len,datat);
 	//	dram_write(addr,len,datat);
 	}
