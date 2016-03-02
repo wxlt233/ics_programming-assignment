@@ -98,7 +98,7 @@ void read_dramtocache2(hwaddr_t addr)
 		for (i=0;i<64;i++)
 			dram_write(writebackaddr+i,1,cache2[cache2no][ran].offset[i]);
 	}
-	uint32_t beginaddr=addr&(~(0x3f));
+	uint32_t beginaddr=(addr>>6)<<6;
 	cache2[cache2no][ran].dirty=0;
 	cache2[cache2no][ran].valid=1;
 	cache2[cache2no][ran].tag=tag2;
