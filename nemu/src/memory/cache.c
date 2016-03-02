@@ -74,6 +74,7 @@ void read_cache2tocache1(hwaddr_t addr)
 	for (i=0;i<16;i++)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
+	if (i>=16) printf("erroe!");
 	int j;
 	srand(time(0)+clock());
 	int ran=rand()%8;
