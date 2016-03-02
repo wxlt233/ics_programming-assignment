@@ -9,6 +9,9 @@ void read_cache2tocache1(hwaddr_t addr);
 void read_dramtocache2(hwaddr_t addr);
 uint32_t read_cache1_hit(hwaddr_t addr,size_t len);
 uint32_t read_cache2_hit(hwaddr_t addr,size_t len);
+void write_cache1_hit(hwaddr_t addr,size_t len,uint32_t data);
+void write_cache2_hit(hwaddr_t addr,size_t len,uint32_t data);
+void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 
 /* Memory accessing interfaces */
 
@@ -39,8 +42,21 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 }
 
 
-void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
+/*void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
 	dram_write(addr, len, data);
+}*/
+
+void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
+{
+	if (checkcache1(addr))
+	{
+		write_cache1_hit(addr,len,data);
+	}
+	else if (checkcache2(addr))
+	{
+		write_cache2_hit(addr,len,data);
+	}
+	else write_allocate(addr,len,data);
 }
 
 uint32_t lnaddr_read(lnaddr_t addr, size_t len) {

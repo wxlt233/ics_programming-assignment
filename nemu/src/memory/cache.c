@@ -24,6 +24,7 @@ cache2block cache2[4096][16];
 uint32_t dram_read(hwaddr_t addr,size_t len);
 uint32_t dram_write(hwaddr_t addr,size_t len,uint32_t data);
 uint32_t hwaddr_read(hwaddr_t addr,size_t len);
+uint32_t hwaddr_write(hwaddr_t addr,size_t len,uint32_t data);
 
 void init_cache()
 {
@@ -76,7 +77,7 @@ void read_cache2tocache1(hwaddr_t addr)
 	for (i=0;i<16;i++)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
-	if (i>=16) printf("erroe!");
+	if (i>=16) printf("error!");
 	int j;
 	srand(time(0)+clock());
 	int ran=rand()%8;
@@ -173,6 +174,116 @@ uint32_t read_cache2_hit(hwaddr_t addr,size_t len)
 	}
 }
 
+void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
+{  //write through
+	uint32_t tag1=addr>>13;
+	uint32_t cache1no=(addr>>6)&0x7f;
+	int i;
+	int cache1zunei=0;
+	for (i=0;i<8;i++)
+		if (cache1[cache1no][i].valid&&cache1[cache1no][i].tag==tag1)
+		{
+			cache1zunei=i;
+			break;
+		}
+	uint32_t offset=addr&0x3f;
+	int j;
+	//write cache1
+	if (offset+len-1<64)
+	{
+		for (j=0;j<len;j++)
+			cache1[cache1no][cache1zunei].offset[offset+j]=(data>>(8*j))&0xff;
+	}
+	else 
+	{
+		for (j=offset;j<64;j++)
+		{
+			cache1[cache1no][cache1zunei].offset[j]=data&0xff;
+			data=data>>8;
+		}
+		hwaddr_write(((addr+64)>>6)<<6,len-(64-offset),data);
+	}
+	//write cache2 write through
+	uint32_t tag2=addr>>18;
+	uint32_t cache2no=(addr>>6)&0xfff;
+	uint32_t cache2zunei=0;
+	for (i=0;i<16;i++)
+		if (cache2[cache2no][i].valid&&cache2[cache2no][i].tag==tag2)
+		{
+			cache2zunei=i;
+		   	break;
+ 		}
+	if (cache2zunei<16)
+	{
+		cache2[cache2no][i].dirty=1;
+		if (offset+len-1<64)
+		{
+			for (j=0;j<len;j++)
+			cache2[cache2no][cache2zunei].offset[offset+j]=cache1[cache1no][cache1zunei].offset[offset+j];
+		}
+		else 
+		{
+			for (j=offset;j<64;j++)
+			cache2[cache2no][cache2zunei].offset[j]=cache1[cache1no][cache1zunei].offset[j];
+			hwaddr_write(((addr+64)>>6)<<6,len-(64-offset),data);
+		}
+	}
+	else 
+	{
 
+	}
+}
+
+
+void write_cache2_hit(hwaddr_t addr,size_t len,uint32_t data)
+{
+	uint32_t tag2=addr>>18;
+	uint32_t cache2no=(addr>>6)&0xfff;
+	int i;
+	for (i=0;i<16;i++)
+		if (cache2[cache2no][i].valid&&cache2[cache2no][i].tag==tag2)
+			break;
+	cache2[cache2no][i].dirty=1;
+	uint32_t offset=addr&0x3f;
+	int j;
+	if (offset+len-1<64)
+	{
+		for (j=0;j<len;j++)
+		{
+			cache2[cache2no][i].offset[j+offset]=data&0xff;
+			data=data>>8;
+		}
+	}
+	else 
+	{
+		for (j=offset;j<64;j++)
+		{
+			cache2[cache2no][i].offset[j]=data&0xff;
+			data=data>>8;
+		}
+		hwaddr_write(((addr+64)>>6)<<6,len-(64-offset),data);
+	}
+}
+
+void write_allocate(hwaddr_t addr,size_t len,uint32_t data)
+{
+	uint32_t tag2=addr>>18;
+	uint32_t cache2no=(addr>>6)&0xfff;
+	srand(time(0)+clock());
+	int i=rand()%16;
+	if (cache2[cache2no][i].valid&&cache2[cache2no][i].dirty)
+	{
+		int j;
+		uint32_t writebackaddr=(cache2[cache2no][i].tag<<18)+(cache2no<<6);
+		for (j=0;j<64;j++)
+			dram_write(writebackaddr+j,1,cache2[cache2no][i].offset[j]);
+	}
+	cache2[cache2no][i].valid=1;
+	cache2[cache2no][i].dirty=0;
+	cache2[cache2no][i].tag=tag2;
+	int j;
+	for (j=0;j<64;j++)
+		cache2[cache2no][i].offset[j]=dram_read((addr>>6)<<6,1);
+}
 
 
