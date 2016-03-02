@@ -269,6 +269,7 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data)
 {
 	uint32_t tag2=addr>>18;
 	uint32_t cache2no=(addr>>6)&0xfff;
+	dram_write(addr,len,data);
 	srand(time(0)+clock());
 	int i=rand()%16;
 	if (cache2[cache2no][i].valid&&cache2[cache2no][i].dirty)
