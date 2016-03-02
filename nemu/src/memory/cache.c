@@ -77,7 +77,7 @@ void read_cache2tocache1(hwaddr_t addr)
 	for (i=0;i<16;i++)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
-	if (i>=16) printf("error!");
+//	if (i>=16) printf("error!");
 	int j;
 	srand(time(0)+clock());
 	int ran=rand()%8;
@@ -133,10 +133,10 @@ uint32_t read_cache1_hit(hwaddr_t addr,size_t len)
 		int j;
 		for (j=offset;j<64;j++)
 			data+=(cache1[cache1no][i].offset[j])<<(8*(j-offset));
-		printf("%d %d\n",offset,len);
-		printf("%x\n",addr);
+	//	printf("%d %d\n",offset,len);
+//		printf("%x\n",addr);
 		uint32_t nextblockaddr=((addr+64)>>6)<<6;
-		printf("%x %d\n",nextblockaddr,len-(64-offset));
+	//	printf("%x %d\n",nextblockaddr,len-(64-offset));
 		uint32_t t=hwaddr_read(nextblockaddr,len-(64-offset));
 		data+=t<<(8*(64-offset));
 		return data;
