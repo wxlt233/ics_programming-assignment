@@ -216,7 +216,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	if (cache2zunei>=16) printf("error");
 	if (cache2zunei<16)
 	{
-		cache2[cache2no][i].dirty=1;
+		cache2[cache2no][cache2zunei].dirty=1;
 		if (offset+len-1<64)
 		{
 			for (j=0;j<len;j++)
