@@ -25,6 +25,7 @@ uint32_t dram_read(hwaddr_t addr,size_t len);
 uint32_t dram_write(hwaddr_t addr,size_t len,uint32_t data);
 uint32_t hwaddr_read(hwaddr_t addr,size_t len);
 uint32_t hwaddr_write(hwaddr_t addr,size_t len,uint32_t data);
+void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 
 void init_cache()
 {
@@ -77,7 +78,6 @@ void read_cache2tocache1(hwaddr_t addr)
 	for (i=0;i<16;i++)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
-//	if (i>=16) printf("error!");
 	int j;
 	srand(time(0)+clock());
 	int ran=rand()%8;
@@ -179,6 +179,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	uint32_t tag1=addr>>13;
 	uint32_t cache1no=(addr>>6)&0x7f;
 	int i;
+	uint32_t datat=data;
 	int cache1zunei=0;
 	for (i=0;i<8;i++)
 		if (cache1[cache1no][i].valid&&cache1[cache1no][i].tag==tag1)
@@ -230,7 +231,8 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	}
 	else 
 	{
-		printf("error!");
+		//printf("error!");
+		write_allocate(addr,len,datat);
 	}
 }
 
