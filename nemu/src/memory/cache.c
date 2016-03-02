@@ -90,6 +90,7 @@ void read_dramtocache2(hwaddr_t addr)
 	srand(time(NULL));
 	int ran=rand()%16;
 	int i;
+	printf("random dramtocache2 %d\n",ran);
 	if (cache2[cache2no][ran].valid&&cache2[cache2no][ran].dirty)
 	{
 		uint32_t writebackaddr=(cache2[cache2no][ran].tag<<18)+(cache2no<<6);
