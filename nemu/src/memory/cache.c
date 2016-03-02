@@ -104,8 +104,26 @@ void read_cache2tocache1(hwaddr_t addr)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
 	int j;
-	srand(time(0)+clock());
-	int ran=rand()%cache1way;
+	int cache1full=0;
+	for (j=0;j<cache1way;j++)
+	 cache1full+=cache1[cache1no][j].valid;
+	int ran=0;
+	if (cache1full==cache1way)
+	{
+		srand(time(0)+clock());	 
+		ran=rand()%cache1way;
+	}
+	else 
+	{
+      for (j=0;j<cache1way;j++)
+	  {
+		  if (!cache1[cache1no][j].valid) 
+		  {
+			  ran=j;
+			  break;
+		  }
+	  }
+	}
 	for (j=0;j<BlockSize;j++)
 		cache1[cache1no][ran].offset[j]=cache2[cache2no][i].offset[j];
 	cache1[cache1no][ran].valid=1;
@@ -116,8 +134,28 @@ void read_dramtocache2(hwaddr_t addr)
 {
 	uint32_t tag2=addr>>(gettag2);
 	uint32_t cache2no=(addr>>bitofblock)&maskofzushu2;
-	srand(time(0)+clock());
-	int ran=rand()%cache2way;
+	int cache2full=0;
+	int j,ran=0;
+	for (j=0;j<cache2way;j++)
+	{
+		cache2full+=cache2[cache2no][j].valid;
+	}
+	if (cache2full==cache2way)
+	{
+		srand(time(0)+clock());
+	    ran=rand()%cache2way;
+	}
+	else 
+	{
+		for (j=0;j<cache2way;j++)
+		{
+			if (!cache2[cache2no][j].valid)
+			{
+				ran=j;
+				break;
+			}
+		}
+	}
 	int i;
 	if (cache2[cache2no][ran].valid&&cache2[cache2no][ran].dirty)
  	{
@@ -290,11 +328,30 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data)
 	uint32_t tag2=addr>>gettag2;
 	uint32_t cache2no=(addr>>bitofblock)&maskofzushu2;
 	dram_write(addr,len,data);
-	srand(time(0)+clock());
-	int i=rand()%cache2way;
+	int cache2full=0;
+	int i=0,j;
+	for (j=0;j<cache2way;j++)
+	{
+		cache2full+=cache2[cache2no][j].valid;
+	}
+	if (cache2full==cache2way)
+	{
+		srand(time(0)+clock());
+		i=rand()%cache2way;
+	}
+	else 
+	{
+		for (j=0;j<cache2way;j++)
+		{
+			if (!cache2[cache2no][j].valid)
+			{
+				i=j;
+				break;
+			}
+		}
+	}
 	if (cache2[cache2no][i].valid&&cache2[cache2no][i].dirty)
 	{
-		int j;
 		uint32_t writebackaddr=(cache2[cache2no][i].tag<<gettag2)+(cache2no<<bitofblock);
 		for (j=0;j<BlockSize;j++)
 			dram_write(writebackaddr+j,1,cache2[cache2no][i].offset[j]);
@@ -302,7 +359,6 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data)
 	cache2[cache2no][i].valid=1;
 	cache2[cache2no][i].dirty=0;
 	cache2[cache2no][i].tag=tag2;
-	int j;
 	uint32_t readbeginaddr=(addr>>bitofblock)<<bitofblock;
 	for (j=0;j<BlockSize;j++)
 		cache2[cache2no][i].offset[j]=dram_read(readbeginaddr+j,1);
