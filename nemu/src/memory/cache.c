@@ -33,7 +33,9 @@ void init_cache()
 		  cache1[i][j].valid=0;
 	for (i=0;i<4096;i++)
 	  for (j=0;j<16;j++)
-		  cache2[i][j].valid=0;
+	  {  cache2[i][j].valid=0;
+		  cache2[i][j].dirty=0;
+	  }
 }
 
 bool checkcache1(hwaddr_t addr)
