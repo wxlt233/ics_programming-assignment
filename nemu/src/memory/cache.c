@@ -75,7 +75,7 @@ void read_cache2tocache1(hwaddr_t addr)
 		if (cache2[cache2no][i].valid==1&&cache2[cache2no][i].tag==tag2)
 			break;
 	int j;
-	srand(time(NULL));
+	srand(time(0)+clock());
 	int ran=rand()%8;
 	for (j=0;j<64;j++)
 		cache1[cache1no][ran].offset[j]=cache2[cache2no][i].offset[j];
