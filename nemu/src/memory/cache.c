@@ -231,7 +231,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	}
 	else 
 	{
-
+		printf("error!");
 	}
 }
 
