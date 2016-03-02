@@ -90,7 +90,7 @@ void read_dramtocache2(hwaddr_t addr)
 	srand(time(0)+clock());
 	int ran=rand()%16;
 	int i;
-	printf("random dramtocache2 %d\n",ran);
+//	printf("random dramtocache2 %d\n",ran);
 	if (cache2[cache2no][ran].valid&&cache2[cache2no][ran].dirty)
 	{
 		uint32_t writebackaddr=(cache2[cache2no][ran].tag<<18)+(cache2no<<6);
@@ -114,6 +114,7 @@ uint32_t read_cache1_hit(hwaddr_t addr,size_t len)
 	{
 		if (cache1[cache1no][i].valid&&cache1[cache1no][i].tag==tag1) break;
 	}
+	printf("when break,i=%d\n",i);
 	printf("cache1hit %d\n",i);
 	uint32_t offset=addr&0x3f;
 	uint32_t data=0;
