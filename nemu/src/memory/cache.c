@@ -225,7 +225,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 		{
 			for (j=offset;j<64;j++)
 			cache2[cache2no][cache2zunei].offset[j]=cache1[cache1no][cache1zunei].offset[j];
-			hwaddr_write(((addr+64)>>6)<<6,len-(64-offset),data);
+		//	hwaddr_write(((addr+64)>>6)<<6,len-(64-offset),data);
 		}
 	}
 	else 
