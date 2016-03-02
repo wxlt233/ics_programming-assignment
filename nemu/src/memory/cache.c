@@ -195,7 +195,7 @@ uint32_t read_cache2_hit(hwaddr_t addr,size_t len)
 }
 
 void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
-{  //write through
+{  
 	uint32_t tag1=addr>>gettag1;
 	uint32_t cache1no=(addr>>bitofblock)&maskofzushu1;
 	int i;
@@ -209,7 +209,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 		}
 	uint32_t offset=addr&maskofblock;
 	int j;
-	//write cache1
+	
 	if (offset+len-1<BlockSize)
 	{
 		for (j=0;j<len;j++)
@@ -224,7 +224,7 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 		}
 		hwaddr_write(((addr+BlockSize)>>bitofblock)<<bitofblock,len-(BlockSize-offset),data);
 	}
-	//write cache2 write through
+
 	uint32_t tag2=addr>>gettag2;
 	uint32_t cache2no=(addr>>bitofblock)&maskofzushu2;
 	uint32_t cache2zunei=cache2way;
