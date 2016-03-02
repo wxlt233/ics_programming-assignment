@@ -283,7 +283,7 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data)
 	cache2[cache2no][i].tag=tag2;
 	int j;
 	for (j=0;j<64;j++)
-		cache2[cache2no][i].offset[j]=dram_read((addr>>6)<<6,1);
+		cache2[cache2no][i].offset[j]=dram_read(((addr>>6)<<6)+j,1);
 }
 
 
