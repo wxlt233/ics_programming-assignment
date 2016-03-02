@@ -3,6 +3,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define BlockSize 64
+
+
+
 typedef struct 
 {
 	uint8_t offset[64];
