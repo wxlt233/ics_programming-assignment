@@ -17,8 +17,8 @@
 #define cache1way 8
 #define cache2way 16
 
-#define Zushu1 (cache1size/BlockSize/cache1way)  //128
-#define Zushu2 (cache2size/BlockSize/cache2way)  //4096
+#define Zushu1 (cache1size/BlockSize/cache1way)  
+#define Zushu2 (cache2size/BlockSize/cache2way)  
 
 #define bitofzushu1 ((int)(round(log(Zushu1)/log(2))))
 #define bitofzushu2 ((int) (round(log(Zushu2)/log(2))))
