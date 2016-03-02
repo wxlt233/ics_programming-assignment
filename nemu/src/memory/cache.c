@@ -87,7 +87,7 @@ void read_dramtocache2(hwaddr_t addr)
 {
 	uint32_t tag2=addr>>18;
 	uint32_t cache2no=(addr>>6)&0xfff;
-	srand(time(NULL));
+	srand(time(0)+clock());
 	int ran=rand()%16;
 	int i;
 	printf("random dramtocache2 %d\n",ran);
