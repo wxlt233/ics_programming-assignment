@@ -213,7 +213,6 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 			cache2zunei=i;
 		   	break;
  		}
-	if (cache2zunei>=16) printf("error");
 	if (cache2zunei<16)
 	{
 		cache2[cache2no][cache2zunei].dirty=1;
