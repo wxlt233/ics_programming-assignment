@@ -20,8 +20,8 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 {
 	if (checkcache1(addr))
 	{
-//		return read_cache1_hit(addr,len);
-	    return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
+		return read_cache1_hit(addr,len);
+//	    return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
 	}
 	else if (checkcache2(addr))
 	{  
