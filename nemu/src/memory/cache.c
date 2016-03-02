@@ -206,13 +206,14 @@ void write_cache1_hit(hwaddr_t addr,size_t len ,uint32_t data)
 	//write cache2 write through
 	uint32_t tag2=addr>>18;
 	uint32_t cache2no=(addr>>6)&0xfff;
-	uint32_t cache2zunei=0;
+	uint32_t cache2zunei=16;
 	for (i=0;i<16;i++)
 		if (cache2[cache2no][i].valid&&cache2[cache2no][i].tag==tag2)
 		{
 			cache2zunei=i;
 		   	break;
  		}
+	if (cache2zunei>=16) printf("error");
 	if (cache2zunei<16)
 	{
 		cache2[cache2no][i].dirty=1;
