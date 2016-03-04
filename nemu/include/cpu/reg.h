@@ -47,7 +47,10 @@ typedef struct {
 		uint16_t index:13;
 	}CS,DS,SS,ES;
 	
-
+	struct {
+		uint16_t limit;
+		uint32_t base;
+	}GDTR;
 
 	CR0 cr0;
 	CR3 cr3;
