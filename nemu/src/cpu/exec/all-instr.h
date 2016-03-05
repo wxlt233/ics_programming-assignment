@@ -25,6 +25,8 @@
 
 #include "cmov/cmov.h"
 
+#include "lgdt/lgdt.h"
+
 #include "logic/and.h"
 #include "logic/or.h"
 #include "logic/not.h"
