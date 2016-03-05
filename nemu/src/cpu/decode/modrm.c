@@ -4,6 +4,11 @@
 int load_addr(swaddr_t eip, ModR_M *m, Operand *rm) {
 	assert(m->mod != 3);
 
+	if (m->reg==R_ESP||m->reg==R_EBP)
+		rm->sreg=2;          //SS
+	else  
+		rm->sreg=3;          //DS
+
 	int32_t disp;
 	int instr_len, disp_offset, disp_size = 4;
 	int base_reg = -1, index_reg = -1, scale = 0;
@@ -109,7 +114,7 @@ int read_ModR_M(swaddr_t eip, Operand *rm, Operand *reg) {
 	}
 	else {
 		int instr_len = load_addr(eip, &m, rm);
-		rm->val = swaddr_read(rm->addr, rm->size);
+		rm->val = swaddr_read(rm->addr, rm->size,rm->sreg);
 		return instr_len;
 	}
 }

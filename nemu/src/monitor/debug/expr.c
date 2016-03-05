@@ -312,13 +312,13 @@ uint32_t  eval(int p,int q)
 	else if (p+1==q&&tokens[p].type==N)
 		return !eval(p+1,q);
 	else if (p+1==q&&tokens[p].type==DEREF)
-		return swaddr_read(eval(p+1,q),4);
+		return swaddr_read(eval(p+1,q),4,2);
 	else if (p+1==q&&tokens[p].type==NEG)
 		return -eval(p+1,q);
 	else if (tokens[p].type==N&&check_parentheses(p+1,q)==1)
 		return !eval(p+1,q);
 	else if (tokens[p].type==DEREF&&check_parentheses(p+1,q)==1)
-		return swaddr_read(eval(p+1,q),4);
+		return swaddr_read(eval(p+1,q),4,2);
 	else if (tokens[p].type==NEG&&check_parentheses(p+1,q)==1)
 		return -eval(p+1,q);
 	else if (check_parentheses(p,q)==1)

@@ -5,12 +5,12 @@
 static void do_execute() {
 	if (DATA_BYTE==2)
 	{
-		uint16_t t=swaddr_read(cpu.esp,2);
+		uint16_t t=swaddr_read(cpu.esp,2,2);
 		OPERAND_W(op_src,t);
 		cpu.esp+=2;
 	}
 	else {
-		uint32_t t=swaddr_read(cpu.esp,4);
+		uint32_t t=swaddr_read(cpu.esp,4,2);
 		OPERAND_W(op_src,t);
 		cpu.esp+=4;
 	}

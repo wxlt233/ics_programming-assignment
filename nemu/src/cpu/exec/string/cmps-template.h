@@ -4,8 +4,8 @@
 
 make_helper(concat(cmps_m_,SUFFIX))
 {
-	DATA_TYPE src=swaddr_read(cpu.esi,DATA_BYTE);
-	DATA_TYPE dest=swaddr_read(cpu.edi,DATA_BYTE);
+	DATA_TYPE src=swaddr_read(cpu.esi,DATA_BYTE,3);
+	DATA_TYPE dest=swaddr_read(cpu.edi,DATA_BYTE,0);
 	DATA_TYPE_S temp=dest+~(src)+1;
 
 	DATA_TYPE_S s_dest=(dest>>(DATA_BYTE*8-1))&1;

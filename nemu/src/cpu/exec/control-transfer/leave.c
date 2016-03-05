@@ -4,7 +4,7 @@ extern char assembly[80];
 
 int  leave(swaddr_t eip) {
 	cpu.esp=cpu.ebp;
-	cpu.ebp=swaddr_read(cpu.esp,4);
+	cpu.ebp=swaddr_read(cpu.esp,4,2);
 	cpu.esp+=4;
 	assembly[0]='l';
 	assembly[1]='e';

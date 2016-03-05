@@ -6,14 +6,14 @@ make_helper(concat(stos_m_,SUFFIX))
 {
 	if (DATA_BYTE==1)
 	{
-		MEM_W(cpu.edi,cpu.gpr[0]._8[0]);
+		MEM_W(cpu.edi,cpu.gpr[0]._8[0],0);
 	}
 	else if (DATA_BYTE==2)
 	{
-		MEM_W(cpu.edi,cpu.gpr[0]._16);
+		MEM_W(cpu.edi,cpu.gpr[0]._16,0);
 	}
 	else {
-		MEM_W(cpu.edi,cpu.eax);
+		MEM_W(cpu.edi,cpu.eax,0);
 	}
 	if  (cpu.eflags.DF==0)
 	{

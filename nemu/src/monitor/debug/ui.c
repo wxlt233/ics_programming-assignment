@@ -55,11 +55,11 @@ static int cmd_si(char *args)
 		}
 	}
 	else 
-	{ int n=0;
+ 	{ int n=0;
 		char *s;
 		s=arg;
 		while (*s)
-		{   n=n*10+(*s-'0');
+ 		{   n=n*10+(*s-'0');
 			s++;
 		}
 	//	int i;
@@ -98,7 +98,7 @@ static int cmd_x(char *args)
    printf("%x         ",add);
    int i1;
    for (i1=0;i1<n;i1++)
-   printf("0x%08x ",hwaddr_read(add+4*i1,4));   
+   printf("0x%08x ",swaddr_read(add+4*i1,4,3));   
    printf("\n"); 
    return 0;
 }
@@ -109,7 +109,7 @@ static int  cmd_p(char *args)
 	uint32_t result=expr(args,&success);
 	//printf("%s\n",args);
 	if (success) 
-	{	
+ 	{	
 		printf("%u\n",result);
 		printf("0x%x\n",result);
 	}
@@ -172,16 +172,16 @@ static int cmd_bt()
 	int kkk;
 	for (kkk=1;kkk<=4;kkk++)
 		{
-			printf("args%u: %u  ",kkk,swaddr_read(ebpt+4+4*kkk,4));		
-		}
+			printf("args%u: %u  ",kkk,swaddr_read(ebpt+4+4*kkk,4,2));		
+	 	}
 	printf("\n");
 	int total=0;
 	while (ebpt!=0)
 	{
 		total++;
-		addrt=swaddr_read(ebpt+4,4);
+		addrt=swaddr_read(ebpt+4,4,2);
 		//int ebptt=ebpt;
-		ebpt=swaddr_read(ebpt,4);	
+		ebpt=swaddr_read(ebpt,4,2);	
 	//	printf("%x   ",ebpt);
 	   if (ebpt!=0)	
 		{	
@@ -190,12 +190,12 @@ static int cmd_bt()
 			findfunc(addrt);
 			int kk;
 			for (kk=1;kk<=4;kk++)
-			{
-				printf("args%d: %d  ",kk,swaddr_read(ebpt+4+4*kk,4));
+	 		{
+				printf("args%d: %d  ",kk,swaddr_read(ebpt+4+4*kk,4,2));
 			}
 			printf("\n");
-		}
-	}
+	 	}
+ 	}
 	return 0;
 }
 

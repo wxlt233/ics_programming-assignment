@@ -45,7 +45,7 @@ typedef struct {
 		uint8_t RPL:1;
 		uint8_t TI:1;
 		uint16_t index:13;
-	}CS,DS,SS,ES;
+	}ES,CS,SS,DS;
 	
 	struct {
 		uint16_t limit;
@@ -54,7 +54,23 @@ typedef struct {
 
 	CR0 cr0;
 	CR3 cr3;
-
+	
+	struct 
+	{
+		uint16_t limit_15_0:16;
+		uint16_t base_15_0:16;
+		uint8_t base_23_16:8;
+		uint8_t type:4;
+		uint8_t S:1;
+		uint8_t DPL:2;
+		uint8_t P:1;
+		uint8_t limit_19_16:4;
+		uint8_t AVL:1;
+		uint8_t O:1;
+		uint8_t X:1;
+		uint8_t G:1;
+		uint8_t base_31_24:8;
+	}DESC[4];
 } CPU_state;
 
 extern CPU_state cpu;
