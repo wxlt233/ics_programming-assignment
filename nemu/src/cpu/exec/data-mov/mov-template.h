@@ -28,18 +28,22 @@ make_helper(concat(mov_moffs2a_, SUFFIX)) {
 	return 5;
 }
 
+#if DATA_BYTE==4
 make_helper(concat(mov_c2r_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
 	OPERAND_W(op_dest,cpu.cr0.val);
 	return len+1;	
 }
+#endif
 
+#if DATA_BYTE==4
 make_helper(concat(mov_r2c_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
 	cpu.cr0.val=op_src->val;
 	return len+1;
 }
+#endif
 
 #include "cpu/exec/template-end.h"
