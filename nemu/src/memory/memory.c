@@ -19,7 +19,6 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 /*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 	return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
 }*/
-int bss=0;
 uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 {
 	if (checkcache1(addr))
@@ -102,6 +101,5 @@ void swaddr_write(swaddr_t addr, size_t len, uint32_t data,uint8_t sreg) {
 #endif
 	lnaddr_t lnaddr=seg_translate(addr,len,sreg);
 	lnaddr_write(lnaddr, len, data);
-	if (bss>1) printf("hahah");
 }
 
