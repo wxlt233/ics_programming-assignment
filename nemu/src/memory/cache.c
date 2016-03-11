@@ -26,7 +26,6 @@
 #define gettag1 (bitofblock+bitofzushu1)
 #define gettag2 (bitofblock+bitofzushu2)
 
-//int testt[100]={1};
 typedef struct 
 {
 	uint8_t offset[BlockSize];
