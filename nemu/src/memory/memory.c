@@ -13,7 +13,6 @@ uint32_t read_cache2_hit(hwaddr_t addr,size_t len);
 void write_cache1_hit(hwaddr_t addr,size_t len,uint32_t data);
 void write_cache2_hit(hwaddr_t addr,size_t len,uint32_t data);
 void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
-int bssss;
 /* Memory accessing interfaces */
 
 /*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
