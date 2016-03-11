@@ -102,5 +102,7 @@ void swaddr_write(swaddr_t addr, size_t len, uint32_t data,uint8_t sreg) {
 #endif
 	lnaddr_t lnaddr=seg_translate(addr,len,sreg);
 	lnaddr_write(lnaddr, len, data);
+	int bss=0;
+	if (bss>1) printf("hahah");
 }
 
