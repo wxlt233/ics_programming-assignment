@@ -65,12 +65,12 @@ void lnaddr_write(lnaddr_t addr, size_t len, uint32_t data) {
 
 lnaddr_t seg_translate(swaddr_t addr,size_t len,uint8_t sreg)
 {
-	if (cpu.cr0.protect_enable==0) return addr;
-	else 
+	/*if (cpu.cr0.protect_enable==0)*/ return addr;
+/*	else 
 	{
 		lnaddr_t lnaddr=cpu.DESC[sreg].base_15_0+(cpu.DESC[sreg].base_23_16<<16)+(cpu.DESC[sreg].base_31_24<<24)+addr;
 		return lnaddr;
-	}
+	}*/
 }
 /*uint32_t swaddr_read(swaddr_t addr, size_t len) {
 #ifdef DEBUG
