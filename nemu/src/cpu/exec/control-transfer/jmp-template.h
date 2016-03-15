@@ -41,7 +41,7 @@ make_helper(concat(jmp_rel_,SUFFIX))
 	else 
  	{
 		char  t=instr_fetch(eip+1,1);
-		printf("%x\n",t);
+		printf("%d\n",t);
 		int tt=instr_fetch(eip,1);
 		printf("%x\n",tt);
 	printf("hahah%x\n",t);
