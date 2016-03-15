@@ -69,6 +69,7 @@ make_helper(concat(mov_r2sr_,SUFFIX))
 		cpu.SS.val=op_src->val&0x0000ffff;
 		index=cpu.SS.index;
 	}
+	printf("%d\n",index);
 	
 	lnaddr_t descaddr=cpu.GDTR.base+8*index;
 	cpu.DESC[sreg].limit_15_0=lnaddr_read(descaddr,2)&0xffff;
@@ -76,7 +77,7 @@ make_helper(concat(mov_r2sr_,SUFFIX))
 	cpu.DESC[sreg].base_23_16=lnaddr_read(descaddr+4,1)&0xff;
 	cpu.DESC[sreg].limit_19_16=lnaddr_read(descaddr+6,1)&0xf;
 	cpu.DESC[sreg].base_31_24=lnaddr_read(descaddr+7,1)&0xff;
-	
+	printf("%x\n",descaddr);
 
 	return len+1;
 }
