@@ -15,10 +15,10 @@ void write_cache2_hit(hwaddr_t addr,size_t len,uint32_t data);
 void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 /* Memory accessing interfaces */
 
-/*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
+uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 	return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
-}*/
-uint32_t hwaddr_read(hwaddr_t addr,size_t len)
+}
+/*uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 {
 	if (checkcache1(addr))
 	{
@@ -35,14 +35,14 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 		read_cache2tocache1(addr);
 		return read_cache1_hit(addr,len);		
 	}
-}
-
-
-/*void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
-	dram_write(addr, len, data);
 }*/
 
-void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
+
+void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
+	dram_write(addr, len, data);
+}
+
+/*void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 {
 	if (checkcache1(addr))
 	{
@@ -53,7 +53,7 @@ void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 		write_cache2_hit(addr,len,data);
 	}
 	else write_allocate(addr,len,data);
-}
+}*/
 
 uint32_t lnaddr_read(lnaddr_t addr, size_t len) {
 	return hwaddr_read(addr, len);
