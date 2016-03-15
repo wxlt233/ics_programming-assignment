@@ -5,7 +5,6 @@ extern int justtry;
 static void do_execute() {
 	if (op_src->type==2)
 	{
-    	printf("op:%x",op_src->val);
 		if (DATA_BYTE==1)
 		 {
 			 char t=op_src->val&0x000000ff;
