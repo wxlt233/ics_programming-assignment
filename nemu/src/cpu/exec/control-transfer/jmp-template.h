@@ -40,7 +40,7 @@ make_helper(concat(jmp_rel_,SUFFIX))
 	}
 	else 
 	{
-		int t=instr_fetch(eip+1,4);
+		int t=(int)instr_fetch(eip+1,4);
 		cpu.eip+=t;
 	}
 	return 1+DATA_BYTE;
