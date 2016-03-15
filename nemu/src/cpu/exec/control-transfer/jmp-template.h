@@ -40,7 +40,7 @@ make_helper(concat(jmp_rel_,SUFFIX))
 	}
 	else 
 	{  printf("%x\n",cpu.eip);
-		int   t=instr_fetch(eip+1,1);
+		int   t=instr_fetch(eip+1,4);
 		printf("%x\n",t);
 		int tt=instr_fetch(eip,1);
 		printf("%x\n",tt);
