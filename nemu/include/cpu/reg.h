@@ -39,12 +39,14 @@ typedef struct {
 		unsigned DF :1;
 		unsigned OF :1;
 	} eflags;
-	
-	struct  
+	union{
+	struct 	
 	{
 		uint8_t RPL:1;
 		uint8_t TI:1;
 		uint16_t index:13;
+	};
+	uint16_t val;
 	}ES,CS,SS,DS;
 	
 	struct {
