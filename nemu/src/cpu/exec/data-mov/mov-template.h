@@ -46,11 +46,30 @@ make_helper(concat(mov_r2c_,SUFFIX))
 }
 #endif
 
-#if DATA_BYTE==2
 make_helper(concat(mov_r2sr_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
+	int test=instr_fetch(eip+1,1);
 	int sreg=0,index=0;
+	if (test==0xd8) 
+	{
+		sreg=2;
+		cpu.DS.val=op_src->val&0x0000ffff;
+		index=cpu.DS.index;
+	}
+	else if(test==0xc0) 
+	{
+		sreg=0;
+		cpu.ES.val=op_src->val&0x0000ffff;
+		index=cpu.ES.index;
+	}
+	else if (test==0xd0) 
+	{	
+		sreg=3;
+		cpu.SS.val=op_src->val&0x0000ffff;
+		index=cpu.SS.index;
+	}
+	
 	lnaddr_t descaddr=cpu.GDTR.base+8*index;
 	cpu.DESC[sreg].limit_15_0=lnaddr_read(descaddr,2)&0xffff;
 	cpu.DESC[sreg].base_15_0=lnaddr_read(descaddr+2,2)&0xffff;
@@ -61,6 +80,5 @@ make_helper(concat(mov_r2sr_,SUFFIX))
 
 	return len+1;
 }
-#endif
 
 #include "cpu/exec/template-end.h"
