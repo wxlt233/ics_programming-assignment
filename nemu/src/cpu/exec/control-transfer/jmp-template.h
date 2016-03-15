@@ -30,7 +30,7 @@ static void do_execute() {
 	}
 	print_asm_template1();
 }
-make_helper(concat(jmp_rel_,SUFFIX))
+/*make_helper(concat(jmp_rel_,SUFFIX))
 {
 	if (DATA_BYTE==2)
  	{
@@ -47,7 +47,7 @@ make_helper(concat(jmp_rel_,SUFFIX))
 	}
 
 	return 1+DATA_BYTE;
-}
+}*/
 make_helper(concat(jmp_ptr_,SUFFIX))
 {
 	uint32_t addr=instr_fetch(cpu.eip+1,DATA_BYTE);
