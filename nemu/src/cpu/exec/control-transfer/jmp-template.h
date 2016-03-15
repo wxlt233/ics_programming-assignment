@@ -36,6 +36,7 @@ make_helper(concat(jmp_ptr_,SUFFIX))
 	uint16_t sreg=instr_fetch(cpu.eip+1+DATA_BYTE,2);
 	cpu.CS.val=sreg;
 	cpu.eip=addr;
+	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 	justtry=1;
 	return DATA_BYTE+3;	
 }
