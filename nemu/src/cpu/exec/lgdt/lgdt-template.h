@@ -6,6 +6,7 @@
 make_helper(concat(lgdt_i_,SUFFIX))
 {
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
+	printf("%x\n",addr);
 	if (DATA_BYTE==2)
 	{
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
