@@ -33,16 +33,18 @@ static void do_execute() {
 make_helper(concat(jmp_rel_,SUFFIX))
 {
 	if (DATA_BYTE==2)
-	{
+ 	{
 		short t=instr_fetch(eip+1,DATA_BYTE);
 		cpu.eip+=t;
 		cpu.eip=cpu.eip&0x0000ffff;
 	}
 	else 
-	{
+ 	{
 		int t=(int)instr_fetch(eip+1,4);
 		cpu.eip+=t;
+	printf("hahah%d\n",t);
 	}
+
 	return 1+DATA_BYTE;
 }
 make_helper(concat(jmp_ptr_,SUFFIX))
