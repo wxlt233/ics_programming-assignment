@@ -5,7 +5,7 @@
 #if DATA_BYTE==2||DATA_BYTE==4
 make_helper(concat(lgdt_i_,SUFFIX))
 {
-	uint32_t addr=instr_fetch(cpu.eip+2,4);
+	uint32_t addr=instr_fetch(cpu.eip+3,4);
 	if (DATA_BYTE==2)
 	{
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
