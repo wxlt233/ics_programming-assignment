@@ -33,6 +33,7 @@ make_helper(concat(mov_c2r_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
 	OPERAND_W(op_dest,cpu.cr0.val);
+	print_asm("mov cr0 %%%s",REG_NAME(op_src->reg));
 	return len+1;	
 }
 #endif
@@ -42,6 +43,7 @@ make_helper(concat(mov_r2c_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
 	cpu.cr0.val=op_src->val;
+	print_asm("mov  %%%s cr0",REG_NAME(op_src->reg));
 	return len+1;
 }
 #endif
