@@ -42,7 +42,7 @@ typedef struct {
 	union{
 	struct 	
 	{
-		uint8_t RPL:1;
+		uint8_t RPL:2;
 		uint8_t TI:1;
 		uint16_t index:13;
 	};
