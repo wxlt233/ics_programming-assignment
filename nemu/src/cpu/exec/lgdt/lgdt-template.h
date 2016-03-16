@@ -22,11 +22,6 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	}
 	print_asm("lgdt $0x%x",addr);
 	return 6;
-	
-
-
-
-
 }
 
 #endif
