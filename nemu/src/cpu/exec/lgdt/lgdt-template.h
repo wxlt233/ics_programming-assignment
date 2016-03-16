@@ -20,6 +20,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 		cpu.GDTR.limit=limit;
 		cpu.GDTR.base=base;
 	}
+	print_asm("lgdt 0x%x",addr);
 	return 6;
 	
 
