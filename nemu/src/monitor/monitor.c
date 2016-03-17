@@ -94,7 +94,7 @@ void restart() {
 	cpu.eflags.OF=0;
 	
 	cpu.cr0.protect_enable=0;
-	
+	cpu.cr0.paging=0;	
 	cpu.DESC[1].base_15_0=0;
 	cpu.DESC[1].base_23_16=0;
 	cpu.DESC[1].base_31_24=0;
