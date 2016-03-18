@@ -37,6 +37,7 @@
 #include "logic/shrd.h"
 #include "logic/test.h"
 #include "logic/and.h"
+#include "logic/std.h"
 
 #include "control-transfer/call.h"
 #include "control-transfer/jmp.h"
