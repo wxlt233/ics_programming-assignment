@@ -84,7 +84,7 @@ uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 	}
 	else 
  	{
-		if (addr>0xc0000000) printf("read0x%x  %d\n",addr,cpu.cr0.paging);
+		if (addr>0xc0000000) printf("read0x%x  %d %d \n",addr,cpu.cr0.paging,cpu.cr0.protect_enable);
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_read(hwaddr,len);
 	}
