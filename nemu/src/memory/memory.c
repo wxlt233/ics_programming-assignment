@@ -61,9 +61,9 @@ hwaddr_t  page_translate(lnaddr_t addr)
 		uint16_t offset=addr&0xfff;
 		uint16_t dir=addr>>22;
 		uint16_t page=(addr>>12)&0x3fff;
-		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory<<12)+4*dir),4)>>12;
-		uint32_t pagestartaddr=(hwaddr_read((pagetableaddr<<12+4*page),4)>>12)<<12;
-		return hwaddr+offset;
+		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
+		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
+		return pagestartaddr+offset;
 	}
 	else return (hwaddr_t) addr;
 }
@@ -84,7 +84,7 @@ uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 		return hwaddr_read(hwaddr,len);
 	}
 }
-uint32_t lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
+void lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
 //	if (data across)
 //	{}
 //	else 
