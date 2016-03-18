@@ -84,6 +84,7 @@ uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 	}
 	else 
  	{
+		if (addr>0xc0000000) printf("0x%x",addr);
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_read(hwaddr,len);
 	}
@@ -95,6 +96,8 @@ void lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
 	}
 	else 
 	{
+
+		if (addr>0xc0000000) printf("0x%x",addr);
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_write(hwaddr,len,data);
 	}
