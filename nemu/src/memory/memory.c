@@ -63,6 +63,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 		uint16_t page=(addr>>12)&0x3fff;
 		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
 		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
+		printf("0x%x",addr);
 		return pagestartaddr+offset;
 	}
 	else return (hwaddr_t) addr;
