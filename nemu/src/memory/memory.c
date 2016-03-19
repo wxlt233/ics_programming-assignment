@@ -64,7 +64,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 		uint16_t page=(addr>>12)&0x3fff;
 		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
 		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
-		printf("0x%x",addr);
+		printf("0x%x  0x%x\n",addr,pagestartaddr+offset);
 		return pagestartaddr+offset;
 	}
 	else return (hwaddr_t) addr;
@@ -84,7 +84,6 @@ uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 	}
 	else 
  	{
-		if (addr>0xc0000000) printf("read0x%x  %d %d \n",addr,cpu.cr0.paging,cpu.cr0.protect_enable);
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_read(hwaddr,len);
 	}
@@ -97,7 +96,6 @@ void lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
 	else 
 	{
 
-		if (addr>0xc0000000) printf("write0x%x\n",addr);
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_write(hwaddr,len,data);
 	 }
