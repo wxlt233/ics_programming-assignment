@@ -82,7 +82,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 			PTE	a; 
 			a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
 			assert(a.present);
-			updatetlb(addr,pagestartaddr);
+			updatetlb(addr,pagestartaddr>>12);
 			return pagestartaddr+offset;
 		}
 	}
