@@ -73,7 +73,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 		PTE	a; 
 		a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
 		assert(a.present);
-		printf("0x%x 0x%x  0x%x\n",cpu.eip,addr,pagestartaddr+offset);
+//		printf("0x%x 0x%x  0x%x\n",cpu.eip,addr,pagestartaddr+offset);
 		return pagestartaddr+offset;
 	}
 	else return (hwaddr_t) addr;
