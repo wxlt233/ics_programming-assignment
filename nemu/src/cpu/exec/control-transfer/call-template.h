@@ -3,14 +3,15 @@
 #define instr call
 extern int justtry;
 static void do_execute() {
-		if (cpu.eip==0x80480ad) printf("haha%d %d\n",DATA_BYTE,op_src->val);
 	if (op_src->type==2)
- 	{cpu.esp-=4;
+ 	{
+		cpu.esp-=4;
 		if (cpu.eip==0x80480ad) printf("haha%d %d\n",DATA_BYTE,op_src->val);
-	if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5,2);
-	cpu.eip+=(int)(op_src->val);
-	printf("haha0x%x\n",cpu.eip);
-	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
+		printf("esp:0x%x\n",cpu.esp);
+		if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5,2);
+		cpu.eip+=(int)(op_src->val);
+		printf("haha0x%x\n",cpu.eip);
+		if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 	} 
 	else {
 		justtry=1;
