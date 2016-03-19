@@ -3,6 +3,7 @@
 #define instr call
 extern int justtry;
 static void do_execute() {
+		if (cpu.eip==0x80480aa) printf("haha%d %d",DATA_BYTE,op_src->val);
 	if (op_src->type==2)
 	{cpu.esp-=4;
 		if (cpu.eip==0x80480aa) printf("haha%d %d",DATA_BYTE,op_src->val);
