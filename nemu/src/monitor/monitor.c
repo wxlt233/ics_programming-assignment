@@ -11,6 +11,7 @@ void init_regex();
 void init_wp_list();
 void init_ddr3();
 void init_cache();
+void refreshtlb();
 
 FILE *log_fp = NULL;
 
@@ -100,7 +101,8 @@ void restart() {
 	cpu.DESC[1].base_31_24=0;
 	cpu.DESC[1].limit_15_0=0xffff;
 	cpu.DESC[1].limit_19_16=0xf;
-
+	
+	refreshtlb();
 	/* Initialize DRAM. */
 	init_ddr3();
 }

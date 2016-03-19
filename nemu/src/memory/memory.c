@@ -13,6 +13,9 @@ uint32_t read_cache2_hit(hwaddr_t addr,size_t len);
 void write_cache1_hit(hwaddr_t addr,size_t len,uint32_t data);
 void write_cache2_hit(hwaddr_t addr,size_t len,uint32_t data);
 void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
+int hittlb(lnaddr_t addr);
+void updatetlb(lnaddr_t addr,hwaddr_t pagestart);
+hwaddr_t getpagestart(lnaddr_t addr);
 /* Memory accessing interfaces */
 
 /*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
@@ -57,22 +60,31 @@ void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 hwaddr_t  page_translate(lnaddr_t addr)
 {
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
-	{ 
-		uint16_t offset=addr&0xfff;
-		uint16_t dir=(addr>>22)&0x3ff;
-		uint16_t page=(addr>>12)&0x3ff;
- 		PDE aa;
-		aa.val=hwaddr_read((cpu.cr3.page_directory_base<<12)+4*dir,4);
-		if (aa.present==0)
+	{
+		if (hittlb(addr))
 		{
-			assert(aa.present);
+			uint16_t offset=addr&0xfff;
+			hwaddr_t pagestart=getpagestart(addr);
+			return (pagestart<<12)+offset;
 		}
-		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
-		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
-		PTE	a; 
-		a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
-		assert(a.present);
-		return pagestartaddr+offset;
+		else{ 
+			uint16_t offset=addr&0xfff;
+			uint16_t dir=(addr>>22)&0x3ff;
+			uint16_t page=(addr>>12)&0x3ff;
+			PDE aa;
+			aa.val=hwaddr_read((cpu.cr3.page_directory_base<<12)+4*dir,4);
+			if (aa.present==0)
+			{
+				assert(aa.present);
+			}
+			uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
+			uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
+			PTE	a; 
+			a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
+			assert(a.present);
+			updatetlb(addr,pagestartaddr);
+			return pagestartaddr+offset;
+		}
 	}
 	else return (hwaddr_t) addr;
 }
@@ -102,7 +114,6 @@ void lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
 	}
 	else 
 	{
-
 		hwaddr_t hwaddr=page_translate(addr);
 		return hwaddr_write(hwaddr,len,data);
 	 }
