@@ -5,6 +5,7 @@ extern int justtry;
 static void do_execute() {
 	if (op_src->type==2)
 	{cpu.esp-=4;
+		if (cpu.eip==0x80480aa) printf("haha%d %d",DATA_BYTE,op_src->val);
 	if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5,2);
 	cpu.eip+=(int)(op_src->val);
 	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
