@@ -6,6 +6,7 @@ static void do_execute() {
 	OPERAND_W(op_dest, op_src->val);
 	print_asm_template2();
 }
+void refreshtlb();
 
 make_instr_helper(i2r)
 make_instr_helper(i2rm)
@@ -51,6 +52,7 @@ make_helper(concat(mov_r2c_,SUFFIX))
 	else 
  	{
 		cpu.cr3.val=op_src->val;
+		refreshtlb();
 		print_asm("mov  %%%s %%cr3",REG_NAME(op_src->reg));
 	}
 	return len+1;
