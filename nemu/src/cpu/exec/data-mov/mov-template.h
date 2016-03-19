@@ -52,6 +52,7 @@ make_helper(concat(mov_r2c_,SUFFIX))
 	else 
 	{
 		cpu.cr3.val=op_src->val;
+		printf("%x %x\n",cpu.eip,cpu.cr3.val);
 		print_asm("mov  %%%s %%cr3",REG_NAME(op_src->reg));
 	}
 	return len+1;
