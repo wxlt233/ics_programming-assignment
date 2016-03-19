@@ -65,8 +65,8 @@ hwaddr_t  page_translate(lnaddr_t addr)
 		aa.val=hwaddr_read((cpu.cr3.page_directory_base<<12)+4*dir,4);
 		if (aa.present==0)
 		{
-			assert(aa.present);
 			printf("0x%x\n",cpu.eip);
+			assert(aa.present);
 		}
 		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
 		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
