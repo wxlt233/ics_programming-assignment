@@ -58,13 +58,12 @@ hwaddr_t  page_translate(lnaddr_t addr)
 {
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
 	{
-		printf("ok");
 		uint16_t offset=addr&0xfff;
 		uint16_t dir=addr>>22;
 		uint16_t page=(addr>>12)&0x3fff;
 		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
 		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
-		printf("0x%x  0x%x\n",addr,pagestartaddr+offset);
+		printf("0x%x 0x%x  0x%x\n",cpu.eip,addr,pagestartaddr+offset);
 		return pagestartaddr+offset;
 	}
 	else return (hwaddr_t) addr;
