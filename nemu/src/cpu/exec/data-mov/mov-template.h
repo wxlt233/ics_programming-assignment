@@ -47,11 +47,12 @@ make_helper(concat(mov_r2c_,SUFFIX))
 	{
 		cpu.cr0.val=op_src->val;
 		print_asm("mov  %%%s %%cr0",REG_NAME(op_src->reg));
+		printf("%d %d\n",cpu.cr0.protect_enable,cpu.cr0.paging);
 	}
 	else 
 	{
 		cpu.cr3.val=op_src->val;
-		print_asm("mov %%%s %%cr0i",REG_NAME(op_src->reg));
+		print_asm("mov  %%%s %%cr3",REG_NAME(op_src->reg));
 	}
 	return len+1;
 }
