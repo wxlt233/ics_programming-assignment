@@ -59,7 +59,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
 	{ 
 		uint16_t offset=addr&0xfff;
-		uint16_t dir=addr>>22;
+		uint16_t dir=(addr>>22)&0x3ff;
 		uint16_t page=(addr>>12)&0x3ff;
 		PDE aa;
 		aa.val=hwaddr_read((cpu.cr3.page_directory_base<<12)+4*dir,4);
