@@ -17,7 +17,7 @@ int hittlb(lnaddr_t addr);
 void updatetlb(lnaddr_t addr,hwaddr_t pagestart);
 hwaddr_t getpagestart(lnaddr_t addr);
 /* Memory accessing interfaces */
-
+ 
 /*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 	return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
 }*/
