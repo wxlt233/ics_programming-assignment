@@ -42,8 +42,17 @@ make_helper(concat(mov_c2r_,SUFFIX))
 make_helper(concat(mov_r2c_,SUFFIX))
 {
 	int len=decode_rm_l(eip+1);
-	cpu.cr0.val=op_src->val;
-	print_asm("mov  %%%s %%cr0",REG_NAME(op_src->reg));
+	uint32_t opcode=instr_fetch(eip+1,1);
+	if (opcode==0xc0)
+	{
+		cpu.cr0.val=op_src->val;
+		print_asm("mov  %%%s %%cr0",REG_NAME(op_src->reg));
+	}
+	else 
+	{
+		cpu.cr3.val=op_src->val;
+		print_asm("mov %%%s %%cr0i",REG_NAME(op_src->reg));
+	}
 	return len+1;
 }
 #endif
