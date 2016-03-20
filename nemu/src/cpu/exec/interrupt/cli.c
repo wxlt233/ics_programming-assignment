@@ -5,6 +5,7 @@
 make_helper(cli)
 {
 	cpu.eflags.IF=0;
+	return 1;
 }
 
 
