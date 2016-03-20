@@ -13,7 +13,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	{
 		printf("hahah0x%x\n",cpu.eax);
 		addr=swaddr_read(cpu.eax,4,3);
-		addr=swaddr_read(addr,4,3);
+	//	addr=instr_fetch(addr,4,3);
 	}
 	if (DATA_BYTE==2)
 	 {
