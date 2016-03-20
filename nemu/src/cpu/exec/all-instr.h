@@ -28,6 +28,9 @@
 #include "lgdt/lgdt.h"
 #include "lgdt/lidt.h"
 
+#include "interrupt/pusha.h"
+#include "interrupt/popa.h"
+
 #include "logic/and.h"
 #include "logic/or.h"
 #include "logic/not.h"
