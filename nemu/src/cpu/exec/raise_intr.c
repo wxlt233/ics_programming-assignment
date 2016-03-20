@@ -4,6 +4,8 @@ extern jmp_buf jbuf;
 
 void raise_intr(uint8_t NO)
 { 
+	cpu.eflags.IF=0;
+	cpu.eflags.TF=0;
 	lnaddr_t addr=cpu.IDTR.base+8*NO;
 	cpu.esp-=4;
 	swaddr_write(cpu.esp,4,cpu.eflags.val,2);
