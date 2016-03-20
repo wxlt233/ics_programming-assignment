@@ -31,6 +31,7 @@
 #include "interrupt/pusha.h"
 #include "interrupt/popa.h"
 #include "interrupt/cli.h"
+#include "interrupt/iret.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
