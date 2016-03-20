@@ -6,15 +6,17 @@
 make_helper(concat(lgdt_i_,SUFFIX))
 {
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
+	if (instr_fetch(eip+2,1)==0x10)
+		addr=swaddr_read(cpu.eax,4,3);
 	if (DATA_BYTE==2)
-	{
+	 {
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
 		uint32_t base=swaddr_read(addr+2,3,3)&0xffffff;
 		cpu.GDTR.limit=limit;
 		cpu.GDTR.base=base;
 	}
 	else 
-	{
+	{ 
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
 		uint32_t base=swaddr_read(addr+2,4,3)&0xfffffff;
 		cpu.GDTR.limit=limit;
