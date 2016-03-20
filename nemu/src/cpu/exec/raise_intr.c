@@ -14,6 +14,6 @@ void raise_intr(uint8_t NO)
 	cpu.esp-=4;
 	swaddr_write(cpu.esp,4,cpu.eip,2);
 	cpu.CS.val=lnaddr_read(addr+2,2);
-	cpu.eip=lnaddr_read(addr,2)+(lnaddr_read(addr,2)<<16);
+	cpu.eip=lnaddr_read(addr,2)+(lnaddr_read(addr+6,2)<<16);
 	longjmp(jbuf,1);
 }
