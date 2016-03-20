@@ -9,7 +9,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	printf("0x%x %x\n",cpu.eax,cpu.eip);
 	uint8_t tt=instr_fetch(eip+2,1);
 	printf("0x%x\n",tt);
-	if (instr_fetch(eip+2,1)==0x10)
+	if (instr_fetch(eip+1,1)==0x10)
 	{
 		printf("hahah0x%x\n",cpu.eax);
 		addr=swaddr_read(cpu.eax,4,3);
