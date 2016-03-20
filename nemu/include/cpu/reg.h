@@ -29,16 +29,32 @@ typedef struct {
 	 struct{   uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;};
     };
 	swaddr_t eip;
+	union 
+	{
 	struct 
 	{
 		unsigned CF :1;
+		unsigned N1 :1;
 		unsigned PF :1;
+		unsigned N2 :1;
+		unsigned AF :1;
+		unsigned N3 :1;
 		unsigned ZF :1;
 		unsigned SF :1;
+		unsigned TF :1;
 		unsigned IF :1;
 		unsigned DF :1;
 		unsigned OF :1;
-	} eflags;
+		uint8_t IOPL:2;
+		unsigned NT :1;
+		unsigned N4 :1;
+		unsigned RF :1;
+		unsigned VM :1;
+		uint16_t N5 :14;
+	};
+	uint32_t val;
+	}	
+	eflags;
 	union{
 	struct 	
 	{
