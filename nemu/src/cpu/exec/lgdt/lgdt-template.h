@@ -25,7 +25,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	else 
 	{ 
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
-		uint32_t base=swaddr_read(addr+2,4,3)&0xfffffff;
+		uint32_t base=swaddr_read(addr+2,4,3)&0xffffffff;
 		cpu.GDTR.limit=limit;
 		cpu.GDTR.base=base;
 	}
