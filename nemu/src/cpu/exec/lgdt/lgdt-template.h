@@ -7,7 +7,10 @@ make_helper(concat(lgdt_i_,SUFFIX))
 {
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
 	if (instr_fetch(eip+2,1)==0x10)
+	{
+		printf("hahah0x%x\n",cpu.eax);
 		addr=swaddr_read(cpu.eax,4,3);
+	}
 	if (DATA_BYTE==2)
 	 {
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
