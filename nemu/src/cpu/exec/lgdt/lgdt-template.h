@@ -6,6 +6,7 @@
 make_helper(concat(lgdt_i_,SUFFIX))
 {
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
+	printf("0x%x\n",cpu.eax);
 	if (instr_fetch(eip+2,1)==0x10)
 	{
 		printf("hahah0x%x\n",cpu.eax);
