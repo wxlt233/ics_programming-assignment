@@ -52,7 +52,7 @@ typedef struct {
 	struct {
 		uint16_t limit;
 		uint32_t base;
-	}GDTR;
+	}GDTR,IDTR;
 
 	CR0 cr0;
 	CR3 cr3;

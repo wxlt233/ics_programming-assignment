@@ -26,6 +26,7 @@
 #include "cmov/cmov.h"
 
 #include "lgdt/lgdt.h"
+#include "lgdt/lidt.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
