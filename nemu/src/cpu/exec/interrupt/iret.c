@@ -9,6 +9,7 @@ make_helper(iret)
 	cpu.CS.val=swaddr_read(cpu.esp,4,2)&0xffff;
 	cpu.esp-=4;
 	cpu.eflags.val=swaddr_read(cpu.esp,4,2);
+	cpu.esp-=4;
 	return 0;
 }
 
