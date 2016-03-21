@@ -6,7 +6,7 @@ make_helper(concat(ret_,SUFFIX))
 {
 //	uint32_t * t=(uint32_t *)cpu.esp;
 //	if (cpu.eip==0x103539) printf("cpu.esp: %x",*t);
-	if (cpu.eip==0x80480e9) printf("haha\n");
+	if (cpu.eip==0x80480e9) printf("0x%x\n",swaddr_read(cpu.esp,4,2));
 	cpu.eip=swaddr_read(cpu.esp,4,2)-1;
 	if (DATA_BYTE==2)
 	{
