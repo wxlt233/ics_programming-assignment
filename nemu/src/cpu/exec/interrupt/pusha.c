@@ -21,6 +21,7 @@ make_helper(pusha)
 	swaddr_write(cpu.esp,4,cpu.esi,2);
 	cpu.esp-=4;
 	swaddr_write(cpu.esp,4,cpu.edi,2);
+	print_asm("pusha");
 	return 1;
 }
 
