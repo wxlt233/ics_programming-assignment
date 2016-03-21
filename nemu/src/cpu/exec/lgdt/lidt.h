@@ -2,11 +2,9 @@
 #define __LIDT_H__
 
 
-make_helper(lidt_i_v);
+make_helper(lidt_rm_v);
 
 
 #endif
-
-
 
 
