@@ -2,7 +2,6 @@
 
 #define instr lidt
 static void do_execute() {
-	printf("0x%x\n",op_src->addr);
 	uint32_t addr=op_src->addr;
 	if (DATA_BYTE==2)
 	{ 
