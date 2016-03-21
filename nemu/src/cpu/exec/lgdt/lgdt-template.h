@@ -41,7 +41,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 #define instr lgdt
 static void do_execute() {
 	printf("0x%x\n",op_src->addr);
-	uint32_t addr=op_src->val;
+	uint32_t addr=op_src->addr;
 	if (DATA_BYTE==2)
 	{
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
