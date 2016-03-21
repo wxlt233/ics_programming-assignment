@@ -9,9 +9,6 @@ make_helper(concat(lidt_i_,SUFFIX))
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
 	if (instr_fetch(eip+1,1)==0x18)
 	{
-		printf("hahah0x%x\n",cpu.eax);
-	//	addr=swaddr_read(cpu.eax,4,3);
-	//	addr=instr_fetch(addr,4,3);
 		x=2;
 		addr=cpu.eax;
 	}
