@@ -39,9 +39,8 @@ make_helper(concat(lgdt_i_,SUFFIX))
 #include "cpu/exec/template-start.h"
 
 #define instr lgdt
-//#if DATA_BYTE==2||DATABYTE==4
 static void do_execute() {
-	printf("0x%x\n",op_dest->val);
+	printf("0x%x\n",op_src->val);
 	uint32_t addr=op_src->val;
 	if (DATA_BYTE==2)
 	{
@@ -62,7 +61,6 @@ static void do_execute() {
 }
 
 make_instr_helper(rm)
-//#endif 
 #include "cpu/exec/template-end.h"
 
 
