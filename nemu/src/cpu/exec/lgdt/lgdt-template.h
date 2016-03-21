@@ -5,6 +5,7 @@
 #if DATA_BYTE==2||DATA_BYTE==4
 make_helper(concat(lgdt_i_,SUFFIX))
 {
+	int x=6;
 	uint32_t addr=instr_fetch(cpu.eip+3,4);
 	printf("0x%x %x\n",cpu.eax,cpu.eip);
 	uint8_t tt=instr_fetch(eip+1,1);
@@ -15,6 +16,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	//	addr=swaddr_read(cpu.eax,4,3);
 	//	addr=instr_fetch(addr,4,3);
 		addr=cpu.eax;
+		x=2;
 	}
 	if (DATA_BYTE==2)
 	 {
@@ -31,7 +33,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 		cpu.GDTR.base=base;
 	}
 	print_asm("lgdt $0x%x",addr);
-	return 6;
+	return x;
 }
 
 #endif
