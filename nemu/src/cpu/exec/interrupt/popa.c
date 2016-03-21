@@ -18,5 +18,6 @@ make_helper(popa)
 	cpu.ecx=swaddr_read(cpu.esp,4,2);
 	cpu.esp+=4;
 	cpu.eax=swaddr_read(cpu.esp,4,2);
+	cpu.esp+=4;
 	return 1;
 }
