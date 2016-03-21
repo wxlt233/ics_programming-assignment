@@ -87,7 +87,7 @@ make_helper(concat(mov_r2sr_,SUFFIX))
 	cpu.DESC[sreg].limit_15_0=lnaddr_read(descaddr,2)&0xffff;
 	cpu.DESC[sreg].base_15_0=lnaddr_read(descaddr+2,2)&0xffff;
 	cpu.DESC[sreg].base_23_16=lnaddr_read(descaddr+4,1)&0xff;
-	cpu.DESC[sreg].limit_19_16=lnaddr_read(descaddr+6,1)&0xf;
+	cpu.DESC[sreg].limit_19_16=lnaddr_read(descaddr+6,1)&0xff;
 	cpu.DESC[sreg].base_31_24=lnaddr_read(descaddr+7,1)&0xff;
 	if (sreg==0)
 		print_asm("mov %%%s %%es",REG_NAME(op_src->reg));
