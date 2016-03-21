@@ -46,15 +46,15 @@ static void do_execute() {
 	{
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
 		uint32_t base=swaddr_read(addr+2,3,3)&0xffffff;
-		cpu.IDTR.limit=limit;
-		cpu.IDTR.base=base;
+		cpu.GDTR.limit=limit;
+		cpu.GDTR.base=base;
 	}
 	else 
 	{
 		uint16_t limit=swaddr_read(addr,2,3)&0xffff;
 		uint32_t base=swaddr_read(addr+2,4,3)&0xffffffff;
-		cpu.IDTR.limit=limit;
-		cpu.IDTR.base=base;
+		cpu.GDTR.limit=limit;
+		cpu.GDTR.base=base;
 	}
 	print_asm_template1();
 
