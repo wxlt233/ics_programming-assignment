@@ -40,7 +40,7 @@ make_helper(concat(lgdt_i_,SUFFIX))
 
 #define instr lgdt
 static void do_execute() {
-	printf("0x%x\n",op_src->val);
+	printf("0x%x\n",op_src->addr);
 	uint32_t addr=op_src->val;
 	if (DATA_BYTE==2)
 	{
