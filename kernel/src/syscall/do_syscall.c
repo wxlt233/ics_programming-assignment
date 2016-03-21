@@ -29,6 +29,7 @@ void do_syscall(TrapFrame *tf) {
 		case SYS_write:{if (tf->ebx==1||tf->ebx==2)
 						    asm volatile(".byte 0xd6" ::"a"(2),"c"(tf->ecx),"d"(tf->edx));
 							tf->eax=tf->edx;
+							break;
 					   }
 		/* TODO: Add more system calls. */
 
