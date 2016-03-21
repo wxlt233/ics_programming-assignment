@@ -12,8 +12,9 @@ make_helper(concat(lgdt_i_,SUFFIX))
 	if (instr_fetch(eip+1,1)==0x10)
 	{
 		printf("hahah0x%x\n",cpu.eax);
-		addr=swaddr_read(cpu.eax,4,3);
+	//	addr=swaddr_read(cpu.eax,4,3);
 	//	addr=instr_fetch(addr,4,3);
+		addr=cpu.eax;
 	}
 	if (DATA_BYTE==2)
 	 {
