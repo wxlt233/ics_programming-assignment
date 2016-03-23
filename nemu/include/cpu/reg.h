@@ -89,6 +89,8 @@ typedef struct {
 		uint8_t G:1;
 		uint8_t base_31_24:8;
 	}DESC[4];
+
+	bool INTR;
 } CPU_state;
 
 extern CPU_state cpu;
