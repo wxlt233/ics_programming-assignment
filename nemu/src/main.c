@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
 
 	/* Initialize the virtual computer system. */
 	restart();
-//	init_device();
-//	init_sdl();
+	init_device();
+	init_sdl();
 	/* Receive commands from user. */
 	ui_mainloop();
 
