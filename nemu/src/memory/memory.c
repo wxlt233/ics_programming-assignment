@@ -16,6 +16,9 @@ void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 int hittlb(lnaddr_t addr);
 void updatetlb(lnaddr_t addr,hwaddr_t pagestart);
 hwaddr_t getpagestart(lnaddr_t addr);
+int is_mmio(hwaddr_t addr);
+uint32_t mmio_read(hwaddr_t addr,size_t len,int map_NO);
+void mmio_write(hwaddr_t addr,size_t len,uint32_t data,int map_NO);
 /* Memory accessing interfaces */
  
 /*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
@@ -23,6 +26,9 @@ hwaddr_t getpagestart(lnaddr_t addr);
 }*/
 uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 {
+	int map_no=is_mmio(addr);
+	if (map_no!=-1) return mmio_read(addr,len,map_no);
+	else {
 	if (checkcache1(addr))
 	{
 		return read_cache1_hit(addr,len);
@@ -38,6 +44,7 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 		read_cache2tocache1(addr);
 		return read_cache1_hit(addr,len);		
 	}
+	}
 }
 
 
@@ -47,8 +54,12 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 
 void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 {
+	int map_no=is_mmio(addr);
+	if (map_no!=-1) mmio_write(addr,len,data,map_no);
+	else
+ 	{
 	if (checkcache1(addr))
-	{
+ 	{
 		write_cache1_hit(addr,len,data);
 	}
 	else if (checkcache2(addr))
@@ -56,6 +67,7 @@ void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 		write_cache2_hit(addr,len,data);
 	}
 	else write_allocate(addr,len,data);
+	}
 }
 hwaddr_t  page_translate(lnaddr_t addr)
 {
