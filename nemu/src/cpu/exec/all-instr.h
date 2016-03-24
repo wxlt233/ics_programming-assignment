@@ -33,6 +33,7 @@
 #include "interrupt/cli.h"
 #include "interrupt/iret.h"
 #include "interrupt/int.h"
+#include "interrupt/hlt.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
