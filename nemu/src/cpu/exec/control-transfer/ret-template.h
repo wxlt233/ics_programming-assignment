@@ -5,6 +5,7 @@
 make_helper(concat(ret_,SUFFIX))
 {
 	cpu.eip=swaddr_read(cpu.esp,4,2)-1;
+	if (cpu.eip==0xc0100cb6) printf("0x%x\n",cpu.eip);
 	if (DATA_BYTE==2)
 	{
 		cpu.eip=cpu.eip&0x0000ffff;
