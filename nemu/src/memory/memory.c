@@ -111,7 +111,7 @@ void lnaddr_write(lnaddr_t addr, size_t len, uint32_t data) {
 uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 	if ((addr&0xfff)+len>4096)
 	{
-		assert(0);
+	//	assert(0);
 		int newlen=(addr&0xfff)+len-4096;
 		uint32_t newdata=lnaddr_read((((addr+4096)>>12)<<12),newlen);
 		uint32_t olddata=lnaddr_read(addr,len-newlen);
