@@ -11,6 +11,7 @@ make_helper(concat(out_a2i_,SUFFIX)){
 		pio_write(addr,2,cpu.gpr[0]._16);
 	else 
 		pio_write(addr,4,cpu.eax);
+	printf("0x%x\n",cpu.esp);
 	print_asm("out");
 	return 2;
 }
