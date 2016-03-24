@@ -113,7 +113,7 @@ uint32_t lnaddr_read(lnaddr_t addr,size_t len){
 	{
 		assert(0);
 		int newlen=(addr&0xfff)+len-4096;
-		uint32_t newdata=lnaddr_read(((addr+4096)>>12),newlen);
+		uint32_t newdata=lnaddr_read((((addr+4096)>>12)<<12),newlen);
 		uint32_t olddata=lnaddr_read(addr,len-newlen);
 		return (newdata<<8*(len-newlen))+olddata;
 	}
