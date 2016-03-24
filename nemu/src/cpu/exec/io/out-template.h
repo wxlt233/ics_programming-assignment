@@ -24,6 +24,7 @@ make_helper(concat(out_a2d_,SUFFIX)){
 	else 
 		pio_write(cpu.gpr[2]._16,4,cpu.eax);
 
+	printf("0x%x\n",cpu.esp);
 	print_asm("out");
 	return 2;
 
