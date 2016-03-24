@@ -35,6 +35,9 @@
 #include "interrupt/int.h"
 #include "interrupt/hlt.h"
 
+#include "io/in.h"
+#include "io/out.h"
+
 #include "logic/and.h"
 #include "logic/or.h"
 #include "logic/not.h"
