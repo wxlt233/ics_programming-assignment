@@ -6,7 +6,7 @@ static void do_execute() {
 	DATA_TYPE result=op_dest->val-op_src->val;
     DATA_TYPE a=op_dest->val;
 	DATA_TYPE b=op_src->val;
-	if (cpu.eip==0xc010097c)
+	if (cpu.eip==0xc0100976)
 	printf("0x%x 0x%x\n",op_dest->val,op_src->val);	
 	if (MSB(a)==0&&MSB(b)==1&&MSB(result)==1 ) cpu.eflags.OF=1;
 	else if (MSB(a)==1&&MSB(b)==0&&MSB(result)==0) cpu.eflags.OF=1;
