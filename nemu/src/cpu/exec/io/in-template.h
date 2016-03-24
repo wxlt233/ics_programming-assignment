@@ -14,7 +14,7 @@ make_helper(concat(in_d2a_,SUFFIX)){
 	ioaddr_t addr=cpu.gpr[R_EDX]._16;
 	cpu.eax=pio_read(addr,DATA_BYTE);
 	print_asm("in");
-	return 2;
+	return 1;
 
 }
 
