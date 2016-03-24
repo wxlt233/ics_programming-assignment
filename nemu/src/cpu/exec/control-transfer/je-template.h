@@ -8,7 +8,7 @@ static void do_execute() {
  {
  	 char t=op_src->val&0x000000ff;
 	if (cpu.eflags.ZF==1) {cpu.eip+=t;
-	 if (cpu.eip==0xc010097c)	printf("0x%x %d\n",cpu.eip,t);
+	 	printf("0x%x %d\n",cpu.eip,t);
 	}
  }
  else if (DATA_BYTE==2)
