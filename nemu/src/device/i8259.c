@@ -49,14 +49,14 @@ static void do_i8259() {
 	else if(master_irq == 2) {
 		assert(slave.highest_irq != NO_INTR);
 		master_irq = 8 + slave.highest_irq;
-	}
+ 	}
 
 	intr_NO = master_irq + IRQ_BASE;
 	/* TODO: Uncomment the following line after the ``INTR'' member
 	 * is added to the CPU_state structure.
 	 */
-	// cpu.INTR = true;
-	panic("uncomment the line above");
+	 cpu.INTR = true;
+//	panic("uncomment the line above");
 }
 
 /* device interface */
