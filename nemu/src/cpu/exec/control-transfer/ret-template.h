@@ -4,7 +4,7 @@
 
 make_helper(concat(ret_,SUFFIX))
 {
-	if (cpu.eip==0xc0100cb6) printf("hah\n");
+	if (cpu.eip==0xc0100cb6) printf("0x%x\n",cpu.esp);
 	cpu.eip=swaddr_read(cpu.esp,4,2)-1;
 	if (cpu.eip==0xc0100cb6) printf("0x%x\n",cpu.eip);
 	if (DATA_BYTE==2)
