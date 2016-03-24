@@ -68,6 +68,7 @@ void cpu_exec(volatile uint32_t n) {
 		 * instruction decode, and the actual execution. */
 		justtry=0;
 		int instr_len = exec(cpu.eip);
+		if (cpu.eip==0xc01009ae) printf("0x%x %d\n",cpu.eip,instr_len);
 		if (justtry==0)
 		cpu.eip += instr_len;
  		if (calcwatchpoint())
