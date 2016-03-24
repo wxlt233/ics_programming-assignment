@@ -34,6 +34,7 @@
 #include "interrupt/iret.h"
 #include "interrupt/int.h"
 #include "interrupt/hlt.h"
+#include "interrupt/sti.h"
 
 #include "io/in.h"
 #include "io/out.h"
