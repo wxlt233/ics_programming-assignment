@@ -3,12 +3,12 @@
 #define instr je
 
 static void do_execute() {
-	if (cpu.eip==0xc010097c&&cpu.eflags.ZF==1) printf("%d\n",cpu.eflags.ZF);
+//	if (cpu.eip==0xc010097c&&cpu.eflags.ZF==1) printf("%d\n",cpu.eflags.ZF);
  if (DATA_BYTE==1)
  {
  	 char t=op_src->val&0x000000ff;
 	if (cpu.eflags.ZF==1) {cpu.eip+=t;
-	 	printf("0x%x %d\n",cpu.eip,t);
+//	 	printf("0x%x %d\n",cpu.eip,t);
 	}
  }
  else if (DATA_BYTE==2)
