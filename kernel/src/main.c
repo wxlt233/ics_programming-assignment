@@ -60,7 +60,7 @@ void init_cond() {
 	init_ide();
 //	assert(0);
 	/* Enable interrupts. */
-	assert(0);
+//	assert(0);
 	sti();
 //	assert(0);
 #endif
