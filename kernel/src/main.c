@@ -46,13 +46,13 @@ void init_cond() {
 	 * Note that system call is the only exception implemented in NEMU.
 	 */
 	init_idt();
-	assert(0);
+//	assert(0);
 #endif
 
 #ifdef HAS_DEVICE
 	/* Initialize the intel 8259 PIC (Programmable interrupt controller). */
 	init_i8259();
-
+	assert(0);
 	/* Initialize the serial port. After that, you can use printk() to output messages. */
 	init_serial();
 
