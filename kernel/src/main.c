@@ -46,6 +46,7 @@ void init_cond() {
 	 * Note that system call is the only exception implemented in NEMU.
 	 */
 	init_idt();
+	assert(0);
 #endif
 
 #ifdef HAS_DEVICE
