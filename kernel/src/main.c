@@ -58,7 +58,7 @@ void init_cond() {
 
 	/* Initialize the IDE driver. */
 	init_ide();
-	assert(0);
+//	assert(0);
 	/* Enable interrupts. */
 	sti();
 #endif
@@ -66,6 +66,7 @@ void init_cond() {
 #ifdef IA32_PAGE
 	/* Initialize the memory manager. */
 	init_mm();
+	assert(0);
 #endif
 
 	/* Output a welcome message.
