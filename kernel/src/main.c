@@ -60,8 +60,9 @@ void init_cond() {
 	init_ide();
 //	assert(0);
 	/* Enable interrupts. */
-	sti();
 	assert(0);
+	sti();
+//	assert(0);
 #endif
 
 #ifdef IA32_PAGE
