@@ -28,6 +28,8 @@
 #include "lgdt/lgdt.h"
 #include "lgdt/lidt.h"
 
+#include "game/bt.h"
+
 #include "interrupt/pusha.h"
 #include "interrupt/popa.h"
 #include "interrupt/cli.h"
