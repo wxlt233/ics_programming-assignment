@@ -8,6 +8,5 @@ make_helper(hlt)
 	if (!(cpu.INTR&cpu.eflags.IF))
 		cpu.eip-=1;
 	print_asm("hlt");
-	printf("hlt\n");
 	return 1;
 }
