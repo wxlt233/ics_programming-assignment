@@ -2,8 +2,10 @@
 
 #include <sys/syscall.h>
 
-void add_irq_handle(int, void (*)(void));
+void add_irq_handle(int, void (*)(void));i
 void mm_brk(uint32_t);
+
+void serial_printc(char ch);
 
 static void sys_brk(TrapFrame *tf) {
 #ifdef IA32_PAGE
@@ -26,11 +28,18 @@ void do_syscall(TrapFrame *tf) {
 			break;
 
 		case SYS_brk: sys_brk(tf); break;
-		case SYS_write:{if (tf->ebx==1||tf->ebx==2)
-						    asm volatile(".byte 0xd6" ::"a"(2),"c"(tf->ecx),"d"(tf->edx));
-							tf->eax=tf->edx;
-							break;
-					   }
+		case SYS_write:if (tf->ebx==1||tf->ebx==2)
+						   // asm volatile(".byte 0xd6" ::"a"(2),"c"(tf->ecx),"d"(tf->edx));
+						{int i=0;
+						for (i=0;i<tf->edx;i++)	
+							{
+								char c=*(char *)(tf->ecx+i);
+								serial_printc(c);
+							}	
+						tf->eax=tf->edx;
+					       }
+ 				
+				break;
 		/* TODO: Add more system calls. */
 
 		default: panic("Unhandled system call: id = %d", tf->eax);
