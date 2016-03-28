@@ -2,7 +2,7 @@
 
 #include <sys/syscall.h>
 
-void add_irq_handle(int, void (*)(void));i
+void add_irq_handle(int, void (*)(void));
 void mm_brk(uint32_t);
 
 void serial_printc(char ch);
