@@ -21,10 +21,13 @@ uint32_t mmio_read(hwaddr_t addr,size_t len,int map_NO);
 void mmio_write(hwaddr_t addr,size_t len,uint32_t data,int map_NO);
 /* Memory accessing interfaces */
  
-/*uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
+uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
+	int map_no=is_mmio(addr);
+	if (map_no!=-1) return mmio_read(addr,len,map_no);
+	else 
 	return dram_read(addr, len) & (~0u >> ((4 - len) << 3));
-}*/
-uint32_t hwaddr_read(hwaddr_t addr,size_t len)
+}
+/*uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 {
 	int map_no=is_mmio(addr);
 	if (map_no!=-1) return mmio_read(addr,len,map_no);
@@ -45,7 +48,7 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len)
 		return read_cache1_hit(addr,len);		
 	}
 	}
-}
+}*/
 
 
 /*void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
