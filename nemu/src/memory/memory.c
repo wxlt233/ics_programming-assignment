@@ -51,11 +51,14 @@ uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 }*/
 
 
-/*void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
+void hwaddr_write(hwaddr_t addr, size_t len, uint32_t data) {
+	int map_no=is_mmio(addr);
+	if (map_no!=-1) mmio_write(addr,len,data,map_no);
+else 
 	dram_write(addr, len, data);
-}*/
+}
 
-void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
+/*void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 {
 	int map_no=is_mmio(addr);
 	if (map_no!=-1) mmio_write(addr,len,data,map_no);
@@ -71,7 +74,7 @@ void hwaddr_write(hwaddr_t addr,size_t len,uint32_t data)
 	}
 	else write_allocate(addr,len,data);
 	}
-}
+}*/
 hwaddr_t  page_translate(lnaddr_t addr)
 {
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
