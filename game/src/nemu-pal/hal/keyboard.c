@@ -55,7 +55,23 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 	 * Remember to enable interrupts before returning from the function.
 	 */
 
-	assert(0);
+	//assert(0);
+	int index;
+	for (index=0;index<NR_KEYS;index++)
+	{
+		if (key_state[index]==KEY_STATE_PRESS) 
+		{
+			key_press_callback(get_keycode(index));
+			sti();
+			return true;
+		}
+		if (key_state[index]==KEY_STATE_RELEASE) 
+		{
+			key_release_callback(get_keycode(index));	
+			sti();
+			return true;
+		}
+	}
 	sti();
 	return false;
 }
