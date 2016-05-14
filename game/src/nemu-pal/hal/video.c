@@ -10,7 +10,37 @@ int get_fps();
 void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *scrrect, 
 		SDL_Surface *dst, SDL_Rect *dstrect) {
 	assert(dst && src);
-
+	int x,y,w,h,dstx,dsty;
+	if (scrrect==NULL)
+	{	
+		x=0;
+		y=0;
+		w=src->w;
+		h=src->h;	
+	}
+	else 
+	{	
+		x=scrrect->x;
+		y=scrrect->y;
+		w=scrrect->w;
+		h=scrrect->h;
+	}
+	if (dstrect==NULL)
+	{
+		dstx=0;
+		dsty=0;
+	}
+	else 
+	{
+		dstx=dstrect->x;
+		dsty=dstrect->y;
+	}
+	
+	int i;
+	for (i=0;i<h;i++)
+	{
+		memcpy(dst->pixels+dstx+(dsty+i)*dst->w,src->pixels+x+(i+y)*src->w,w);
+	}
 	/* TODO: Performs a fast blit from the source surface to the 
 	 * destination surface. Only the position is used in the
 	 * ``dstrect'' (the width and height are ignored). If either
@@ -20,7 +50,6 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *scrrect,
 	 * (``srcrect'' is not modified).
 	 */
 
-	assert(0);
 }
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
@@ -31,8 +60,26 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 	 * in surface ``dst'' with color ``color''. If dstrect is
 	 * NULL, fill the whole surface.
 	 */
+	int x,y,w,h;
+	if (dstrect==NULL)
+	{
+		x=0;
+		y=0;
+		w=dst->w;
+		h=dst->h;
+	}
+	else 
+	{
+		x=dstrect->x;
+		y=dstrect->y;
+		w=dstrect->w;
+		h=dstrect->h;
+	}
+	
+	int i;
+	for (i=0;i<h;i++)
+		memset(dst->pixels+x+(i+y)*dst->w,color,w);
 
-	assert(0);
 }
 
 void SDL_UpdateRect(SDL_Surface *screen, int x, int y, int w, int h) {
