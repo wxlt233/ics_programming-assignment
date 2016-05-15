@@ -16,7 +16,8 @@ make_helper(concat(movs_m_,SUFFIX))
 		cpu.esi-=DATA_BYTE;
 	}
 	print_asm_template2();
-	return DATA_BYTE;
+//	return DATA_BYTE;
+	return 1;
 }
 
 #include "cpu/exec/template-end.h"
