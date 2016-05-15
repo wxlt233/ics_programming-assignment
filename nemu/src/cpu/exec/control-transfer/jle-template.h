@@ -11,13 +11,13 @@ static void do_execute() {
  else if (DATA_BYTE==2)
  {
 	short t=op_src->val&0x0000ffff;
-	if (cpu.eflags.ZF==1||cpu.eflags.OF!=cpu.eflags.SF)  cpu.eip+=t;
-	cpu.eip=cpu.eip&0x0000ffff;
+	if (cpu.eflags.ZF==1||(cpu.eflags.OF!=cpu.eflags.SF))  cpu.eip+=t;
+	//cpu.eip=cpu.eip&0x0000ffff;
  }
  else
  { 
 	int t=op_src->val;
-	if (cpu.eflags.ZF==1||cpu.eflags.OF!=cpu.eflags.SF)  cpu.eip+=t;
+	if (cpu.eflags.ZF==1||(cpu.eflags.OF!=cpu.eflags.SF))  cpu.eip+=t;
  }
 	print_asm_template1();
 }
