@@ -8,7 +8,8 @@ static void do_execute() {
 	if (cpu.eflags.SF==cpu.eflags.OF||cpu.eflags.ZF==1)
 	{
 		OPERAND_W(op_src,1);
-	}
+	}	
+	else OPERAND_W(op_src,0);
  }
 	print_asm_template1();
 }
