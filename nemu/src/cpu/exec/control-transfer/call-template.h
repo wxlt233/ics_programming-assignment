@@ -33,11 +33,10 @@ make_helper(call_rm_w)
 {
 	int len=decode_rm_w(eip+1)+1;
 	cpu.esp-=4;
-	swaddr_write(cpu.esp,4,cpu.eip+len+1,2);
+	swaddr_write(cpu.esp,4,cpu.eip+len,2);
 	cpu.eip=op_src->val;
 	cpu.eip-=len;
-	cpu.eip-=1;
-	printf("haha");
+//	printf("haha");
 	return len;
 }
 #endif
