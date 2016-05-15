@@ -10,13 +10,6 @@ static void do_execute() {
 		cpu.eip+=(int)(op_src->val);
 		if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 	} 
-//	else {
-//		justtry=1;
-//		cpu.esp-=4;
-//		if (DATA_BYTE==4) swaddr_write(cpu.esp,4,cpu.eip+2,2);
-//		cpu.eip=op_src->val;
-//		if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
-//	}
 	print_asm_template1();
 }
 
