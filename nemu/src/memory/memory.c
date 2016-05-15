@@ -146,7 +146,8 @@ void lnaddr_write(lnaddr_t addr,size_t len ,uint32_t data){
 	else 
 	{
 		hwaddr_t hwaddr=page_translate(addr);
-		return hwaddr_write(hwaddr,len,data);
+	//	return 
+		hwaddr_write(hwaddr,len,data);
 	 }
 
 }
