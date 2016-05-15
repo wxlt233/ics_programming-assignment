@@ -13,6 +13,11 @@ static void sys_brk(TrapFrame *tf) {
 #endif
 	tf->eax = 0;
 }
+int fs_open(const char * filename,int flags);
+int fs_read(int fd,void *buf,int len);
+int fd_write(int fd,void *buf,int len);
+int fs_lseek(int fd,int offset,int whence);
+int fs_close(int fd);
 
 void do_syscall(TrapFrame *tf) {
 	switch(tf->eax) {
