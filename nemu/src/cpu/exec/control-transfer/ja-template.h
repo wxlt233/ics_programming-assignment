@@ -12,7 +12,7 @@ static void do_execute() {
  {
 	short t=op_src->val&0x0000ffff;
 	if (cpu.eflags.ZF==0&&cpu.eflags.CF==0)  cpu.eip+=t;
-	cpu.eip=cpu.eip&0x0000ffff;
+//	cpu.eip=cpu.eip&0x0000ffff;
  }
  else 
  { 
