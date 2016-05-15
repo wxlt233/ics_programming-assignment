@@ -37,6 +37,7 @@ make_helper(call_rm_w)
 	cpu.eip=op_src->val;
 	cpu.eip-=len;
 	cpu.eip-=1;
+	printf("haha");
 	return len;
 }
 #endif
