@@ -7,7 +7,7 @@ static void do_execute() {
  {
 	if (cpu.eflags.ZF==1||(cpu.eflags.SF!=cpu.eflags.OF))
 	{
-		OPERAND_W(op_dest,1);
+		OPERAND_W(op_src,1);
 	}
  }
 
