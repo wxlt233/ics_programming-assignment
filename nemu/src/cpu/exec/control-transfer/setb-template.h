@@ -7,7 +7,7 @@ static void do_execute() {
  {
 	if (cpu.eflags.CF==1)
 	{
-		OPERAND_W(op_dest,1);
+		OPERAND_W(op_src,1);
 	}
  }
 	print_asm_template1();
