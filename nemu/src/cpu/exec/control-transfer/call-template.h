@@ -21,9 +21,10 @@ make_helper(call_rm_l)
 {
 	int len=decode_rm_l(eip+1)+1;
 	cpu.esp-=4;
-	swaddr_write(cpu.esp,4,cpu.eip+len,2);
+	swaddr_write(cpu.esp,4,cpu.eip+len+1,2);
 	cpu.eip=op_src->val;
 	cpu.eip-=len;
+	cpu.eip-=1;
 	return len;
 }
 #endif
