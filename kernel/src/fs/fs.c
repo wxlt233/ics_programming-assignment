@@ -38,7 +38,7 @@ Fstate filestate[NR_FILES+3];
 void ide_read(uint8_t *, uint32_t, uint32_t);
 void ide_write(uint8_t *, uint32_t, uint32_t);
 
-bool testpath(char *s1,char *s2)
+bool testpath(const char *s1,char *s2)
 {
 	while (*s1)
 	{
@@ -53,10 +53,10 @@ bool testpath(char *s1,char *s2)
 
 
 int fs_open(const char *pathname,int flags)
-{I
+{
 	int i=0;
 	for (i=0;i<NR_FILES;i++)
-	if (testpath(pathname,file_table[i]))
+	if (testpath(pathname,file_table[i].name))
 	{
 		filestate[i+3].opened=true;
 		filestate[i+3].offset=0;
@@ -75,7 +75,7 @@ int fs_read(int fd,void *buf,int len)
 	if (filestate[fd].offset+len>file_table[fd-3].size)
 		len=file_table[fd-3].size-filestate[fd].offset;
 	ide_read(buf,file_table[fd-3].disk_offset+filestate[fd].offset,len);
-	file_state[fd].offset+=len;
+	filestate[fd].offset+=len;
 	return len;
 }
 
