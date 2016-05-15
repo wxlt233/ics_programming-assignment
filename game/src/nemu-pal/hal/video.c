@@ -101,7 +101,7 @@ void SDL_UpdateRect(SDL_Surface *screen, int x, int y, int w, int h) {
 	int depth=screen->pitch/screen->w;
 	for (i=x*depth;i<(x+w)*depth;i++)
 		for (j=y;j<(y+h);j++)
-			draw_pixel(i,j,sreen->pixels[i*screen->h+j]);
+			draw_pixel(i,j,screen->pixels[i*screen->h+j]);
 //	assert(0);
 }
 
