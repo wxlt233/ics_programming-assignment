@@ -5,7 +5,7 @@
 static void do_execute() {
  if (DATA_BYTE==1)
  {
-	if (cpu.eflags.SF!=cpu.eflags.OF&&cpu.eflags.ZF==0)
+	if ((cpu.eflags.SF!=cpu.eflags.OF)&&cpu.eflags.ZF==0)
 	{
 		OPERAND_W(op_src,1);
 	}
