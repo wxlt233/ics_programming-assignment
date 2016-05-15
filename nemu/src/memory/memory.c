@@ -79,7 +79,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 {
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
 	{
-		if (cpu.eip==0x8054655) printf("%x\n",cpu.eax);
+		//if (cpu.eip==0x8054655) printf("%x\n",cpu.eax);
 		if (hittlb(addr))
 		{
 			uint16_t offset=addr&0xfff;
