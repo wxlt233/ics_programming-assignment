@@ -99,9 +99,9 @@ hwaddr_t  page_translate(lnaddr_t addr)
 			}
 			uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
 			uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
-			PTE	a; 
-			a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
-			assert(a.present);
+		//	PTE	a; 
+		//	a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
+		//	assert(a.present);
 			updatetlb(addr,pagestartaddr>>12);
 			return pagestartaddr+offset;
 		}
