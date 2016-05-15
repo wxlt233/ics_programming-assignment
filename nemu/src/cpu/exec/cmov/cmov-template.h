@@ -18,7 +18,7 @@ static void do_execute()
 	{
 		OPERAND_W(op_dest,op_src->val);
 	}
-	else if (opcode==0x43&&(cpu.eflags.CF==0||cpu.eflags.ZF))
+	else if (opcode==0x43&&(cpu.eflags.CF==0))
 	{
 		OPERAND_W(op_dest,op_src->val);
 	}
