@@ -5,8 +5,14 @@
 
 make_helper(hlt)
 {
-	if (!(cpu.INTR&cpu.eflags.IF))
+/*	if (!(cpu.INTR&cpu.eflags.IF))
 		cpu.eip-=1;
 	print_asm("hlt");
+	return 1;*/
+	while (cpu.INTR&&cpu.eflags.IF)
+	{
+		print_asm("hlt");
+		return 1;
+	}
 	return 1;
 }
