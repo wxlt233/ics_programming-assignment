@@ -91,5 +91,27 @@ int fs_write(int fd,void *buf,int len)
 	filestate[fd].offset+=len;
 	return len;
 }
+
+int fs_lseek(int fd,int offset,int whence)
+{
+	if (!filestate[fd].opened)
+		return -1;
+	if (whence==SEEK_SET)
+		filestate[fd].offset=offset;
+	else if (whence==SEEK_CUR)
+		filestate[fd].offset+=offset;
+	else 
+		filestate[fd].offset=file_table[fd-3].size+offset;
+	
+	return filestate[fd].offset;
+
+}
+int fs_close(int fd)
+{
+	if (!filestate[fd].opened)
+		return -1;
+	filestate[fd].opened=false;
+	return 0;
+}
 /* TODO: implement a simplified file system here. */
 
