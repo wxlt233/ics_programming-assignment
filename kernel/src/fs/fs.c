@@ -55,7 +55,7 @@ bool testpath(const char *s1,char *s2)
 int fs_open(const char *pathname,int flags)
 {
 	int i=0;
-	Log("%s",pathname);
+//	Log("%s",pathname);
 	for (i=0;i<NR_FILES;i++)
 	if (testpath(pathname,file_table[i].name))
 	{
