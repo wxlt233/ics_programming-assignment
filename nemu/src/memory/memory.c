@@ -104,7 +104,7 @@ hwaddr_t  page_translate(lnaddr_t addr)
 			assert(a.present);
 	//		updatetlb(addr,pagestartaddr>>12);
 			return pagestartaddr+offset;
-		//}
+	//	}
 	}
 	else return (hwaddr_t) addr;
 }
