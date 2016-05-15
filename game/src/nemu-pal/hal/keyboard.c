@@ -56,6 +56,7 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 	 */
 
 	assert(0);
+	return false;
 /*	int index;
 	for (index=0;index<NR_KEYS;index++)
 	{
