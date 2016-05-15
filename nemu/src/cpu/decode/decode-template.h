@@ -26,7 +26,7 @@ make_helper(concat(decode_i_, SUFFIX)) {
 make_helper(concat(decode_si_, SUFFIX)) {
 
 	op_src->type = OP_TYPE_IMM;
-	if (DATA_BYTE==1) 
+/*	if (DATA_BYTE==1) 
 	{char  a=instr_fetch(eip,DATA_BYTE);
 	op_src->simm=(int32_t)(a);
 	}
@@ -34,7 +34,7 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	{int  a=instr_fetch(eip,DATA_BYTE);
 	op_src->simm=a;	
 
-	}
+	}*/
 //	op_src->simm=op_src->simm-MSB(op_src->simm)*(1<<((DATA_BYTE<<3)-1));
 	/* TODO: Use instr_fetch() to read ``DATA_BYTE'' bytes of memory pointed 
 	 * by ``eip''. Interpret the result as an signed immediate, and assign
@@ -44,6 +44,8 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	 */
 	//panic("please implement me");
 
+	DATA_TYPE_S tem=instr_fetch(eip,DATA_BYTE);
+	op_src->simm=tem;
 	op_src->val = op_src->simm;
 	//printf("%08x\n",op_src->val);
 #ifdef DEBUG
