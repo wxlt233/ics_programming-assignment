@@ -5,9 +5,9 @@
 static void do_execute() {
  if (DATA_BYTE==1)
  {
-	if (cpu.eflags.SF==cpu.eflags.OF)
+	if (cpu.eflags.SF==cpu.eflags.OF||cpu.eflags.ZF==1)
 	{
-		OPERAND_W(op_dest,1);
+		OPERAND_W(op_src,1);
 	}
  }
 	print_asm_template1();
