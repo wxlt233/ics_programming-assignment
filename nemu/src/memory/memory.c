@@ -80,13 +80,13 @@ hwaddr_t  page_translate(lnaddr_t addr)
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
 	{
 		//if (cpu.eip==0x8054655) printf("%x\n",cpu.eax);
-	/*	if (hittlb(addr))
+		if (hittlb(addr))
 		{
 			uint16_t offset=addr&0xfff;
 			hwaddr_t pagestart=getpagestart(addr);
 			return (pagestart<<12)+offset;
 		}
-		else{*/ 
+		else{
 			uint16_t offset=addr&0xfff;
 			uint16_t dir=(addr>>22)&0x3ff;
 			uint16_t page=(addr>>12)&0x3ff;
@@ -106,8 +106,9 @@ hwaddr_t  page_translate(lnaddr_t addr)
 			assert(a.present);
 	//		updatetlb(addr,pagestartaddr>>12);
 	//			return pagestartaddr+offset;
+			updatetlb(addr,a.page_frame);
 			return (a.page_frame<<12)+offset;
-	//	}
+		}
 	}
 	else return (hwaddr_t) addr;
 }
