@@ -15,7 +15,7 @@ static void sys_brk(TrapFrame *tf) {
 }
 int fs_open(const char * filename,int flags);
 int fs_read(int fd,void *buf,int len);
-int fd_write(int fd,void *buf,int len);
+int fs_write(int fd,void *buf,int len);
 int fs_lseek(int fd,int offset,int whence);
 int fs_close(int fd);
 
@@ -44,15 +44,15 @@ void do_syscall(TrapFrame *tf) {
 						tf->eax=tf->edx;
 					       }
 				else if (tf->ebx>=3)
-					tf->eax=fs_write(tf->ebx,tf->ecx,tf->edx);
+					tf->eax=fs_write(tf->ebx,(void *)tf->ecx,tf->edx);
  				
 			break;
 		/* TODO: Add more system calls. */
 		case SYS_open:if (tf->ebx>=3) tf->eax=fs_open((void *)tf->ebx,tf->ecx);
 			break;
-		case SYS_read:if (tf->ebx>=3) tf->eax=fs_read(tf->ebx,tf->ecx);
+		case SYS_read:if (tf->ebx>=3) tf->eax=fs_read(tf->ebx,(void *)tf->ecx,tf->edx);
 			break;
-		case SYS_lseek:if (tf->ebx>=3) tf->eax=fs_lseek(tf->ebx,tf->ecx,tf->edx;)
+		case SYS_lseek:if (tf->ebx>=3) tf->eax=fs_lseek(tf->ebx,tf->ecx,tf->edx);
 			break;
 		case SYS_close:if (tf->ebx>=3) tf->eax=fs_close(tf->ebx);
 			break;
