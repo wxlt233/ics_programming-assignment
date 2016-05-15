@@ -160,7 +160,7 @@ lnaddr_t seg_translate(swaddr_t addr,size_t len,uint8_t sreg)
 	else 
 	{
 		lnaddr_t lnaddr=cpu.DESC[sreg].base_15_0+(cpu.DESC[sreg].base_23_16<<16)+(cpu.DESC[sreg].base_31_24<<24)+addr;
-		assert(lnaddr!=addr);
+		assert(lnaddr=addr);
 		return lnaddr;
 	
 	}
