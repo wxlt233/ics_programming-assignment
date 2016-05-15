@@ -29,6 +29,7 @@
 #include "lgdt/lidt.h"
 
 #include "game/bt.h"
+#include "game/cwde.h"
 
 #include "interrupt/pusha.h"
 #include "interrupt/popa.h"
