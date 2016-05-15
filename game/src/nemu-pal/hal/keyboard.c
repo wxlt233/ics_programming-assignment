@@ -83,10 +83,12 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 		{
 			key_press_callback(get_keycode(i));
 			release_key(i);
+			flags=1;
 		}
 		else if (query_key(i)==KEY_STATE_RELEASE)
 		{
 			key_state[i]=KEY_STATE_WAIT_RELEASE;
+			flags=1;
 		}
 		else if (query_key(i)==KEY_STATE_WAIT_RELEASE)
 		{
