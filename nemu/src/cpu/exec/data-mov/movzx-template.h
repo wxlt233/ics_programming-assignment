@@ -3,7 +3,7 @@
 #define instr movzx
 
 static void do_execute() {
- 	   unsigned t=op_src->val&0x0000ffff;
+ 	 DATA_TYPE t=op_src->val;
      	reg_l(op_dest->reg)=t;
 	print_asm_template2();
 }
