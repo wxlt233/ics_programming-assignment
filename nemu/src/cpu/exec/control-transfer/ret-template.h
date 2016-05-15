@@ -5,12 +5,13 @@
 make_helper(concat(ret_,SUFFIX))
 {
 	cpu.eip=swaddr_read(cpu.esp,4,2)-1;
-	if (DATA_BYTE==2)
-	{
-		cpu.eip=cpu.eip&0x0000ffff;
-		cpu.esp=cpu.esp+2;
-	}
-	else cpu.esp+=4;
+//	if (DATA_BYTE==2)
+//	{
+//		cpu.eip=cpu.eip&0x0000ffff;
+//		cpu.esp=cpu.esp+2;
+//	}
+//	else 
+	cpu.esp+=4;
 	print_asm("ret");
 	return 1;
 }
