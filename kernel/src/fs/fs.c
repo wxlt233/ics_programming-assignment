@@ -60,6 +60,7 @@ int fs_open(const char *pathname,int flags)
 	{
 		filestate[i+3].opened=true;
 		filestate[i+3].offset=0;
+		Log("%s",pathname);
 		return i+3;
 	}
 	assert(0);
@@ -102,7 +103,10 @@ int fs_lseek(int fd,int offset,int whence)
 		filestate[fd].offset+=offset;
 	else 
 		filestate[fd].offset=file_table[fd-3].size+offset;
-	
+	if (filestate[fd].offset>file_table[fd-3].size)
+	{
+		filestate[fd].offset=file_table[fd-3].size;
+	}	
 	return filestate[fd].offset;
 
 }
