@@ -13,11 +13,13 @@ static const int keycode_array[] = {
 };
 
 static int key_state[NR_KEYS];
-
+static inline void key_ispressed(int); 
 void
 keyboard_event(void) {
-	/* TODO: Fetch the scancode and update the key states. */
-	assert(0);
+	//* TODO: Fetch the scancode and update the key states. */
+	int key_code=in_byte(0x60);	
+	key_ispressed(key_code);	
+//assert(0);
 }
 
 static inline int
@@ -44,6 +46,28 @@ clear_key(int index) {
 	key_state[index] = KEY_STATE_EMPTY;
 }
 
+
+static inline void key_ispressed(int scanCode)
+{
+	int i;
+	int isPress=!(scanCode&0x80);
+	scanCode=scanCode&(0x80-1);
+	if (isPress)
+	{
+		for (i=0;i<NR_KEYS;i++)
+		{
+			if (get_keycode(i)==scanCode)
+  			{
+				if (key_state[i]==KEY_STATE_WAIT_RELEASE)
+					key_state[i]=KEY_STATE_RELEASE;
+				else if (key_state[i]==KEY_STATE_EMPTY)
+ 					key_state[i]=KEY_STATE_PRESS;
+			}
+		}		
+	}
+}
+
+
 bool 
 process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int)) {
 	cli();
@@ -51,28 +75,26 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 	 * If a pressed key is found, call ``key_press_callback'' with the keycode.
 	 * If a released key is found, call ``key_release_callback'' with the keycode.
 	 * If any such key is found, the function return true.
-	 * If no such key is found, the function return false.
-	 * Remember to enable interrupts before returning from the function.
-	 */
-	assert(0);
-	assert(0);
-	return false;
-/*	int index;
-	for (index=0;index<NR_KEYS;index++)
+	 * If no such key is found, the function return false.*/
+	int i,flags=0;
+	for (i=0;i<NR_KEYS;i++)
 	{
-		if (key_state[index]==KEY_STATE_PRESS) 
+		if (query_key(i)==KEY_STATE_PRESS)
 		{
-			key_press_callback(get_keycode(index));
-			sti();
-			return true;
+			key_press_callback(get_keycode(i));
+			release_key(i);
 		}
-		if (key_state[index]==KEY_STATE_RELEASE) 
+		else if (query_key(i)==KEY_STATE_RELEASE)
 		{
-			key_release_callback(get_keycode(index));	
-			sti();
-			return true;
+			key_state[i]=KEY_STATE_WAIT_RELEASE;
 		}
-	}
+		else if (query_key(i)==KEY_STATE_WAIT_RELEASE)
+		{
+			key_release_callback(get_keycode(i));	
+			key_state[i]=KEY_STATE_EMPTY;
+		}
+	}	
+
 	sti();
-	return false;*/
+	return flags;
 }
