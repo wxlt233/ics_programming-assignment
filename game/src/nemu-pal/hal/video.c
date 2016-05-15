@@ -97,7 +97,10 @@ void SDL_UpdateRect(SDL_Surface *screen, int x, int y, int w, int h) {
 	}
 
 	/* TODO: Copy the pixels in the rectangle area to the screen. */
-
+//	int i,j;
+//	int depth=screen->pitch/screen->w;
+//	for (i=x*depth;i<(x+w)*depth;i++)
+//		for (j=)
 	assert(0);
 }
 
@@ -127,7 +130,8 @@ void SDL_SetPalette(SDL_Surface *s, int flags, SDL_Color *colors,
 
 	if(s->flags & SDL_HWSURFACE) {
 		/* TODO: Set the VGA palette by calling write_palette(). */
-		assert(0);
+		write_palette(colors,ncolors);
+		//assert(0);
 	}
 }
 
