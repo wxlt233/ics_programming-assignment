@@ -17,11 +17,11 @@ static void do_execute() {
 
 	cpu.eflags.SF=MSB(result);
 
-	if (a+b<a||a+b<b) 
-		cpu.eflags.CF=1;
-	else 
-		cpu.eflags.CF=0;
-
+//	if (a+b<a||a+b<b) 
+//		cpu.eflags.CF=1;
+//	else 
+//		cpu.eflags.CF=0;
+	cpu.eflags.CF=(a>~b);
 	short t=(result&1)+((result>>1)&1)+((result>>2)&1)
 		+((result>>3)&1)+((result>>4)&1)+((result>>5)&1)
 		+((result>>6)&1)+((result>>7)&1);
