@@ -2,7 +2,7 @@
 
 #define instr cmps
 
-make_helper(concat(cmps_m_,SUFFIX))
+make_helper(concat(cmps_,SUFFIX))
 {
 	DATA_TYPE src=swaddr_read(cpu.esi,DATA_BYTE,3);
 	DATA_TYPE dest=swaddr_read(cpu.edi,DATA_BYTE,0);
