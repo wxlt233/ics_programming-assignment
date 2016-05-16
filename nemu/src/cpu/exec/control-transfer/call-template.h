@@ -8,15 +8,9 @@ static void do_execute() {
 		cpu.esp-=4;
 		
 		if (DATA_BYTE==4)
-		{
-			printf("ja");
 			swaddr_write(cpu.esp,4,cpu.eip+5,2);
-		}
 		else if (DATA_BYTE==2) 
-			{
-				printf("haha");
 				swaddr_write(cpu.esp,4,cpu.eip+4,2);
-			}
 		cpu.eip+=(DATA_TYPE_S)(op_src->val);
 	//	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 //	} 
@@ -46,7 +40,7 @@ make_helper(call_rm_w)
 	swaddr_write(cpu.esp,4,cpu.eip+len,2);
 	cpu.eip=op_src->val;
 	cpu.eip-=len;
-//	printf("haha");
+	printf("haha");
 	return len;
 }
 #endif
