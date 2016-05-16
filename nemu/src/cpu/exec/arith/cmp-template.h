@@ -15,7 +15,10 @@ static void do_execute() {
 	   	cpu.eflags.ZF=1;
 	else 
 		cpu.eflags.ZF=0;*/
-	cpu.eflags.ZF=(op_dest->val==op_src->val);
+//	cpu.eflags.ZF=(op_dest->val==op_src->val);
+	if (result==0)
+		cpu.eflags.ZF=1;
+	else cpu.eflags.ZF=0;
 	cpu.eflags.SF=MSB(result);
 	if (a<b) 
 		cpu.eflags.CF=1;
