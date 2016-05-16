@@ -24,7 +24,7 @@ make_helper(concat(cmps_m_,SUFFIX))
 	}
 	else cpu.eflags.ZF=0;
 
-	if (src<dest)
+	if (src<=dest)
 		cpu.eflags.CF=0;
 	else cpu.eflags.CF=1;
 
