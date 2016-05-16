@@ -12,6 +12,11 @@ make_helper(rep) {
 	}
 	else {
 		while(cpu.ecx) {
+			if ((ops_decoded.opcode==0xa6
+				||ops_decoded.opcode==0xa7
+				||ops_decoded.opcode==0xae
+				||ops_decoded.opcode==0xaf)&&cpu.eflags.ZF==0)
+		break;
 			exec(eip + 1);
 			count ++;
 			cpu.ecx --;
