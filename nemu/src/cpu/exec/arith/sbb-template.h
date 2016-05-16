@@ -12,11 +12,13 @@ static void do_execute() {
 	   	cpu.eflags.ZF=1;
 	else 
 		cpu.eflags.ZF=0;
+	uint64_t tt=(uint64_t)op_dest->val-(uint64_t)op_src->val-cpu.eflags.CF;
 	cpu.eflags.SF=MSB(result);
-	if (op_dest->val<op_src->val) 
-		cpu.eflags.CF=1;
-	else 
-		cpu.eflags.CF=0;
+//	if (op_dest->val<op_src->val) 
+//		cpu.eflags.CF=1;
+//	else 
+//		cpu.eflags.CF=0;
+	cpu.eflags.CF=(tt>>(8*DATA_BYTE))&1;
 	short t=(result&1)+((result>>1)&1)+((result>>2)&1)
 		+((result>>3)&1)+((result>>4)&1)+((result>>5)&1)
 		+((result>>6)&1)+((result>>7)&1);
