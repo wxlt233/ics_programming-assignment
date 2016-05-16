@@ -6,9 +6,11 @@ static void do_execute() {
 //	if (op_src->type==2)
  //	{
 		cpu.esp-=4;
+		
 		if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5,2);
-		cpu.eip+=(int)(op_src->val);
-		if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
+		else if (DATA_BYTE==2) swaddr_write(cpu.esp,4,cpu.eip+4,2);
+		cpu.eip+=(DATA_TYPE_S)(op_src->val);
+	//	if (DATA_BYTE==2) cpu.eip=cpu.eip&0x0000ffff;
 //	} 
 	print_asm_template1();
 }
