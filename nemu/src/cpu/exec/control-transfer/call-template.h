@@ -7,7 +7,11 @@ static void do_execute() {
  //	{
 		cpu.esp-=4;
 		
-		if (DATA_BYTE==4)swaddr_write(cpu.esp,4,cpu.eip+5,2);
+		if (DATA_BYTE==4)
+		{
+			printf("ja");
+			swaddr_write(cpu.esp,4,cpu.eip+5,2);
+		}
 		else if (DATA_BYTE==2) 
 			{
 				printf("haha");
