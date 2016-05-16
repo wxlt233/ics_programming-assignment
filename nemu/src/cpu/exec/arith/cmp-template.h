@@ -9,10 +9,9 @@ static void do_execute() {
 	if (MSB(a)==0&&MSB(b)==1&&MSB(result)==1 ) cpu.eflags.OF=1;
 	else if (MSB(a)==1&&MSB(b)==0&&MSB(result)==0) cpu.eflags.OF=1;
 	else cpu.eflags.OF=0;
-	cpu.eflags.ZF=(op_dest->val==op_src->val);
-/*	if (result==0)
+	if (result==0)
 		cpu.eflags.ZF=1;
-	else cpu.eflags.ZF=0;*/
+	else cpu.eflags.ZF=0;
 	cpu.eflags.SF=MSB(result);
 	if (a<b) 
 		cpu.eflags.CF=1;
