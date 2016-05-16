@@ -39,7 +39,8 @@ make_helper(concat(cmps_m_,SUFFIX))
 		cpu.esi-=DATA_BYTE;
 	}
 	print_asm_template2();
-	return DATA_BYTE+1;
+//	return DATA_BYTE+1;
+	return 1;
 }
 #include "cpu/exec/template-end.h"
 
