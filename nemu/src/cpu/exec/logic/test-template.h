@@ -9,7 +9,7 @@ static void do_execute () {
 	   	cpu.eflags.ZF=1;
 	else 
 		cpu.eflags.ZF=0;
-	cpu.eflags.SF=(result>>31)&1;
+	cpu.eflags.SF=MSB(result);
 	short t=(result&1)+((result>>1)&1)+((result>>2)&1)
 		+((result>>3)&1)+((result>>4)&1)+((result>>5)&1)
 		+((result>>6)&1)+((result>>7)&1);
