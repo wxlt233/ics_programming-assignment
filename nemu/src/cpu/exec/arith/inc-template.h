@@ -6,13 +6,14 @@ static void do_execute () {
 	DATA_TYPE result = op_src->val + 1;
 	OPERAND_W(op_src, result);
 
-    DATA_TYPE a=op_src->val;
-	DATA_TYPE b=1;	
+    //DATA_TYPE a=op_src->val;
+//	DATA_TYPE b=1;	
 
-	if (MSB(a)==1&&MSB(b)==1&&MSB(result)==0 ) cpu.eflags.OF=1;
-	else if (MSB(a)==0&&MSB(b)==0&&MSB(result)==1) cpu.eflags.OF=1;
-	else cpu.eflags.OF=0;
-
+//	if (MSB(a)==1&&MSB(b)==1&&MSB(result)==0 ) cpu.eflags.OF=1;
+//	else if (MSB(a)==0&&MSB(b)==0&&MSB(result)==1) cpu.eflags.OF=1;
+	//else cpu.eflags.OF=0;
+	cpu.eflags.OF=(result==(1<<(8*DATA_BYTE-1)));
+	cpu.eflags.CF=!result;
 	if (result==0)
 	   	cpu.eflags.ZF=1;
 	else 
