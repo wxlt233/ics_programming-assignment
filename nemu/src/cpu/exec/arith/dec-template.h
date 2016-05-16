@@ -6,11 +6,13 @@ static void do_execute () {
 	DATA_TYPE result = op_src->val - 1;
 	OPERAND_W(op_src, result);
     
-	DATA_TYPE a=op_dest->val;
-	DATA_TYPE b=1;	
-	if (MSB(a)==0&&MSB(b)==1&&MSB(result)==1 ) cpu.eflags.OF=1;
-	else if (MSB(a)==1&&MSB(b)==0&&MSB(result)==0) cpu.eflags.OF=1;
-	else cpu.eflags.OF=0;
+//	DATA_TYPE a=op_dest->val;
+//	DATA_TYPE b=1;	
+//	if (MSB(a)==0&&MSB(b)==1&&MSB(result)==1 ) cpu.eflags.OF=1;
+//	else if (MSB(a)==1&&MSB(b)==0&&MSB(result)==0) cpu.eflags.OF=1;
+//	else cpu.eflags.OF=0;
+	cpu.eflags.OF=MSB(op_src->val)^MSB(result);
+	cpu.eflags.CF=!((DATA_TYPE)op_src->val);
 	if (result==0)
 	   	cpu.eflags.ZF=1;
 	else 
