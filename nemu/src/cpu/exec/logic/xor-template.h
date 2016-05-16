@@ -19,7 +19,7 @@ static void do_execute () {
 		cpu.eflags.PF=1;
 	else 
 		cpu.eflags.PF=0;
-	OPERAND_W(op_dest,result);
+//	OPERAND_W(op_dest,result);
 	print_asm_template2();
 }
 
