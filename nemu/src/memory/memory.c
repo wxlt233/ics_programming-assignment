@@ -20,6 +20,11 @@ int is_mmio(hwaddr_t addr);
 uint32_t mmio_read(hwaddr_t addr,size_t len,int map_NO);
 void mmio_write(hwaddr_t addr,size_t len,uint32_t data,int map_NO);
 /* Memory accessing interfaces */
+
+void test_cache(uint32_t addr)
+{
+	
+}
  
 uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 	int map_no=is_mmio(addr);
@@ -75,11 +80,39 @@ else
 	else write_allocate(addr,len,data);
 	}
 }*/
+
+void test_page(uint32_t addr)
+{
+	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
+	{
+			uint16_t offset=addr&0xfff;
+			uint16_t dir=(addr>>22)&0x3ff;
+			uint16_t page=(addr>>12)&0x3ff;
+
+			PDE aa;
+			aa.val=hwaddr_read((cpu.cr3.page_directory_base<<12)+4*dir,4);
+			if (aa.present==0)
+			{
+				printf("translation failed!\n");
+			}
+			PTE a;
+			a.val=hwaddr_read((aa.page_frame<<12)+4*page,4);
+			
+			if (a.present==0)
+			{
+				printf("translation failed!\n");
+			}
+			printf("%x\n",(a.page_frame<<12)+offset);
+		
+	}
+	else printf("%x\n",addr);
+		
+}
+
 hwaddr_t  page_translate(lnaddr_t addr)
 {
 	if (cpu.cr0.protect_enable==1&&cpu.cr0.paging==1)
 	{
-		//if (cpu.eip==0x8054655) printf("%x\n",cpu.eax);
 		if (hittlb(addr))
 		{
 			uint16_t offset=addr&0xfff;
@@ -97,15 +130,10 @@ hwaddr_t  page_translate(lnaddr_t addr)
 			{
 				assert(aa.present);
 			}
-	//		uint32_t pagetableaddr=hwaddr_read(((cpu.cr3.page_directory_base<<12)+4*dir),4)>>12;
-	//		uint32_t pagestartaddr=(hwaddr_read(((pagetableaddr<<12)+4*page),4)>>12)<<12;
 			PTE a;
 			a.val=hwaddr_read((aa.page_frame<<12)+4*page,4);
 			
-	//		a.val=hwaddr_read((pagetableaddr<<12)+4*page,4);
 			assert(a.present);
-	//		updatetlb(addr,pagestartaddr>>12);
-	//			return pagestartaddr+offset;
 			updatetlb(addr,a.page_frame);
 			return (a.page_frame<<12)+offset;
 		}

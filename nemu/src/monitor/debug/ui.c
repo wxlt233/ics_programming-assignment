@@ -11,6 +11,9 @@
 extern WP *head;
 void cpu_exec(uint32_t);
 
+void test_cache(uint32_t);
+void test_page(uint32_t);
+
 void findfunc(uint32_t addrt);
 
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
@@ -125,6 +128,7 @@ static int cmd_cache(char *args)
  	{	
 //		printf("%u\n",result);
 		printf("0x%x\n",result);
+		test_cache(result);
 	}
 	else printf("illegal expression!\n");
 	return 0;
@@ -132,7 +136,15 @@ static int cmd_cache(char *args)
 
 static int cmd_page(char *args)
 {
-	printf("%s\n",args);
+	bool success=1;
+	uint32_t result=expr(args,&success);
+	if (success) 
+ 	{	
+//		printf("%u\n",result);
+		printf("0x%x\n",result);
+		test_page(result);
+	}
+	else printf("illegal expression!\n");
 	return 0;
 }
 
