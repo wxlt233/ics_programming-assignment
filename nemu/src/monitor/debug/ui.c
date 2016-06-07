@@ -141,7 +141,7 @@ static int cmd_page(char *args)
 	if (success) 
  	{	
 //		printf("%u\n",result);
-		printf("0x%x\n",result);
+//		printf("0x%x\n",result);
 		test_page(result);
 	}
 	else printf("illegal expression!\n");
