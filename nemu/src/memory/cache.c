@@ -69,7 +69,7 @@ void test_cache(uint32_t addr)
 			printf("\n");
 			return ;
 		}	
-	printf("not int cache!");
+	printf("not int cache!\n");
 	
 
 
