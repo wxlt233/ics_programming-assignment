@@ -117,6 +117,18 @@ static int  cmd_p(char *args)
 	return 0;
 }
 
+static int cmd_cache(char *args)
+{
+	printf("%s\n",args);
+	return 0;
+}
+
+static int cmd_page(char *args)
+{
+	printf("%s\n",args);
+	return 0;
+}
+
 static int cmd_info(char *args)
 {   if (args[0]=='r')
 	  {   int i;
@@ -213,7 +225,9 @@ static struct {
 	{"w","set watchpoint",cmd_w},
 	{"d","delete watchpoint",cmd_d},
 	{"p","calculate the expression",cmd_p},
-	{"bt","printf  stack frame",cmd_bt}
+	{"bt","printf  stack frame",cmd_bt},
+	{"cache","print cache status",cmd_cache},
+	{"page","print page translate",cmd_page}
 	/* TODO: Add more commands */
 
 };
