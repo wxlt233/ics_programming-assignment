@@ -126,7 +126,6 @@ static int cmd_cache(char *args)
 	uint32_t result=expr(args,&success);
 	if (success) 
  	{	
-//		printf("%u\n",result);
 		printf("0x%x\n",result);
 		test_cache(result);
 	}
@@ -140,8 +139,6 @@ static int cmd_page(char *args)
 	uint32_t result=expr(args,&success);
 	if (success) 
  	{	
-//		printf("%u\n",result);
-//		printf("0x%x\n",result);
 		test_page(result);
 	}
 	else printf("illegal expression!\n");

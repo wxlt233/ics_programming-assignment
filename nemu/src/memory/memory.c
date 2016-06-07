@@ -94,6 +94,7 @@ void test_page(uint32_t addr)
 			if (aa.present==0)
 			{
 				printf("translation failed!\n");
+				return ;
 			}
 			PTE a;
 			a.val=hwaddr_read((aa.page_frame<<12)+4*page,4);
@@ -101,6 +102,7 @@ void test_page(uint32_t addr)
 			if (a.present==0)
 			{
 				printf("translation failed!\n");
+				return ;
 			}
 			printf("%x\n",(a.page_frame<<12)+offset);
 		
