@@ -64,7 +64,7 @@ void test_cache(uint32_t addr)
 			for (j=0;j<64;j++)
 			{
 				if (j%8==0) printf("\n");
-				printf("%0x",cache1[cacheno][i].offset[j]);
+				printf("%02x",cache1[cacheno][i].offset[j]);
 			}
 			printf("\n");
 			return ;
