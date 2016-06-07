@@ -119,7 +119,14 @@ static int  cmd_p(char *args)
 
 static int cmd_cache(char *args)
 {
-	printf("%s\n",args);
+	bool success=1;
+	uint32_t result=expr(args,&success);
+	if (success) 
+ 	{	
+		printf("%u\n",result);
+		printf("0x%x\n",result);
+	}
+	else printf("illegal expression!\n");
 	return 0;
 }
 
