@@ -66,6 +66,7 @@ void test_cache(uint32_t addr)
 				if (j%8==0) printf("\n");
 				printf("%x",cache1[cacheno][i].offset[j]);
 			}
+			printf("\n");
 			return ;
 		}	
 	printf("not int cache!");
