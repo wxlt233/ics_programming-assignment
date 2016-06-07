@@ -21,10 +21,6 @@ uint32_t mmio_read(hwaddr_t addr,size_t len,int map_NO);
 void mmio_write(hwaddr_t addr,size_t len,uint32_t data,int map_NO);
 /* Memory accessing interfaces */
 
-void test_cache(uint32_t addr)
-{
-	
-}
  
 uint32_t hwaddr_read(hwaddr_t addr, size_t len) {
 	int map_no=is_mmio(addr);

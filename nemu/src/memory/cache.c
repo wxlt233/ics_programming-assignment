@@ -51,6 +51,29 @@ uint32_t hwaddr_read(hwaddr_t addr,size_t len);
 uint32_t hwaddr_write(hwaddr_t addr,size_t len,uint32_t data);
 void write_allocate(hwaddr_t addr,size_t len,uint32_t data);
 
+void test_cache(uint32_t addr)
+{
+	uint32_t  tag1=addr>>gettag1;	
+	uint32_t cacheno=(addr>>bitofblock)&maskofzushu1;
+	int i;
+	for ( i=0;i<cache1way;i++)
+		if (cache1[cacheno][i].tag==tag1&&cache1[cacheno][i].valid)
+		{
+			printf("tag:%x",tag1);
+			int j=0;
+			for (j=0;j<64;j++)
+			{
+				if (j%8==0) printf("\n");
+				printf("%x",cache1[cacheno][i].offset[j]);
+			}
+		}	
+		else
+		{
+			printf("not in cache!");
+		} 
+
+}
+
 void init_cache()
 {
 	int i,j;

@@ -126,7 +126,7 @@ static int cmd_cache(char *args)
 	uint32_t result=expr(args,&success);
 	if (success) 
  	{	
-		printf("0x%x\n",result);
+		//printf("0x%x\n",result);
 		test_cache(result);
 	}
 	else printf("illegal expression!\n");
