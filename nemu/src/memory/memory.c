@@ -103,7 +103,7 @@ void test_page(uint32_t addr)
 			printf("0x%x\n",(a.page_frame<<12)+offset);
 		
 	}
-	else printf("%x\n",addr);
+	else printf("0x%x\n",addr);
 		
 }
 
