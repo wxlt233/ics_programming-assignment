@@ -100,7 +100,7 @@ void test_page(uint32_t addr)
 				printf("translation failed!\n");
 				return ;
 			}
-			printf("%x\n",(a.page_frame<<12)+offset);
+			printf("0x%x\n",(a.page_frame<<12)+offset);
 		
 	}
 	else printf("%x\n",addr);
